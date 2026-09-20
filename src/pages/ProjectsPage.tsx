@@ -4,12 +4,20 @@ import { PageHeader } from '../components/common/PageHeader'
 import { ProjectCard } from '../components/cards/ProjectCard'
 import { Reveal } from '../components/common/Reveal'
 import { useLanguage } from '../context/LanguageContext'
+import { Seo } from '../components/common/Seo'
 
 export const ProjectsPage: React.FC = () => {
   const { t } = useLanguage()
 
   return (
     <>
+      <Seo
+        title={t('projects.title', 'Flagship programs, built for lasting change.')}
+        description={t(
+          'projects.subtitle',
+          'Three long-term initiatives addressing housing, orphan care, and spiritual community infrastructure across South India.'
+        )}
+      />
       <PageHeader
         eyebrow={t('projects.eyebrow', 'Our Projects')}
         title={t('projects.title', 'Flagship programs, built for lasting change.')}

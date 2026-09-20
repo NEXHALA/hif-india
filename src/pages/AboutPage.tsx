@@ -6,6 +6,8 @@ import { ImageLightbox } from '../components/common/ImageLightbox'
 import { UNSPLASH } from '../data/unsplashImages'
 import { Reveal } from '../components/common/Reveal'
 import { useLanguage } from '../context/LanguageContext'
+import { Seo } from '../components/common/Seo'
+import { buildBreadcrumbJsonLd } from '../lib/structuredData'
 
 export const AboutPage: React.FC = () => {
   const { t } = useLanguage()
@@ -60,6 +62,17 @@ export const AboutPage: React.FC = () => {
 
   return (
     <>
+      <Seo
+        title={t('about.title', 'A grassroots trust, built on community trust.')}
+        description={t(
+          'about.description',
+          'Highland Islamic Forum (HIF INDIA) is a registered NGO headquartered in Mangaluru, working across Karnataka and Andhra Pradesh.'
+        )}
+        jsonLd={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: t('nav.about', 'About'), path: '/about' }
+        ])}
+      />
       <PageHeader
         eyebrow={t('about.eyebrow', 'About HIF INDIA')}
         title={t('about.title', 'A grassroots trust, built on community trust.')}
@@ -141,7 +154,7 @@ export const AboutPage: React.FC = () => {
                 >
                   <img
                     src={photo}
-                    alt={t('about.teamPhotoAlt', 'HIF India team and community')}
+                    alt={`${t('about.teamPhotoAlt', 'HIF India team and community')} #${idx + 1}`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />

@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { CheckCircle2, Heart, Target } from 'lucide-react'
 import { HIF_PROJECTS } from '../data/hifData'
 import { useDonate } from '../context/DonateContext'
 import { useLanguage } from '../context/LanguageContext'
 import { localizeProject } from '../lib/localizeContent'
 import { ImageLightbox } from '../components/common/ImageLightbox'
+import { LocalizedLink } from '../components/common/LocalizedLink'
+import { Seo } from '../components/common/Seo'
+import { buildBreadcrumbJsonLd } from '../lib/structuredData'
+import { SITE_URL } from '../lib/seoConfig'
 
 export const ProjectDetailPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>()
@@ -25,6 +29,18 @@ export const ProjectDetailPage: React.FC = () => {
 
   return (
     <>
+      <Seo
+        title={project.title}
+        description={project.subtitle || project.overview}
+        image={project.image.startsWith('http') ? project.image : `${SITE_URL}${project.image}`}
+        path={`/projects/${project.id}`}
+        type="article"
+        jsonLd={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: t('nav.projects', 'Projects'), path: '/projects' },
+          { name: project.title, path: `/projects/${project.id}` }
+        ])}
+      />
       <section className="relative page-header overflow-hidden">
         <div className="absolute inset-0">
           <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-30" decoding="async" />
@@ -89,7 +105,7 @@ export const ProjectDetailPage: React.FC = () => {
                           >
                             <img
                               src={img}
-                              alt={`${project.title} ${t('projects.beforeLabel', 'Before')}`}
+                              alt={`${project.title} — ${t('projects.beforeLabel', 'Before')} photo ${i + 1}`}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                               loading="lazy"
                             />
@@ -112,7 +128,7 @@ export const ProjectDetailPage: React.FC = () => {
                           >
                             <img
                               src={img}
-                              alt={`${project.title} ${t('projects.afterLabel', 'After')}`}
+                              alt={`${project.title} — ${t('projects.afterLabel', 'After')} photo ${i + 1}`}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                               loading="lazy"
                             />
@@ -139,7 +155,7 @@ export const ProjectDetailPage: React.FC = () => {
                   >
                     <img
                       src={img}
-                      alt={project.title}
+                      alt={`${project.title} — photo ${i + 1}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
@@ -212,12 +228,12 @@ export const ProjectDetailPage: React.FC = () => {
                 <Heart className="w-4 h-4" /> {t('common.donateNow', 'Donate to This Project')}
               </button>
             </div>
-            <Link
+            <LocalizedLink
               to="/projects"
               className="block text-center text-sm font-semibold text-primary hover:text-primary-deep"
             >
               ← {t('common.backToProjects', 'Back to all projects')}
-            </Link>
+            </LocalizedLink>
           </aside>
         </div>
       </section>

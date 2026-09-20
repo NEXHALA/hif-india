@@ -6,6 +6,7 @@ import { Lightbox } from '../components/common/Lightbox'
 import { Reveal } from '../components/common/Reveal'
 import { useLanguage } from '../context/LanguageContext'
 import { galleryCategoryLabel, localizeGalleryItem } from '../lib/localizeContent'
+import { Seo } from '../components/common/Seo'
 
 type GalleryCategory = GalleryItem['category'] | 'All'
 
@@ -51,6 +52,13 @@ export const GalleryPage: React.FC = () => {
 
   return (
     <>
+      <Seo
+        title={t('gallery.title', 'Moments of change from the ground.')}
+        description={t(
+          'gallery.subtitle',
+          'A visual record of homes handed over, students taught, masjids revived, and lives touched — captured across our project sites.'
+        )}
+      />
       <PageHeader
         eyebrow={t('gallery.eyebrow', 'Impact Gallery')}
         title={t('gallery.title', 'Moments of change from the ground.')}

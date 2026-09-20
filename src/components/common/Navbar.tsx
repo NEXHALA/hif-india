@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Heart,
@@ -23,6 +23,8 @@ import { useDonate } from '../../context/DonateContext'
 import { useTheme } from '../../context/ThemeContext'
 import { useLanguage } from '../../context/LanguageContext'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { LocalizedNavLink } from './LocalizedLink'
+import { stripLocalePrefix } from '../../lib/localePaths'
 
 interface NavItem {
   key: string
@@ -143,7 +145,7 @@ export const Navbar: React.FC = () => {
       >
         <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 min-w-0">
           {/* Logo & Identity */}
-          <NavLink
+          <LocalizedNavLink
             to="/"
             className="group flex items-center gap-2 sm:gap-3 min-w-0 flex-1 lg:flex-none lg:shrink-0 focus:outline-none"
             onClick={() => setMenuOpen(false)}
@@ -170,7 +172,7 @@ export const Navbar: React.FC = () => {
                 Highland Islamic Forum • Mangaluru
               </span>
             </div>
-          </NavLink>
+          </LocalizedNavLink>
 
           {/* Desktop Nav Items with Animated Gliding Hover Pill */}
           <div
@@ -178,11 +180,11 @@ export const Navbar: React.FC = () => {
             onMouseLeave={() => setHoveredPath(null)}
           >
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.to
+              const isActive = stripLocalePrefix(location.pathname) === link.to
               const isHovered = hoveredPath === link.to
 
               return (
-                <NavLink
+                <LocalizedNavLink
                   key={link.to}
                   to={link.to}
                   onMouseEnter={() => setHoveredPath(link.to)}
@@ -212,7 +214,7 @@ export const Navbar: React.FC = () => {
                   <span className="relative z-10 flex items-center gap-1.5">
                     {link.name}
                   </span>
-                </NavLink>
+                </LocalizedNavLink>
               )
             })}
           </div>
@@ -309,7 +311,7 @@ export const Navbar: React.FC = () => {
                 <div className="flex flex-col">
                   {navLinks.map((link, idx) => {
                     const Icon = link.icon
-                    const isActive = location.pathname === link.to
+                    const isActive = stripLocalePrefix(location.pathname) === link.to
 
                     return (
                       <motion.div
@@ -318,7 +320,7 @@ export const Navbar: React.FC = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.04, duration: 0.25 }}
                       >
-                        <NavLink
+                        <LocalizedNavLink
                           to={link.to}
                           onClick={() => setMenuOpen(false)}
                           className={`flex items-center justify-between py-3.5 border-b border-border dark:border-border/10 transition-colors ${
@@ -333,7 +335,7 @@ export const Navbar: React.FC = () => {
                               <span className="text-[15px]">{link.name}</span>
                             </div>
                           </div>
-                        </NavLink>
+                        </LocalizedNavLink>
                       </motion.div>
                     )
                   })}

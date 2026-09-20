@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { CheckCircle2, Sparkles, Heart } from 'lucide-react'
 import { HIF_ACTIVITIES } from '../data/hifData'
 import { useDonate } from '../context/DonateContext'
 import { useLanguage } from '../context/LanguageContext'
 import { localizeActivity } from '../lib/localizeContent'
 import { ImageLightbox } from '../components/common/ImageLightbox'
+import { LocalizedLink } from '../components/common/LocalizedLink'
+import { Seo } from '../components/common/Seo'
+import { buildBreadcrumbJsonLd } from '../lib/structuredData'
+import { SITE_URL } from '../lib/seoConfig'
 
 const idBySlug: Record<string, string> = {
   'medical-cell': 'hif-medical-cell',
@@ -24,9 +28,22 @@ export const ActivityDetailPage: React.FC = () => {
   if (!rawActivity) return <Navigate to="/activities" replace />
 
   const activity = localizeActivity(rawActivity, t, language)
+  const canonicalSlug = activityId || rawActivity.id
 
   return (
     <>
+      <Seo
+        title={activity.title}
+        description={activity.subtitle || activity.overview}
+        image={activity.image.startsWith('http') ? activity.image : `${SITE_URL}${activity.image}`}
+        path={`/activities/${canonicalSlug}`}
+        type="article"
+        jsonLd={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: t('activities.wingsBadge', 'Activities'), path: '/activities' },
+          { name: activity.title, path: `/activities/${canonicalSlug}` }
+        ])}
+      />
       <section className="relative page-header overflow-hidden">
         <div className="absolute inset-0">
           <img src={activity.image} alt={activity.title} className="w-full h-full object-cover opacity-30" decoding="async" />
@@ -81,7 +98,7 @@ export const ActivityDetailPage: React.FC = () => {
                   >
                     <img
                       src={img}
-                      alt={activity.title}
+                      alt={`${activity.title} — photo ${i + 1}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
@@ -124,12 +141,12 @@ export const ActivityDetailPage: React.FC = () => {
                 <Heart className="w-4 h-4" /> {t('common.donateNow', 'Support This Wing')}
               </button>
             </div>
-            <Link
+            <LocalizedLink
               to="/activities"
               className="block text-center text-sm font-semibold text-primary hover:text-primary-deep"
             >
               ← {t('common.backToActivities', 'Back to all activities')}
-            </Link>
+            </LocalizedLink>
           </aside>
         </div>
       </section>

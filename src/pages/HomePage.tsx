@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Suspense, lazy, useState } from 'react'
 import { ArrowRight, Heart } from 'lucide-react'
 import { HIF_PROJECTS, HIF_ACTIVITIES, HIF_GALLERY, HIF_ORGANIZATION } from '../data/hifData'
 import { Hero } from '../components/home/Hero'
@@ -7,7 +6,10 @@ import { ImpactStatsBand } from '../components/home/ImpactStatsBand'
 import { PillarsOrbit3D } from '../components/home/PillarsOrbit3D'
 import { ReelsShowcase } from '../components/home/ReelsShowcase'
 import { FeatureVideoShowcase } from '../components/home/FeatureVideoShowcase'
-import MissionAccentCanvas from '../components/canvas/MissionAccentCanvas'
+
+// Lazy-loaded so the (large) Three.js bundle doesn't block first paint —
+// this section is well below the fold.
+const MissionAccentCanvas = lazy(() => import('../components/canvas/MissionAccentCanvas'))
 import { ProjectCard } from '../components/cards/ProjectCard'
 import { ActivityCard } from '../components/cards/ActivityCard'
 import { ImageLightbox } from '../components/common/ImageLightbox'
@@ -16,6 +18,9 @@ import { useLanguage } from '../context/LanguageContext'
 import { localizeGalleryItem, tx } from '../lib/localizeContent'
 import { UNSPLASH } from '../data/unsplashImages'
 import { Reveal } from '../components/common/Reveal'
+import { LocalizedLink } from '../components/common/LocalizedLink'
+import { Seo } from '../components/common/Seo'
+import { buildWebsiteJsonLd } from '../lib/structuredData'
 
 export const HomePage: React.FC = () => {
   const { openDonate } = useDonate()
@@ -27,6 +32,14 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
+      <Seo
+        title={t('hero.title', 'Dignity, shelter & hope for communities across Karnataka.')}
+        description={t(
+          'hero.subtitle',
+          'HIF INDIA builds permanent homes, nurtures orphaned children, revives rural masjids, and delivers free medical relief — with 100% direct, transparent grassroots impact.'
+        )}
+        jsonLd={buildWebsiteJsonLd()}
+      />
       <Hero />
       <ImpactStatsBand />
 
@@ -56,7 +69,7 @@ export const HomePage: React.FC = () => {
               >
                 <img
                   src={photo}
-                  alt={t('about.teamPhotoAlt', 'HIF India team and community')}
+                  alt={`${t('about.teamPhotoAlt', 'HIF India team and community')} #${idx + 1}`}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -69,7 +82,9 @@ export const HomePage: React.FC = () => {
 
       {/* Mission teaser */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-editorial-wash overflow-hidden">
-        <MissionAccentCanvas className="absolute inset-0" />
+        <Suspense fallback={null}>
+          <MissionAccentCanvas className="absolute inset-0" />
+        </Suspense>
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <Reveal>
             <span className="badge">{t('about.missionTitle', 'Our Mission')}</span>
@@ -79,12 +94,12 @@ export const HomePage: React.FC = () => {
             <p className="mt-5 text-text-muted leading-relaxed">
               {t('about.missionText', HIF_ORGANIZATION.mission)}
             </p>
-            <Link
+            <LocalizedLink
               to="/about"
               className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-deep justify-center"
             >
               {t('common.learnMore', 'More about our story')} <ArrowRight className="w-4 h-4" />
-            </Link>
+            </LocalizedLink>
           </Reveal>
         </div>
       </section>
@@ -99,9 +114,9 @@ export const HomePage: React.FC = () => {
                 {t('projects.title', 'Flagship programs creating lasting change')}
               </h2>
             </div>
-            <Link to="/projects" className="text-sm font-semibold text-primary hover:text-primary-deep inline-flex items-center gap-1.5 shrink-0">
+            <LocalizedLink to="/projects" className="text-sm font-semibold text-primary hover:text-primary-deep inline-flex items-center gap-1.5 shrink-0">
               {t('projects.viewAll', 'View all projects')} <ArrowRight className="w-4 h-4" />
-            </Link>
+            </LocalizedLink>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {HIF_PROJECTS.map((p, i) => (
@@ -124,9 +139,9 @@ export const HomePage: React.FC = () => {
                 {t('activities.wingsTitle', 'Ongoing activities across the community')}
               </h2>
             </div>
-            <Link to="/activities" className="text-sm font-semibold text-primary hover:text-primary-deep inline-flex items-center gap-1.5 shrink-0">
+            <LocalizedLink to="/activities" className="text-sm font-semibold text-primary hover:text-primary-deep inline-flex items-center gap-1.5 shrink-0">
               {t('common.viewAll', 'View all activities')} <ArrowRight className="w-4 h-4" />
-            </Link>
+            </LocalizedLink>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {HIF_ACTIVITIES.map((a, i) => (
@@ -158,12 +173,12 @@ export const HomePage: React.FC = () => {
             )}&rdquo;
           </p>
           <p className="mt-5 text-sm text-emerald-100/80">— {tx(language, 'home.quoteBy', 'Ashiyana beneficiary family')}</p>
-          <Link
+          <LocalizedLink
             to="/get-involved"
             className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-emerald-950 font-semibold text-sm shadow-lg shadow-black/30 ring-1 ring-amber-300/60 transition-colors"
           >
             {t('common.joinAsVolunteer', 'Join the mission')} <ArrowRight className="w-4 h-4" />
-          </Link>
+          </LocalizedLink>
         </Reveal>
       </section>
 
@@ -177,9 +192,9 @@ export const HomePage: React.FC = () => {
                 {t('gallery.title', 'Moments from the ground')}
               </h2>
             </div>
-            <Link to="/gallery" className="text-sm font-semibold text-primary hover:text-primary-deep inline-flex items-center gap-1.5 shrink-0">
+            <LocalizedLink to="/gallery" className="text-sm font-semibold text-primary hover:text-primary-deep inline-flex items-center gap-1.5 shrink-0">
               {t('common.viewAll', 'View full gallery')} <ArrowRight className="w-4 h-4" />
-            </Link>
+            </LocalizedLink>
           </Reveal>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {galleryPreview.map((g, idx) => (

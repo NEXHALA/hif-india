@@ -7,6 +7,7 @@ import { UNSPLASH } from '../data/unsplashImages'
 import { Reveal } from '../components/common/Reveal'
 import { useLanguage } from '../context/LanguageContext'
 import { buildWhatsAppUrl } from '../lib/submitForm'
+import { Seo } from '../components/common/Seo'
 
 export const ContactPage: React.FC = () => {
   const { t } = useLanguage()
@@ -18,6 +19,13 @@ export const ContactPage: React.FC = () => {
 
   return (
     <>
+      <Seo
+        title={t('contact.title', "We'd love to hear from you.")}
+        description={t(
+          'contact.description',
+          'Reach our Mangaluru headquarters for donations, sponsorships, medical equipment requests, or volunteering.'
+        )}
+      />
       <PageHeader
         eyebrow={t('contact.eyebrow', 'Contact')}
         title={t('contact.title', "We'd love to hear from you.")}
@@ -36,9 +44,9 @@ export const ContactPage: React.FC = () => {
                 <Building2 className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-semibold text-text-main">
+                <h2 className="font-semibold text-text-main">
                   {t('contact.centralSecretariat', 'Central Secretariat')}
-                </h3>
+                </h2>
                 <p className="text-sm text-text-muted mt-1">{HIF_ORGANIZATION.address.full}</p>
                 <p className="text-xs text-primary font-medium mt-2 flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5" /> {t('contact.hoursValue', '9:00 AM – 7:00 PM (Mon–Sat)')}
@@ -81,9 +89,9 @@ export const ContactPage: React.FC = () => {
                 <FaWhatsapp className="w-5 h-5 text-[#25D366]" aria-hidden />
               </div>
               <div>
-                <h3 className="font-semibold text-text-main group-hover:text-primary transition-colors">
+                <h2 className="font-semibold text-text-main group-hover:text-primary transition-colors">
                   {t('contact.whatsAppButton', 'Message us on WhatsApp')}
-                </h3>
+                </h2>
                 <p className="text-sm text-text-muted mt-1">
                   {t('contact.whatsAppHint', 'Fastest way to reach us — tap to open WhatsApp.')}
                 </p>

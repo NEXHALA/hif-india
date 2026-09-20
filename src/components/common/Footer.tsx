@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Heart, ShieldCheck } from 'lucide-react'
 import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa6'
 import { HIF_ORGANIZATION } from '../../data/hifData'
 import { useDonate } from '../../context/DonateContext'
 import { useLanguage } from '../../context/LanguageContext'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { LocalizedLink } from './LocalizedLink'
 
 const socialLinks = [
   { href: HIF_ORGANIZATION.socials.facebook, label: 'Facebook', Icon: FaFacebookF },
@@ -22,12 +22,12 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-10 border-b border-white/10">
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-2.5">
+            <LocalizedLink to="/" className="flex items-center gap-2.5">
               <img src={HIF_ORGANIZATION.siteImages.logo} alt="HIF INDIA logo" className="h-8 w-auto object-contain" />
               <span className="font-display text-lg font-semibold text-white">
                 HIF INDIA
               </span>
-            </Link>
+            </LocalizedLink>
             <p className="text-sm text-emerald-100/70 leading-relaxed max-w-sm">
               {t(
                 'footer.aboutText',
@@ -126,9 +126,9 @@ const FooterCol: React.FC<{ title: string; links: { label: string; to: string }[
     <ul className="space-y-2 text-sm text-emerald-100/70">
       {links.map((l) => (
         <li key={l.to}>
-          <Link to={l.to} className="hover:text-emerald-300 transition-colors">
+          <LocalizedLink to={l.to} className="hover:text-emerald-300 transition-colors">
             {l.label}
-          </Link>
+          </LocalizedLink>
         </li>
       ))}
     </ul>
