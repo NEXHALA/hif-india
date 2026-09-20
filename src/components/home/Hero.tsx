@@ -6,6 +6,7 @@ import { useDonate } from '../../context/DonateContext'
 import { useLanguage } from '../../context/LanguageContext'
 import { HeroAccent } from '../canvas/HeroAccent'
 import { LocalizedLink } from '../common/LocalizedLink'
+import { OptimizedImage } from '../common/OptimizedImage'
 
 const easeOut = [0.22, 1, 0.36, 1] as const
 
@@ -27,7 +28,7 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative flex flex-col min-h-[640px] sm:min-h-[700px] lg:min-h-[760px] w-full overflow-hidden bg-emerald-950">
-      <img
+      <OptimizedImage
         src={HIF_ORGANIZATION.siteImages.heroSlides[0]}
         alt="HIF India volunteers and beneficiaries"
         className="absolute inset-0 w-full h-full object-cover scale-105 brightness-[0.55] saturate-[0.85]"
