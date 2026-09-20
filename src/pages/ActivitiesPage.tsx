@@ -4,12 +4,20 @@ import { PageHeader } from '../components/common/PageHeader'
 import { ActivityCard } from '../components/cards/ActivityCard'
 import { Reveal } from '../components/common/Reveal'
 import { useLanguage } from '../context/LanguageContext'
+import { Seo } from '../components/common/Seo'
 
 export const ActivitiesPage: React.FC = () => {
   const { t } = useLanguage()
 
   return (
     <>
+      <Seo
+        title={t('activities.title', 'Everyday programs, powered by volunteers.')}
+        description={t(
+          'activities.subtitle',
+          'From free medical equipment loans to scholarships and youth leadership — our wings deliver consistent, on-ground support.'
+        )}
+      />
       <PageHeader
         eyebrow={t('activities.eyebrow', 'Activities & Wings')}
         title={t('activities.title', 'Everyday programs, powered by volunteers.')}

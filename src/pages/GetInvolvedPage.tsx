@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import {
   Heart,
@@ -30,6 +31,7 @@ import { UNSPLASH } from '../data/unsplashImages'
 import { Reveal } from '../components/common/Reveal'
 import { localizeImpact } from '../lib/localizeContent'
 import { buildWhatsAppUrl } from '../lib/submitForm'
+import { Seo } from '../components/common/Seo'
 
 export const GetInvolvedPage: React.FC = () => {
   const [amount, setAmount] = useState(9000)
@@ -39,6 +41,13 @@ export const GetInvolvedPage: React.FC = () => {
 
   return (
     <>
+      <Seo
+        title={t('getInvolved.title', 'Everyone has a role to play.')}
+        description={t(
+          'getInvolved.description',
+          'Calculate your impact, sign up to volunteer, or contribute directly — every path leads to real change on the ground.'
+        )}
+      />
       <PageHeader
         eyebrow={t('getInvolved.eyebrow', 'Get Involved')}
         title={t('getInvolved.title', 'Everyone has a role to play.')}
@@ -406,6 +415,19 @@ const FAQSection: React.FC = () => {
 
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: { '@type': 'Answer', text: faq.a }
+            }))
+          })}
+        </script>
+      </Helmet>
       <div className="max-w-4xl mx-auto">
         <Reveal className="text-center mb-10">
           <span className="badge">{t('getInvolved.faqTitle', 'Frequently Asked Questions')}</span>
