@@ -1,38 +1,83 @@
+import React, { Suspense, lazy } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import { ThemeProvider } from './context/ThemeContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { RootLayout } from './layout/RootLayout'
-import { HomePage } from './pages/HomePage'
-import { AboutPage } from './pages/AboutPage'
-import { ProjectsPage } from './pages/ProjectsPage'
-import { ProjectDetailPage } from './pages/ProjectDetailPage'
-import { ActivitiesPage } from './pages/ActivitiesPage'
-import { ActivityDetailPage } from './pages/ActivityDetailPage'
-import { GalleryPage } from './pages/GalleryPage'
-import { GetInvolvedPage } from './pages/GetInvolvedPage'
-import { ContactPage } from './pages/ContactPage'
+import { LocaleRoute } from './layout/LocaleRoute'
+import { LOCALES } from './lib/seoConfig'
+import type { Language } from './data/translations'
+
+const HomePage = lazy(() => import('./pages/HomePage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
+const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'))
+const ActivitiesPage = lazy(() => import('./pages/ActivitiesPage'))
+const ActivityDetailPage = lazy(() => import('./pages/ActivityDetailPage'))
+const GalleryPage = lazy(() => import('./pages/GalleryPage'))
+const GetInvolvedPage = lazy(() => import('./pages/GetInvolvedPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+
+/** Unprefixed ("canonical", English) page paths, mirrored under each locale prefix below. */
+const PAGES: { path: string; Component: React.LazyExoticComponent<React.ComponentType> }[] = [
+  { path: '/', Component: HomePage },
+  { path: '/about', Component: AboutPage },
+  { path: '/projects', Component: ProjectsPage },
+  { path: '/projects/:projectId', Component: ProjectDetailPage },
+  { path: '/activities', Component: ActivitiesPage },
+  { path: '/activities/:activityId', Component: ActivityDetailPage },
+  { path: '/gallery', Component: GalleryPage },
+  { path: '/get-involved', Component: GetInvolvedPage },
+  { path: '/contact', Component: ContactPage }
+]
+
+function localizedRoutePath(lang: Language, path: string): string {
+  const prefix = lang === 'en' ? '' : `/${lang}`
+  return path === '/' ? prefix || '/' : `${prefix}${path}`
+}
 
 export function App() {
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<RootLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
-              <Route path="/activities" element={<ActivitiesPage />} />
-              <Route path="/activities/:activityId" element={<ActivityDetailPage />} />
-              <Route path="/gallery" element={<GalleryPage />} />
-              <Route path="/get-involved" element={<GetInvolvedPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </LanguageProvider>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <BrowserRouter>
+            <Suspense fallback={null}>
+              <Routes>
+                <Route element={<RootLayout />}>
+                  {PAGES.map(({ path, Component }) => (
+                    <Route
+                      key={`en-${path}`}
+                      path={localizedRoutePath('en', path)}
+                      element={
+                        <LocaleRoute lang="en">
+                          <Component />
+                        </LocaleRoute>
+                      }
+                    />
+                  ))}
+                  {LOCALES.map((lang) =>
+                    PAGES.map(({ path, Component }) => (
+                      <Route
+                        key={`${lang}-${path}`}
+                        path={localizedRoutePath(lang, path)}
+                        element={
+                          <LocaleRoute lang={lang}>
+                            <Component />
+                          </LocaleRoute>
+                        }
+                      />
+                    ))
+                  )}
+                  <Route path="*" element={<NotFoundPage />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+        </LanguageProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   )
 }
 

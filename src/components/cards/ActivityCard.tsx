@@ -1,10 +1,11 @@
 import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import type { ActivityData } from '../../data/hifData'
 import { Reveal } from '../common/Reveal'
 import { useLanguage } from '../../context/LanguageContext'
 import { localizeActivity } from '../../lib/localizeContent'
+import { LocalizedLink } from '../common/LocalizedLink'
+import { OptimizedImage } from '../common/OptimizedImage'
 
 const slugMap: Record<string, string> = {
   'hif-medical-cell': 'medical-cell',
@@ -35,7 +36,7 @@ export const ActivityCard: React.FC<{ activity: ActivityData; index?: number }> 
 
   return (
     <Reveal delay={index * 0.08} className="h-full">
-      <Link
+      <LocalizedLink
         to={`/activities/${slug}`}
         ref={cardRef}
         onMouseMove={handleMouseMove}
@@ -44,7 +45,7 @@ export const ActivityCard: React.FC<{ activity: ActivityData; index?: number }> 
       >
         <div className="tilt-card-content flex h-full flex-col">
           <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-bg-alt">
-            <img
+            <OptimizedImage
               src={activity.image}
               alt={localized.title}
               loading="lazy"
@@ -82,7 +83,7 @@ export const ActivityCard: React.FC<{ activity: ActivityData; index?: number }> 
             </span>
           </div>
         </div>
-      </Link>
+      </LocalizedLink>
     </Reveal>
   )
 }

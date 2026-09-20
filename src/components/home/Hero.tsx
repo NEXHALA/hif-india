@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { motion, type Variants } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { HIF_ORGANIZATION } from '../../data/hifData'
 import { useDonate } from '../../context/DonateContext'
 import { useLanguage } from '../../context/LanguageContext'
 import { HeroAccent } from '../canvas/HeroAccent'
+import { LocalizedLink } from '../common/LocalizedLink'
 
 const easeOut = [0.22, 1, 0.36, 1] as const
 
@@ -79,13 +79,13 @@ export const Hero: React.FC = () => {
               >
                 {t('common.donateNow', 'Donate Now')}
               </motion.button>
-              <Link
+              <LocalizedLink
                 to="/about"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-amber-200 transition-colors group"
               >
                 {t('common.seeImpact', 'See Our Impact')}{' '}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </LocalizedLink>
             </motion.div>
           </motion.div>
         </div>

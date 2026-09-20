@@ -1,10 +1,11 @@
 import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import type { ProjectData } from '../../data/hifData'
 import { Reveal } from '../common/Reveal'
 import { useLanguage } from '../../context/LanguageContext'
 import { localizeProject } from '../../lib/localizeContent'
+import { LocalizedLink } from '../common/LocalizedLink'
+import { OptimizedImage } from '../common/OptimizedImage'
 
 export const ProjectCard: React.FC<{ project: ProjectData; index?: number }> = ({ project, index = 0 }) => {
   const cardRef = useRef<HTMLAnchorElement>(null)
@@ -28,7 +29,7 @@ export const ProjectCard: React.FC<{ project: ProjectData; index?: number }> = (
 
   return (
     <Reveal delay={index * 0.08} className="h-full">
-      <Link
+      <LocalizedLink
         to={`/projects/${project.id}`}
         ref={cardRef}
         onMouseMove={handleMouseMove}
@@ -37,7 +38,7 @@ export const ProjectCard: React.FC<{ project: ProjectData; index?: number }> = (
       >
         <div className="tilt-card-content flex h-full flex-col">
           <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-bg-alt">
-            <img
+            <OptimizedImage
               src={project.image}
               alt={localized.title}
               loading="lazy"
@@ -75,7 +76,7 @@ export const ProjectCard: React.FC<{ project: ProjectData; index?: number }> = (
             </span>
           </div>
         </div>
-      </Link>
+      </LocalizedLink>
     </Reveal>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Globe, Check, ChevronDown } from 'lucide-react'
 import { useLanguage, type Language } from '../../context/LanguageContext'
+import { useLanguageNavigation } from '../../hooks/useLanguageNavigation'
 
 interface LanguageSwitcherProps {
   variant?: 'navbar' | 'footer' | 'pill'
@@ -12,7 +13,8 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   variant = 'navbar',
   className = ''
 }) => {
-  const { language, setLanguage, supportedLanguages, currentLanguageOption } = useLanguage()
+  const { language, supportedLanguages, currentLanguageOption } = useLanguage()
+  const { changeLanguage } = useLanguageNavigation()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -37,7 +39,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   }, [])
 
   const handleSelect = (code: Language) => {
-    setLanguage(code)
+    changeLanguage(code)
     setIsOpen(false)
   }
 
@@ -50,7 +52,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             <button
               key={lang.code}
               type="button"
-              onClick={() => setLanguage(lang.code)}
+              onClick={() => changeLanguage(lang.code)}
               className={`px-3 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 leading-snug ${
                 isActive
                   ? 'bg-emerald-700 text-white shadow-sm'
@@ -79,7 +81,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
               <button
                 key={lang.code}
                 type="button"
-                onClick={() => setLanguage(lang.code)}
+                onClick={() => changeLanguage(lang.code)}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all duration-200 flex items-center gap-1.5 ${
                   isActive
                     ? 'bg-emerald-500 text-text-main border-emerald-400 font-bold shadow-sm'
