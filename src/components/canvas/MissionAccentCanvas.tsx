@@ -72,26 +72,32 @@ const MissionAccentCanvas: React.FC<{ className?: string }> = ({ className = '' 
     sceneGroup.add(dust)
 
     // ---- Gentle pointer parallax (subtle — this section is contemplative) --
+    // The mount rect is cached and re-read only on scroll/resize — calling
+    // getBoundingClientRect() inside the high-frequency pointermove handler
+    // forces a layout read on every mouse move.
     const pointer = { x: 0, y: 0 }
     const targetRot = { x: 0, y: 0 }
+    let mountRect = mount.getBoundingClientRect()
+    const refreshRect = () => {
+      mountRect = mount.getBoundingClientRect()
+    }
     const handlePointerMove = (e: PointerEvent) => {
-      const rect = mount.getBoundingClientRect()
-      pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1
-      pointer.y = ((e.clientY - rect.top) / rect.height) * 2 - 1
+      pointer.x = ((e.clientX - mountRect.left) / mountRect.width) * 2 - 1
+      pointer.y = ((e.clientY - mountRect.top) / mountRect.height) * 2 - 1
     }
     window.addEventListener('pointermove', handlePointerMove, { passive: true })
+    window.addEventListener('scroll', refreshRect, { passive: true })
+    window.addEventListener('resize', refreshRect)
 
-    let visible = document.visibilityState === 'visible'
-    const handleVisibility = () => {
-      visible = document.visibilityState === 'visible'
-    }
-    document.addEventListener('visibilitychange', handleVisibility)
-
+    // Render only while on-screen in a visible tab — this section sits far
+    // below the fold, and an always-on WebGL loop taxes every scroll frame.
+    let inView = false
+    let pageVisible = document.visibilityState === 'visible'
+    let running = false
     let rafId = 0
 
     const animate = () => {
       rafId = requestAnimationFrame(animate)
-      if (!visible) return
 
       const posAttr = dustGeometry.attributes.position as THREE.BufferAttribute
       const arr = posAttr.array as Float32Array
@@ -114,10 +120,40 @@ const MissionAccentCanvas: React.FC<{ className?: string }> = ({ className = '' 
 
       renderer.render(scene, camera)
     }
-    animate()
+
+    const start = () => {
+      if (running) return
+      running = true
+      rafId = requestAnimationFrame(animate)
+    }
+    const stop = () => {
+      if (!running) return
+      running = false
+      cancelAnimationFrame(rafId)
+    }
+    const updateRunning = () => {
+      if (inView && pageVisible) start()
+      else stop()
+    }
+
+    const handleVisibility = () => {
+      pageVisible = document.visibilityState === 'visible'
+      updateRunning()
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        inView = entries[0]?.isIntersecting ?? false
+        updateRunning()
+      },
+      { rootMargin: '80px' }
+    )
+    intersectionObserver.observe(mount)
 
     const resizeObserver = new ResizeObserver(() => {
       if (!mount) return
+      refreshRect()
       camera.aspect = mount.clientWidth / mount.clientHeight
       camera.updateProjectionMatrix()
       renderer.setSize(mount.clientWidth, mount.clientHeight)
@@ -125,9 +161,12 @@ const MissionAccentCanvas: React.FC<{ className?: string }> = ({ className = '' 
     resizeObserver.observe(mount)
 
     return () => {
-      cancelAnimationFrame(rafId)
+      stop()
       document.removeEventListener('visibilitychange', handleVisibility)
       window.removeEventListener('pointermove', handlePointerMove)
+      window.removeEventListener('scroll', refreshRect)
+      window.removeEventListener('resize', refreshRect)
+      intersectionObserver.disconnect()
       resizeObserver.disconnect()
       if (mount && renderer.domElement.parentNode === mount) {
         mount.removeChild(renderer.domElement)
