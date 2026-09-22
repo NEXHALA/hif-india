@@ -9,7 +9,10 @@ import { buildOrganizationJsonLd } from '../lib/structuredData'
 import { trackPageView } from '../lib/analytics'
 
 function scrollWindowToTop() {
-  window.scrollTo(0, 0)
+  // 'instant' is required here: the global `scroll-behavior: smooth` (for
+  // in-page anchors) would otherwise turn this into an animated scroll that
+  // glides through the freshly mounted page on every route change.
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   document.documentElement.scrollTop = 0
   document.body.scrollTop = 0
 }

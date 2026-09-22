@@ -21,7 +21,7 @@ export const ReelsShowcase: React.FC = () => {
 
   const reels = HIF_REELS.map((r) => localizeReel(r, language))
   const active = reels[activeIndex]
-  const { sectionRef, videoRef, setVideoNode } = useAutoplayOnView(active?.id ?? '')
+  const { sectionRef, videoRef, setVideoNode, isInView } = useAutoplayOnView(active?.id ?? '')
 
   const goTo = useCallback(
     (index: number) => {
@@ -114,7 +114,10 @@ export const ReelsShowcase: React.FC = () => {
                   ref={setVideoNode}
                   src={active.videoUrl}
                   poster={active.posterUrl}
-                  preload="auto"
+                  // Only eager-load the clip once the section is near the
+                  // viewport — preload="auto" from page load pulls tens of MB
+                  // of video up front and chokes the rest of the page.
+                  preload={isInView ? 'auto' : 'metadata'}
                   muted={isMuted}
                   playsInline
                   onEnded={() => goTo(activeIndex + 1)}

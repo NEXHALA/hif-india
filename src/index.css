@@ -336,6 +336,14 @@
   box-shadow: 0 0 35px -2px rgba(251, 191, 36, 0.45);
 }
 
+/* Sections toggle this while off-screen to freeze decorative infinite
+   animations (hub float/pulse etc.) — they keep their last frame and resume
+   seamlessly when scrolled back into view. */
+.anim-pause-offscreen,
+.anim-pause-offscreen * {
+  animation-play-state: paused !important;
+}
+
 /* Simple, low-key entrance animation for first paint only */
 @keyframes fade-up {
   from {

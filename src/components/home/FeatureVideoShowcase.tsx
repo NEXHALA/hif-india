@@ -19,7 +19,7 @@ export const FeatureVideoShowcase: React.FC = () => {
 
   const videos = HIF_FEATURE_VIDEOS.map((v) => localizeFeatureVideo(v, language))
   const active = videos[activeIndex]
-  const { sectionRef, videoRef, setVideoNode } = useAutoplayOnView(active?.id ?? '')
+  const { sectionRef, videoRef, setVideoNode, isInView } = useAutoplayOnView(active?.id ?? '')
 
   const goTo = useCallback(
     (index: number) => {
@@ -54,7 +54,10 @@ export const FeatureVideoShowcase: React.FC = () => {
                 ref={setVideoNode}
                 src={active.videoUrl}
                 poster={active.posterUrl}
-                preload="auto"
+                // Only eager-load the clip once the section is near the
+                // viewport — preload="auto" from page load pulls tens of MB
+                // of video up front and chokes the rest of the page.
+                preload={isInView ? 'auto' : 'metadata'}
                 muted={isMuted}
                 playsInline
                 onEnded={() => goTo(activeIndex + 1)}

@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { useInView } from 'framer-motion'
 import { Home, HeartHandshake, Landmark, HeartPulse } from 'lucide-react'
 import { Reveal } from '../common/Reveal'
 import { useLanguage } from '../../context/LanguageContext'
@@ -12,8 +13,13 @@ import { useTheme } from '../../context/ThemeContext'
 export const PillarsOrbit3D: React.FC = () => {
   const sceneRef = useRef<HTMLDivElement>(null)
   const groupRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const { t } = useLanguage()
   const { isDark } = useTheme()
+  // The floating cards carry backdrop-filter blurs; letting their infinite
+  // CSS animations run while the section is off-screen forces the backdrop
+  // to be re-sampled every frame for content nobody can see.
+  const sectionInView = useInView(sectionRef, { margin: '120px' })
 
   const pillars = [
     {
@@ -63,7 +69,10 @@ export const PillarsOrbit3D: React.FC = () => {
   }
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden section-dark">
+    <section
+      ref={sectionRef}
+      className={`relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden section-dark${sectionInView ? '' : ' anim-pause-offscreen'}`}
+    >
       <div className="relative max-w-6xl mx-auto">
         <Reveal className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
           <span className={isDark ? 'badge-on-dark' : 'badge'}>{t('about.pillarsTitle', 'Four Pillars')}</span>
