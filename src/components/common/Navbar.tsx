@@ -36,11 +36,11 @@ interface NavItem {
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
   const [headerHeight, setHeaderHeight] = useState(0)
   const [hoveredPath, setHoveredPath] = useState<string | null>(null)
   const headerRef = useRef<HTMLElement>(null)
+  const progressBarRef = useRef<HTMLDivElement>(null)
   const { openDonate } = useDonate()
   const { theme, toggleTheme } = useTheme()
   const { t } = useLanguage()
@@ -56,19 +56,41 @@ export const Navbar: React.FC = () => {
     { key: 'contact', name: t('nav.contact', 'Contact'), to: '/contact', icon: Mail, description: t('contact.centralSecretariat', 'HQ & 24/7 Helplines') }
   ]
 
-  // Track scroll depth and elevation
+  // Track scroll depth and elevation. The progress bar is updated by direct
+  // DOM mutation (rAF-throttled) instead of React state: a state update per
+  // scroll event re-rendered the whole header mid-scroll, which read as
+  // scroll jank. `scrolled` stays in state — it only flips at the threshold,
+  // and React bails out when the boolean is unchanged.
   useEffect(() => {
-    const onScroll = () => {
+    let ticking = false
+
+    const update = () => {
+      ticking = false
       const scrollY = window.scrollY
       setScrolled(scrollY > 20)
 
+      const bar = progressBarRef.current
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight
-      if (totalHeight > 0) {
-        setScrollProgress(Math.min(100, Math.max(0, (scrollY / totalHeight) * 100)))
+      if (bar && totalHeight > 0) {
+        const progress = Math.min(1, Math.max(0, scrollY / totalHeight))
+        bar.style.transform = `scaleX(${progress})`
       }
     }
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    }
+
+    // Deferred so the first paint isn't interrupted by a sync state update.
+    const initialRaf = requestAnimationFrame(update)
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => {
+      cancelAnimationFrame(initialRaf)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   // Measure header height for mobile drawer backdrop
@@ -272,12 +294,11 @@ export const Navbar: React.FC = () => {
           </div>
         </nav>
 
-        {/* Scroll Progress Bar */}
+        {/* Scroll Progress Bar — transform-driven (compositor-only), see effect above */}
         <div className="w-full h-[2px] bg-bg-alt dark:bg-emerald-950/60 relative overflow-hidden mt-2">
-          <motion.div
-            className="h-full bg-gradient-to-r from-emerald-600 via-amber-500 to-emerald-500 dark:from-emerald-400 dark:via-amber-400 dark:to-emerald-400"
-            style={{ width: `${scrollProgress}%` }}
-            transition={{ ease: 'linear', duration: 0.1 }}
+          <div
+            ref={progressBarRef}
+            className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-emerald-600 via-amber-500 to-emerald-500 dark:from-emerald-400 dark:via-amber-400 dark:to-emerald-400 transition-transform duration-100 ease-linear"
           />
         </div>
       </div>
