@@ -238,7 +238,7 @@ const VolunteerForm: React.FC = () => {
                 type="tel"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                placeholder={t('getInvolved.form.phonePlaceholder', '+91 98765 43210')}
+                placeholder={t('getInvolved.form.phonePlaceholder', '+91 98750 81312')}
                 className="w-full px-4 py-2.5 rounded-lg bg-bg-alt dark:bg-card-tint border border-border text-sm text-text-main placeholder:text-text-muted focus:outline-none focus:border-emerald-400 dark:focus:border-emerald-400"
               />
             </div>

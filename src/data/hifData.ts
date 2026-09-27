@@ -85,11 +85,11 @@ export const HIF_ORGANIZATION = {
     full: 'Masjid Ehsaan Mosque, Kankanady, Mangalore - 575002, Karnataka, India'
   },
   contact: {
-    primaryPhone: '+91 63662 96133',
-    altPhone: '+91 9886017265',
+    primaryPhone: '+91 98750 81312',
+    altPhone: '+91 98750 81312',
     email: 'info@hif.org.in',
     website: 'https://hif.org.in',
-    whatsapp: '+916366296133'
+    whatsapp: '+919875081312'
   },
   bankDetails: {
     accountName: 'HIF INDIA',
