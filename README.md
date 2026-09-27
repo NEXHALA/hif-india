@@ -11,4 +11,4 @@ React + TypeScript + Vite site for Highland Islamic Forum (HIF India), deployed 
 
 ## Contact
 
-Volunteer sign-ups and general inquiries go through WhatsApp (`+91 98750 81312`). The Contact page lists phone, email, and office details.
+Volunteer sign-ups and general inquiries go through WhatsApp (`+91 6366 296133`). The Contact page lists phone, email, and office details.
