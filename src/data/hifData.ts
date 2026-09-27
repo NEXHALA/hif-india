@@ -89,7 +89,7 @@ export const HIF_ORGANIZATION = {
     altPhone: '+91 98750 81312',
     email: 'info@hif.org.in',
     website: 'https://hif.org.in',
-    whatsapp: '+919875081312'
+    whatsapp: '+916366296133'
   },
   bankDetails: {
     accountName: 'HIF INDIA',
