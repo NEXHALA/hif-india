@@ -54,10 +54,23 @@ async function main() {
   let failed = 0
 
   try {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    })
+    const launchArgs = ['--no-sandbox', '--disable-setuid-sandbox'] as const
+    const fromEnv = process.env.PUPPETEER_EXECUTABLE_PATH
+    try {
+      browser = await puppeteer.launch({
+        headless: true,
+        args: [...launchArgs],
+        ...(fromEnv ? { executablePath: fromEnv } : {})
+      })
+    } catch (err) {
+      console.warn('[prerender] Bundled Chrome failed to launch. Retrying with system Chrome.')
+      console.warn(err instanceof Error ? err.message : err)
+      browser = await puppeteer.launch({
+        headless: true,
+        channel: 'chrome',
+        args: [...launchArgs]
+      })
+    }
 
     for (const route of routes) {
       const page = await browser.newPage()
