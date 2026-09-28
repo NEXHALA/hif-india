@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
             <LocalizedLink to="/cancellation-policy" className="hover:text-white transition-colors">{t('legal.cancellationTitle', 'Cancellation Policy')}</LocalizedLink>
           </nav>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-emerald-200/60">
-            <p>© {new Date().getFullYear()} {t('footer.allRightsReserved', 'Highland Islamic Forum (HIF INDIA). All rights reserved.')}</p>
+            <p>© {new Date().getFullYear()} {t('footer.allRightsReserved', 'HIF. All rights reserved.')}</p>
             <p>{t('footer.addressFull', 'Masjid Ehsaan Complex, Kankanady, Mangalore – 575002')}</p>
           </div>
           <p className="text-center text-xs text-emerald-200/70">

@@ -14,6 +14,7 @@ import { FaWhatsapp } from 'react-icons/fa6'
 import { HIF_ORGANIZATION } from '../../data/hifData'
 import { useDonate } from '../../context/DonateContext'
 import { useLanguage } from '../../context/LanguageContext'
+import { buildWhatsAppUrl } from '../../lib/submitForm'
 
 type Tab = 'qr' | 'bank'
 
@@ -251,7 +252,10 @@ export const DonateModal: React.FC = () => {
                 </div>
 
                 <a
-                  href={`https://wa.me/${HIF_ORGANIZATION.contact.whatsapp}?text=${encodeURIComponent('Assalamu Alaikum, I have made a donation to HIF INDIA.')}`}
+                  href={buildWhatsAppUrl(
+                    HIF_ORGANIZATION.contact.whatsapp,
+                    'Assalamu Alaikum, I have made a donation to HIF INDIA.'
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-sm font-semibold transition-colors active:scale-[0.98]"

@@ -1,6 +1,6 @@
 # HIF India Website
 
-React + TypeScript + Vite site for Highland Islamic Forum (HIF India), deployed on Firebase Hosting.
+React + TypeScript + Vite site for HIF, deployed on Firebase Hosting.
 
 ## Scripts
 
@@ -11,4 +11,4 @@ React + TypeScript + Vite site for Highland Islamic Forum (HIF India), deployed 
 
 ## Contact
 
-Volunteer sign-ups and general inquiries go through WhatsApp (`+91 98750 81312`). The Contact page lists phone, email, and office details.
+Volunteer sign-ups and general inquiries go through WhatsApp (`+91 63662 96133`). The Contact page lists phone (`+91 98450 81312`), email, and office details.

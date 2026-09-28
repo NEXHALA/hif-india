@@ -17,7 +17,7 @@ export const PrivacyPage: React.FC = () => {
         <p>
           {t(
             'legal.privacy.whoBody',
-            'Highland Islamic Forum (HIF INDIA) is responsible for personal information collected through this website and through our phone, email, and WhatsApp channels.'
+            'HIF is responsible for personal information collected through this website and through our phone, email, and WhatsApp channels.'
           )}
         </p>
       </LegalSection>

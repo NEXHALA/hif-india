@@ -17,7 +17,7 @@ export const RefundPage: React.FC = () => {
         <p>
           {t(
             'legal.refund.notRefundableBody',
-            'A gift to Highland Islamic Forum (HIF INDIA) is a voluntary donation to a registered NGO, not a purchase of goods. HIF INDIA does not ship products and does not charge a delivery fee. Once a donation is successfully received, it is allocated to housing, orphan care, masjid work, medical relief, or the general humanitarian fund, and it is not refundable as a change of mind.'
+            'A gift to HIF is a voluntary donation to a registered NGO, not a purchase of goods. HIF INDIA does not ship products and does not charge a delivery fee. Once a donation is successfully received, it is allocated to housing, orphan care, masjid work, medical relief, or the general humanitarian fund, and it is not refundable as a change of mind.'
           )}
         </p>
       </LegalSection>

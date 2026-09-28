@@ -92,6 +92,9 @@ export const ContactPage: React.FC = () => {
                 <h2 className="font-semibold text-text-main group-hover:text-primary transition-colors">
                   {t('contact.whatsAppButton', 'Message us on WhatsApp')}
                 </h2>
+                <p className="text-sm font-semibold text-text-main mt-1">
+                  {HIF_ORGANIZATION.contact.whatsapp}
+                </p>
                 <p className="text-sm text-text-muted mt-1">
                   {t('contact.whatsAppHint', 'Fastest way to reach us — tap to open WhatsApp.')}
                 </p>

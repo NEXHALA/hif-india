@@ -72,7 +72,7 @@ export interface ImpactTier {
 
 export const HIF_ORGANIZATION = {
   name: 'HIF INDIA',
-  fullName: 'Highland Islamic Forum (HIF INDIA)',
+  fullName: 'HIF',
   tagline: 'Empowering Communities, Transforming Lives with Compassion & Dignity',
   established: 'Registered NGO in Mangaluru',
   regDetails: 'Registered NGO under Indian Trusts Act',
@@ -85,11 +85,11 @@ export const HIF_ORGANIZATION = {
     full: 'Masjid Ehsaan Mosque, Kankanady, Mangalore - 575002, Karnataka, India'
   },
   contact: {
-    primaryPhone: '+91 98750 81312',
-    altPhone: '+91 98750 81312',
+    primaryPhone: '+91 98450 81312',
+    altPhone: '+91 98450 81312',
     email: 'info@hif.org.in',
     website: 'https://hif.org.in',
-    whatsapp: '+919875081312'
+    whatsapp: '+91 63662 96133'
   },
   bankDetails: {
     accountName: 'HIF INDIA',

@@ -68,9 +68,16 @@ function OrgDetails() {
         <a className="text-primary hover:underline" href={`tel:${contact.primaryPhone.replace(/\s+/g, '')}`}>
           {contact.primaryPhone}
         </a>
-        {' · '}
-        <a className="text-primary hover:underline" href={`tel:${contact.altPhone.replace(/\s+/g, '')}`}>
-          {contact.altPhone}
+      </p>
+      <p>
+        {t('org.whatsappLabel', 'WhatsApp')}:{' '}
+        <a
+          className="text-primary hover:underline"
+          href={`https://wa.me/${contact.whatsapp.replace(/\D/g, '')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {contact.whatsapp}
         </a>
       </p>
       <p>

@@ -10,14 +10,14 @@ export const TermsPage: React.FC = () => {
       title={t('legal.termsTitle', 'Terms and Conditions')}
       description={t(
         'legal.termsDesc',
-        'How this website and donations to Highland Islamic Forum (HIF INDIA) work.'
+        'How this website and donations to HIF work.'
       )}
     >
       <LegalSection title={t('legal.terms.aboutTitle', 'About these terms')}>
         <p>
           {t(
             'legal.terms.aboutBody',
-            'These terms apply to your use of the HIF INDIA website and to any donation you make to Highland Islamic Forum (HIF INDIA), a registered NGO under the Indian Trusts Act. By using the website or making a donation, you agree to these terms, our Privacy Policy, Refund Policy, and Cancellation Policy.'
+            'These terms apply to your use of the HIF INDIA website and to any donation you make to HIF, a registered NGO under the Indian Trusts Act. By using the website or making a donation, you agree to these terms, our Privacy Policy, Refund Policy, and Cancellation Policy.'
           )}
         </p>
       </LegalSection>
@@ -116,7 +116,7 @@ export const TermsPage: React.FC = () => {
         <p>
           {t(
             'legal.terms.ipBody',
-            'The HIF INDIA name, logo, and website content belong to Highland Islamic Forum unless a credit says otherwise. You may share links to our pages. Please do not copy our photographs or logo for another organisation without written permission.'
+            'The HIF INDIA name, logo, and website content belong to HIF unless a credit says otherwise. You may share links to our pages. Please do not copy our photographs or logo for another organisation without written permission.'
           )}
         </p>
       </LegalSection>

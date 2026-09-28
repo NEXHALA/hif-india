@@ -22,6 +22,7 @@ import { HIF_ORGANIZATION } from '../../data/hifData'
 import { useDonate } from '../../context/DonateContext'
 import { useTheme } from '../../context/ThemeContext'
 import { useLanguage } from '../../context/LanguageContext'
+import { buildWhatsAppUrl } from '../../lib/submitForm'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { LocalizedNavLink } from './LocalizedLink'
 import { stripLocalePrefix } from '../../lib/localePaths'
@@ -191,7 +192,7 @@ export const Navbar: React.FC = () => {
                 </span>
               </span>
               <span className="text-[10px] text-text-muted font-medium hidden md:block truncate">
-                Highland Islamic Forum • Mangaluru
+                Mangaluru
               </span>
             </div>
           </LocalizedNavLink>
@@ -384,9 +385,10 @@ export const Navbar: React.FC = () => {
                       <span>Call</span>
                     </a>
                     <a
-                      href={`https://wa.me/${HIF_ORGANIZATION.contact.whatsapp}?text=${encodeURIComponent(
+                      href={buildWhatsAppUrl(
+                        HIF_ORGANIZATION.contact.whatsapp,
                         'Assalamu Alaikum, I would like to get in touch with HIF INDIA.'
-                      )}`}
+                      )}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 text-primary-deep font-medium transition-colors"

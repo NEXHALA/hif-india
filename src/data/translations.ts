@@ -42,6 +42,7 @@ export interface TranslationDictionary {
     hqLocation: string
     centralSecretariat: string
     phoneLabel: string
+    whatsappLabel: string
     emailLabel: string
     websiteLabel: string
     workingHours: string
@@ -592,7 +593,7 @@ export const translations: Record<Language, any> = {
     },
     org: {
       name: 'HIF INDIA',
-      fullName: 'Highland Islamic Forum (HIF INDIA)',
+      fullName: 'HIF',
       tagline: 'Empowering Communities, Transforming Lives with Compassion & Dignity',
       shortTagline: 'Empowering Communities, Transforming Lives',
       established: 'Registered NGO in Mangaluru',
@@ -604,6 +605,7 @@ export const translations: Record<Language, any> = {
       hqLocation: 'Masjid Ehsaan Complex, Kankanady, Mangalore – 575002',
       centralSecretariat: 'Central Secretariat',
       phoneLabel: 'Phone',
+      whatsappLabel: 'WhatsApp',
       emailLabel: 'Email',
       websiteLabel: 'Website',
       workingHours: 'Working Hours',
@@ -672,9 +674,9 @@ export const translations: Record<Language, any> = {
       eyebrow: 'About HIF INDIA',
       title: 'A grassroots trust, built on community trust.',
       description:
-        'Highland Islamic Forum (HIF INDIA) is a registered NGO headquartered in Mangaluru, working across Karnataka and Andhra Pradesh.',
+        'HIF is a registered NGO headquartered in Mangaluru, working across Karnataka and Andhra Pradesh.',
       whoWeAreBadge: 'Who We Are',
-      whoWeAreTitle: 'Highland Islamic Forum (HIF INDIA)',
+      whoWeAreTitle: 'HIF',
       whoWeAreText1:
         'Empowering Communities, Transforming Lives with Compassion & Dignity. Since our founding, we have focused on tangible, measurable interventions — permanent housing for the homeless, a loving residential sanctuary for orphaned boys, restoration of abandoned rural masjids, and free-of-cost medical equipment loans and blood donation coordination for families in crisis.',
       whoWeAreText2:
@@ -924,7 +926,7 @@ export const translations: Record<Language, any> = {
         email: 'Email Address *',
         emailPlaceholder: 'you@example.com',
         phone: 'Phone / WhatsApp *',
-        phonePlaceholder: '+91 98750 81312',
+        phonePlaceholder: '+91 98450 81312',
         city: 'City / Location *',
         cityPlaceholder: 'e.g. Mangalore, Udupi, Bengaluru',
         skillsLabel: 'How would you like to contribute? (Select skills)',
@@ -990,7 +992,7 @@ export const translations: Record<Language, any> = {
       emailInputLabel: 'Email Address *',
       emailPlaceholder: 'ahmed@example.com',
       phoneInputLabel: 'Phone / WhatsApp',
-      phonePlaceholder: '+91 98750 81312',
+      phonePlaceholder: '+91 98450 81312',
       subjectLabel: 'Subject',
       subjectPlaceholder: 'Select a subject',
       subjects: {
@@ -1050,7 +1052,7 @@ export const translations: Record<Language, any> = {
       supportUs: 'Support Us',
       bankAccount: 'HDFC Bank A/C',
       donateQr: 'Donate / UPI QR',
-      allRightsReserved: 'Highland Islamic Forum (HIF INDIA). All rights reserved.',
+      allRightsReserved: 'HIF. All rights reserved.',
       addressFull: 'Masjid Ehsaan Complex, Kankanady, Mangalore – 575002',
       slogan: 'Empowering Communities, Transforming Lives with Compassion & Dignity',
       developedBy: 'Developed by'
@@ -1061,7 +1063,7 @@ export const translations: Record<Language, any> = {
       relatedNav: 'Related policies',
       orgRegisteredHq: 'Registered NGO under the Indian Trusts Act, headquartered in Mangaluru.',
       termsTitle: 'Terms and Conditions',
-      termsDesc: 'How this website and donations to Highland Islamic Forum (HIF INDIA) work.',
+      termsDesc: 'How this website and donations to HIF work.',
       privacyTitle: 'Privacy Policy',
       privacyDesc: 'What personal information HIF INDIA collects, why we use it, and who we share it with.',
       refundTitle: 'Refund Policy',
@@ -1071,7 +1073,7 @@ export const translations: Record<Language, any> = {
       terms: {
         aboutTitle: 'About these terms',
         aboutBody:
-          'These terms apply to your use of the HIF INDIA website and to any donation you make to Highland Islamic Forum (HIF INDIA), a registered NGO under the Indian Trusts Act. By using the website or making a donation, you agree to these terms, our Privacy Policy, Refund Policy, and Cancellation Policy.',
+          'These terms apply to your use of the HIF INDIA website and to any donation you make to HIF, a registered NGO under the Indian Trusts Act. By using the website or making a donation, you agree to these terms, our Privacy Policy, Refund Policy, and Cancellation Policy.',
         whatWeDoTitle: 'What we do',
         whatWeDoBody:
           'HIF INDIA is a grassroots humanitarian trust based in Mangaluru. The website describes our programmes and lets supporters contribute to them. We do not sell goods. A donation is a voluntary contribution, not a purchase of a product or service.',
@@ -1100,7 +1102,7 @@ export const translations: Record<Language, any> = {
           'Online card, net-banking, and UPI payments are handled by Razorpay and your bank. We do not store your full card number or UPI PIN. A payment is complete only when we or our payment partner confirms it. Bank delays and failed UPI attempts are outside our control.',
         ipTitle: 'Intellectual property',
         ipBody:
-          'The HIF INDIA name, logo, and website content belong to Highland Islamic Forum unless a credit says otherwise. You may share links to our pages. Please do not copy our photographs or logo for another organisation without written permission.',
+          'The HIF INDIA name, logo, and website content belong to HIF unless a credit says otherwise. You may share links to our pages. Please do not copy our photographs or logo for another organisation without written permission.',
         liabilityTitle: 'Liability',
         liabilityBody:
           'The website is provided as a public information and donation channel. We are not liable for loss caused by a payment-app error, a bank delay, or a temporary outage of this site, to the extent allowed by Indian law.',
@@ -1114,7 +1116,7 @@ export const translations: Record<Language, any> = {
       privacy: {
         whoTitle: 'Who is responsible',
         whoBody:
-          'Highland Islamic Forum (HIF INDIA) is responsible for personal information collected through this website and through our phone, email, and WhatsApp channels.',
+          'HIF is responsible for personal information collected through this website and through our phone, email, and WhatsApp channels.',
         collectTitle: 'Information we collect',
         collectIntro: 'We collect only what we need to receive donations, answer enquiries, and run our programmes:',
         collectForm:
@@ -1156,7 +1158,7 @@ export const translations: Record<Language, any> = {
       refund: {
         notRefundableTitle: 'Donations are generally not refundable',
         notRefundableBody:
-          'A gift to Highland Islamic Forum (HIF INDIA) is a voluntary donation to a registered NGO, not a purchase of goods. HIF INDIA does not ship products and does not charge a delivery fee. Once a donation is successfully received, it is allocated to housing, orphan care, masjid work, medical relief, or the general humanitarian fund, and it is not refundable as a change of mind.',
+          'A gift to HIF is a voluntary donation to a registered NGO, not a purchase of goods. HIF INDIA does not ship products and does not charge a delivery fee. Once a donation is successfully received, it is allocated to housing, orphan care, masjid work, medical relief, or the general humanitarian fund, and it is not refundable as a change of mind.',
         whenTitle: 'When we will refund',
         whenIntro: 'We will refund a donation in these cases:',
         whenDuplicate: 'You were charged twice for the same donation (a duplicate payment).',
@@ -1220,7 +1222,7 @@ export const translations: Record<Language, any> = {
     },
     org: {
       name: 'HIF INDIA',
-      fullName: 'ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA)',
+      fullName: 'HIF',
       tagline: 'ಕರುಣೆ ಮತ್ತು ಗೌರವದಿಂದ ಜನರನ್ನು ಬಲಪಡಿಸಿ, ಜೀವನ ಬದಲಿಸಿ',
       shortTagline: 'ಜನರನ್ನು ಬಲಪಡಿಸಿ, ಜೀವನ ಬದಲಿಸಿ',
       established: 'ಮಂಗಳೂರಿನಲ್ಲಿ ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ ಸಂಸ್ಥೆ',
@@ -1232,6 +1234,7 @@ export const translations: Record<Language, any> = {
       hqLocation: 'ಮಸೀದಿ ಎಹ್ಸಾನ್ ಕಾಂಪ್ಲೆಕ್ಸ್, ಕಂಕನಾಡಿ, ಮಂಗಳೂರು – 575002',
       centralSecretariat: 'ಮುಖ್ಯ ಕಚೇರಿ',
       phoneLabel: 'ದೂರವಾಣಿ',
+      whatsappLabel: 'WhatsApp',
       emailLabel: 'ಇಮೇಲ್',
       websiteLabel: 'ವೆಬ್‌ಸೈಟ್',
       workingHours: 'ಕೆಲಸದ ಸಮಯ',
@@ -1300,9 +1303,9 @@ export const translations: Record<Language, any> = {
       eyebrow: 'HIF INDIA ಬಗ್ಗೆ',
       title: 'ಸಮುದಾಯದ ನಂಬಿಕೆಯ ಮೇಲೆ ಕಟ್ಟಲಾದ ನೇರ ಟ್ರಸ್ಟ್.',
       description:
-        'ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) ಮಂಗಳೂರಿನಲ್ಲಿ ಪ್ರಧಾನ ಕಚೇರಿ ಹೊಂದಿರುವ, ಕರ್ನಾಟಕ ಮತ್ತು ಆಂಧ್ರಪ್ರದೇಶದಾದ್ಯಂತ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿರುವ ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ ಆಗಿದೆ.',
+        'HIF ಮಂಗಳೂರಿನಲ್ಲಿ ಪ್ರಧಾನ ಕಚೇರಿ ಹೊಂದಿರುವ, ಕರ್ನಾಟಕ ಮತ್ತು ಆಂಧ್ರಪ್ರದೇಶದಾದ್ಯಂತ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿರುವ ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ ಆಗಿದೆ.',
       whoWeAreBadge: 'ನಾವು ಯಾರು',
-      whoWeAreTitle: 'ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA)',
+      whoWeAreTitle: 'HIF',
       whoWeAreText1:
         'ಸಹಾನುಭೂತಿ ಮತ್ತು ಘನತೆಯೊಂದಿಗೆ ಸಮುದಾಯಗಳ ಬಲಪಡಿಸುವುದು, ಜೀವನ ಪರಿವರ್ತನೆ. ಸಂಸ್ಥೆಯ ಸ್ಥಾಪನೆಯಿಂದಲೂ, ನಾವು ನೇರ ಮತ್ತು ಅಳೆಯಬಹುದಾದ ಕಾರ್ಯಕ್ರಮಗಳ ಮೇಲೆ ಗಮನಹರಿಸಿದ್ದೇವೆ — ನಿರಾಶ್ರಿತರಿಗೆ ಶಾಶ್ವತ ಮನೆಗಳು, ಅನಾಥ ಬಾಲಕರಿಗೆ ಪ್ರೀತಿಯ ವಸತಿ ಆಶ್ರಯ, ಪಾಳುಬಿದ್ದ ಗ್ರಾಮೀಣ ಮಸೀದಿಗಳ ಜೀರ್ಣೋದ್ಧಾರ, ಉಚಿತ ವೈದ್ಯಕೀಯ ಉಪಕರಣಗಳ ಸಾಲ ಮತ್ತು ತುರ್ತು ರಕ್ತದಾನ ಸಮನ್ವಯ.',
       whoWeAreText2:
@@ -1551,7 +1554,7 @@ export const translations: Record<Language, any> = {
         email: 'ಇಮೇಲ್ ವಿಳಾಸ *',
         emailPlaceholder: 'you@example.com',
         phone: 'ದೂರವಾಣಿ / WhatsApp *',
-        phonePlaceholder: '+91 98750 81312',
+        phonePlaceholder: '+91 98450 81312',
         city: 'ನಗರ / ಸ್ಥಳ *',
         cityPlaceholder: 'ಉದಾ: ಮಂಗಳೂರು, ಉಡುಪಿ, ಬೆಂಗಳೂರು',
         skillsLabel: 'ನೀವು ಹೇಗೆ ಕೊಡುಗೆ ನೀಡಲು ಬಯಸುತ್ತೀರಿ? (ಕೌಶಲ್ಯಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ)',
@@ -1617,7 +1620,7 @@ export const translations: Record<Language, any> = {
       emailInputLabel: 'ಇಮೇಲ್ ವಿಳಾಸ *',
       emailPlaceholder: 'ahmed@example.com',
       phoneInputLabel: 'ದೂರವಾಣಿ / WhatsApp',
-      phonePlaceholder: '+91 98750 81312',
+      phonePlaceholder: '+91 98450 81312',
       subjectLabel: 'ವಿಷಯ',
       subjectPlaceholder: 'ವಿಷಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ',
       subjects: {
@@ -1677,7 +1680,7 @@ export const translations: Record<Language, any> = {
       supportUs: 'ಬೆಂಬಲಿಸಿ',
       bankAccount: 'HDFC ಬ್ಯಾಂಕ್ ಖಾತೆ',
       donateQr: 'ದೇಣಿಗೆ / UPI QR',
-      allRightsReserved: 'ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA). ಸರ್ವ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.',
+      allRightsReserved: 'HIF. ಸರ್ವ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.',
       addressFull: 'ಮಸೀದಿ ಎಹ್ಸಾನ್ ಕಾಂಪ್ಲೆಕ್ಸ್, ಕಂಕನಾಡಿ, ಮಂಗಳೂರು – 575002',
       slogan: 'ಕರುಣೆ ಮತ್ತು ಗೌರವದಿಂದ ಜನರನ್ನು ಬಲಪಡಿಸಿ, ಜೀವನ ಬದಲಿಸಿ',
       developedBy: 'ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ್ದು'
@@ -1688,7 +1691,7 @@ export const translations: Record<Language, any> = {
       relatedNav: 'ಸಂಬಂಧಿತ ನೀತಿಗಳು',
       orgRegisteredHq: 'ಭಾರತೀಯ ಟ್ರಸ್ಟ್ ಕಾಯ್ದೆಯಡಿ ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ. ಮುಖ್ಯ ಕಚೇರಿ ಮಂಗಳೂರು.',
       termsTitle: 'ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು',
-      termsDesc: 'ಈ ವೆಬ್‌ಸೈಟ್ ಮತ್ತು ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) ಗೆ ನೀಡುವ ದೇಣಿಗೆ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ.',
+      termsDesc: 'ಈ ವೆಬ್‌ಸೈಟ್ ಮತ್ತು HIF ಗೆ ನೀಡುವ ದೇಣಿಗೆ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ.',
       privacyTitle: 'ಗೌಪ್ಯತಾ ನೀತಿ',
       privacyDesc: 'HIF INDIA ಯಾವ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಸಂಗ್ರಹಿಸುತ್ತದೆ, ಏಕೆ ಬಳಸುತ್ತದೆ, ಮತ್ತು ಯಾರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ.',
       refundTitle: 'ಮರುಪಾವತಿ ನೀತಿ',
@@ -1698,7 +1701,7 @@ export const translations: Record<Language, any> = {
       terms: {
         aboutTitle: 'ಈ ನಿಯಮಗಳ ಬಗ್ಗೆ',
         aboutBody:
-          'ಈ ನಿಯಮಗಳು HIF INDIA ವೆಬ್‌ಸೈಟ್ ಬಳಕೆ ಮತ್ತು ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) — ಭಾರತೀಯ ಟ್ರಸ್ಟ್ ಕಾಯ್ದೆಯಡಿ ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ — ಗೆ ನೀಡುವ ಯಾವುದೇ ದೇಣಿಗೆಗೆ ಅನ್ವಯಿಸುತ್ತವೆ. ವೆಬ್‌ಸೈಟ್ ಬಳಸಿದರೆ ಅಥವಾ ದೇಣಿಗೆ ನೀಡಿದರೆ, ಈ ನಿಯಮಗಳು, ನಮ್ಮ ಗೌಪ್ಯತಾ ನೀತಿ, ಮರುಪಾವತಿ ನೀತಿ ಮತ್ತು ರದ್ದುಪಡಿಸುವ ನೀತಿಗೆ ನೀವು ಒಪ್ಪುತ್ತೀರಿ.',
+          'ಈ ನಿಯಮಗಳು HIF INDIA ವೆಬ್‌ಸೈಟ್ ಬಳಕೆ ಮತ್ತು HIF — ಭಾರತೀಯ ಟ್ರಸ್ಟ್ ಕಾಯ್ದೆಯಡಿ ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ — ಗೆ ನೀಡುವ ಯಾವುದೇ ದೇಣಿಗೆಗೆ ಅನ್ವಯಿಸುತ್ತವೆ. ವೆಬ್‌ಸೈಟ್ ಬಳಸಿದರೆ ಅಥವಾ ದೇಣಿಗೆ ನೀಡಿದರೆ, ಈ ನಿಯಮಗಳು, ನಮ್ಮ ಗೌಪ್ಯತಾ ನೀತಿ, ಮರುಪಾವತಿ ನೀತಿ ಮತ್ತು ರದ್ದುಪಡಿಸುವ ನೀತಿಗೆ ನೀವು ಒಪ್ಪುತ್ತೀರಿ.',
         whatWeDoTitle: 'ನಾವು ಏನು ಮಾಡುತ್ತೇವೆ',
         whatWeDoBody:
           'HIF INDIA ಮಂಗಳೂರಿನ ಜನರ ನೆರವಿನ ಟ್ರಸ್ಟ್. ವೆಬ್‌ಸೈಟ್ ನಮ್ಮ ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ವಿವರಿಸುತ್ತದೆ ಮತ್ತು ಬೆಂಬಲಿಗರು ದೇಣಿಗೆ ನೀಡಲು ಅನುವು ಮಾಡುತ್ತದೆ. ನಾವು ಸರಕು ಮಾರಾಟ ಮಾಡುವುದಿಲ್ಲ. ದೇಣಿಗೆ ಸ್ವಯಂಪ್ರೇರಿತ ಕೊಡುಗೆ; ಉತ್ಪನ್ನ ಅಥವಾ ಸೇವೆಯ ಖರೀದಿ ಅಲ್ಲ.',
@@ -1727,7 +1730,7 @@ export const translations: Record<Language, any> = {
           'ಆನ್‌ಲೈನ್ ಕಾರ್ಡ್, ನೆಟ್-ಬ್ಯಾಂಕಿಂಗ್ ಮತ್ತು UPI ಪಾವತಿಗಳನ್ನು Razorpay ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ನಿರ್ವಹಿಸುತ್ತವೆ. ನಿಮ್ಮ ಪೂರ್ಣ ಕಾರ್ಡ್ ಸಂಖ್ಯೆ ಅಥವಾ UPI PIN ನಾವು ಇಡುವುದಿಲ್ಲ. ನಾವು ಅಥವಾ ಪಾವತಿ ಪಾಲುದಾರ ದೃಢಪಡಿಸಿದಾಗ ಮಾತ್ರ ಪಾವತಿ ಪೂರ್ಣ. ಬ್ಯಾಂಕ್ ವಿಳಂಬ ಮತ್ತು ವಿಫಲ UPI ನಮ್ಮ ನಿಯಂತ್ರಣದ ಹೊರಗೆ.',
         ipTitle: 'ಬೌದ್ಧಿಕ ಆಸ್ತಿ',
         ipBody:
-          'HIF INDIA ಹೆಸರು, ಲೋಗೋ ಮತ್ತು ವೆಬ್‌ಸೈಟ್ ವಿಷಯ ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್‌ಗೆ ಸೇರಿದವು, ಕ್ರೆಡಿಟ್ ಬೇರೆ ಹೇಳದ ಹೊರತು. ನಮ್ಮ ಪುಟಗಳ ಲಿಂಕ್ ಹಂಚಬಹುದು. ಬೇರೆ ಸಂಸ್ಥೆಗಾಗಿ ನಮ್ಮ ಛಾಯಾಚಿತ್ರ ಅಥವಾ ಲೋಗೋವನ್ನು ಲಿಖಿತ ಅನುಮತಿ ಇಲ್ಲದೆ ನಕಲಿಸಬೇಡಿ.',
+          'HIF INDIA ಹೆಸರು, ಲೋಗೋ ಮತ್ತು ವೆಬ್‌ಸೈಟ್ ವಿಷಯ HIFಗೆ ಸೇರಿದವು, ಕ್ರೆಡಿಟ್ ಬೇರೆ ಹೇಳದ ಹೊರತು. ನಮ್ಮ ಪುಟಗಳ ಲಿಂಕ್ ಹಂಚಬಹುದು. ಬೇರೆ ಸಂಸ್ಥೆಗಾಗಿ ನಮ್ಮ ಛಾಯಾಚಿತ್ರ ಅಥವಾ ಲೋಗೋವನ್ನು ಲಿಖಿತ ಅನುಮತಿ ಇಲ್ಲದೆ ನಕಲಿಸಬೇಡಿ.',
         liabilityTitle: 'ಹೊಣೆಗಾರಿಕೆ',
         liabilityBody:
           'ಈ ವೆಬ್‌ಸೈಟ್ ಸಾರ್ವಜನಿಕ ಮಾಹಿತಿ ಮತ್ತು ದೇಣಿಗೆ ಮಾರ್ಗ. ಪಾವತಿ ಆಪ್ ದೋಷ, ಬ್ಯಾಂಕ್ ವಿಳಂಬ ಅಥವಾ ತಾತ್ಕಾಲಿಕ ಸೈಟ್ ನಿಲುಗಡೆಯಿಂದಾಗುವ ನಷ್ಟಕ್ಕೆ, ಭಾರತೀಯ ಕಾನೂನು ಅನುಮತಿಸುವ ಮಟ್ಟಿಗೆ, ನಾವು ಹೊಣೆಯಲ್ಲ.',
@@ -1741,7 +1744,7 @@ export const translations: Record<Language, any> = {
       privacy: {
         whoTitle: 'ಯಾರು ಜವಾಬ್ದಾರಿ',
         whoBody:
-          'ಈ ವೆಬ್‌ಸೈಟ್ ಮತ್ತು ನಮ್ಮ ದೂರವಾಣಿ, ಇಮೇಲ್, WhatsApp ಮಾರ್ಗಗಳ ಮೂಲಕ ಸಂಗ್ರಹಿಸಿದ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಗೆ ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) ಜವಾಬ್ದಾರಿ.',
+          'ಈ ವೆಬ್‌ಸೈಟ್ ಮತ್ತು ನಮ್ಮ ದೂರವಾಣಿ, ಇಮೇಲ್, WhatsApp ಮಾರ್ಗಗಳ ಮೂಲಕ ಸಂಗ್ರಹಿಸಿದ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಗೆ HIF ಜವಾಬ್ದಾರಿ.',
         collectTitle: 'ನಾವು ಸಂಗ್ರಹಿಸುವ ಮಾಹಿತಿ',
         collectIntro: 'ದೇಣಿಗೆ ಸ್ವೀಕರಿಸಲು, ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಲು ಮತ್ತು ಕಾರ್ಯಕ್ರಮ ನಡೆಸಲು ಬೇಕಾದಷ್ಟು ಮಾತ್ರ ಸಂಗ್ರಹಿಸುತ್ತೇವೆ:',
         collectForm:
@@ -1783,7 +1786,7 @@ export const translations: Record<Language, any> = {
       refund: {
         notRefundableTitle: 'ದೇಣಿಗೆ ಸಾಮಾನ್ಯವಾಗಿ ಮರುಪಾವತಿ ಆಗುವುದಿಲ್ಲ',
         notRefundableBody:
-          'ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) ಗೆ ನೀಡುವುದು ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒಗೆ ಸ್ವಯಂಪ್ರೇರಿತ ದೇಣಿಗೆ, ಸರಕು ಖರೀದಿ ಅಲ್ಲ. HIF INDIA ಉತ್ಪನ್ನ ಕಳುಹಿಸುವುದಿಲ್ಲ, ಡೆಲಿವರಿ ಶುಲ್ಕ ವಿಧಿಸುವುದಿಲ್ಲ. ದೇಣಿಗೆ ಯಶಸ್ವಿಯಾಗಿ ಬಂದ ನಂತರ ಅದನ್ನು ವಸತಿ, ಅನಾಥ ಆರೈಕೆ, ಮಸೀದಿ ಕೆಲಸ, ವೈದ್ಯಕೀಯ ನೆರವು ಅಥವಾ ಸಾಮಾನ್ಯ ಮಾನವೀಯ ನಿಧಿಗೆ ನಿಯೋಜಿಸಲಾಗುತ್ತದೆ; ಮನಸ್ಸು ಬದಲಾದುದಕ್ಕೆ ಮರುಪಾವತಿ ಇಲ್ಲ.',
+          'HIF ಗೆ ನೀಡುವುದು ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒಗೆ ಸ್ವಯಂಪ್ರೇರಿತ ದೇಣಿಗೆ, ಸರಕು ಖರೀದಿ ಅಲ್ಲ. HIF INDIA ಉತ್ಪನ್ನ ಕಳುಹಿಸುವುದಿಲ್ಲ, ಡೆಲಿವರಿ ಶುಲ್ಕ ವಿಧಿಸುವುದಿಲ್ಲ. ದೇಣಿಗೆ ಯಶಸ್ವಿಯಾಗಿ ಬಂದ ನಂತರ ಅದನ್ನು ವಸತಿ, ಅನಾಥ ಆರೈಕೆ, ಮಸೀದಿ ಕೆಲಸ, ವೈದ್ಯಕೀಯ ನೆರವು ಅಥವಾ ಸಾಮಾನ್ಯ ಮಾನವೀಯ ನಿಧಿಗೆ ನಿಯೋಜಿಸಲಾಗುತ್ತದೆ; ಮನಸ್ಸು ಬದಲಾದುದಕ್ಕೆ ಮರುಪಾವತಿ ಇಲ್ಲ.',
         whenTitle: 'ಯಾವಾಗ ಮರುಪಾವತಿ ಮಾಡುತ್ತೇವೆ',
         whenIntro: 'ಈ ಸಂದರ್ಭಗಳಲ್ಲಿ ದೇಣಿಗೆ ಮರುಪಾವತಿ ಮಾಡುತ್ತೇವೆ:',
         whenDuplicate: 'ಅದೇ ದೇಣಿಗೆಗೆ ಎರಡು ಬಾರಿ ಹಣ ಕಡಿತವಾಯಿತು (ಎರಡು ಬಾರಿ ಪಾವತಿ).',
@@ -1847,7 +1850,7 @@ export const translations: Record<Language, any> = {
     },
     org: {
       name: 'HIF INDIA',
-      fullName: 'हाइलैंड इस्लामिक फोरम (HIF INDIA)',
+      fullName: 'HIF',
       tagline: 'दया और इज्जत के साथ लोगों को मजबूत बनाना',
       shortTagline: 'लोगों को मजबूत बनाना, जिंदगी बदलना',
       established: 'मंगलुरु में पंजीकृत गैर-सरकारी संगठन (NGO)',
@@ -1859,6 +1862,7 @@ export const translations: Record<Language, any> = {
       hqLocation: 'मस्जिद एहसान कॉम्प्लेक्स, कंकनाडी, मंगलुरु – 575002',
       centralSecretariat: 'केंद्रीय सचिवालय',
       phoneLabel: 'फ़ोन',
+      whatsappLabel: 'WhatsApp',
       emailLabel: 'ईमेल',
       websiteLabel: 'वेबसाइट',
       workingHours: 'कार्य समय',
@@ -1927,9 +1931,9 @@ export const translations: Record<Language, any> = {
       eyebrow: 'HIF INDIA के बारे में',
       title: 'सामुदायिक विश्वास पर आधारित एक जमीनी ट्रस्ट।',
       description:
-        'हाइलैंड इस्लामिक फोरम (HIF INDIA) मंगलुरु में मुख्यालय वाला एक पंजीकृत एनजीओ है, जो कर्नाटक और आंध्र प्रदेश में कार्यरत है।',
+        'HIF मंगलुरु में मुख्यालय वाला एक पंजीकृत एनजीओ है, जो कर्नाटक और आंध्र प्रदेश में कार्यरत है।',
       whoWeAreBadge: 'हम कौन हैं',
-      whoWeAreTitle: 'हाइलैंड इस्लामिक फोरम (HIF INDIA)',
+      whoWeAreTitle: 'HIF',
       whoWeAreText1:
         'सहानुभूति और गरिमा के साथ समुदायों को मजबूत बनाना, जीवन में बदलाव। अपनी स्थापना के बाद से, हमने ठोस और प्रत्यक्ष पहलों पर ध्यान केंद्रित किया है — बेघरों के लिए स्थायी पक्के घर, अनाथ बालकों के लिए प्रेमपूर्ण आवासीय आश्रम, वीरान ग्रामीण मस्जिदों का जीर्णोद्धार, निःशुल्क चिकित्सा उपकरण ऋण और आपातकालीन रक्तदान समन्वय।',
       whoWeAreText2:
@@ -2178,7 +2182,7 @@ export const translations: Record<Language, any> = {
         email: 'ईमेल पता *',
         emailPlaceholder: 'you@example.com',
         phone: 'फ़ोन / WhatsApp *',
-        phonePlaceholder: '+91 98750 81312',
+        phonePlaceholder: '+91 98450 81312',
         city: 'शहर / स्थान *',
         cityPlaceholder: 'उदा: मंगलुरु, उडुपी, बेंगलुरु',
         skillsLabel: 'आप किस प्रकार योगदान देना चाहते हैं? (कौशल चुनें)',
@@ -2244,7 +2248,7 @@ export const translations: Record<Language, any> = {
       emailInputLabel: 'ईमेल पता *',
       emailPlaceholder: 'ahmed@example.com',
       phoneInputLabel: 'फ़ोन / WhatsApp',
-      phonePlaceholder: '+91 98750 81312',
+      phonePlaceholder: '+91 98450 81312',
       subjectLabel: 'विषय',
       subjectPlaceholder: 'विषय चुनें',
       subjects: {
@@ -2304,7 +2308,7 @@ export const translations: Record<Language, any> = {
       supportUs: 'सहयोग करें',
       bankAccount: 'HDFC बैंक खाता',
       donateQr: 'दान करें / UPI QR',
-      allRightsReserved: 'हाइलैंड इस्लामिक फोरम (HIF INDIA)। सर्वाधिकार सुरक्षित।',
+      allRightsReserved: 'HIF। सर्वाधिकार सुरक्षित।',
       addressFull: 'मस्जिद एहसान कॉम्प्लेक्स, कंकनाडी, मंगलुरु – 575002',
       slogan: 'सहानुभूति और गरिमा के साथ समुदायों को मजबूत बनाना, जीवन में बदलाव',
       developedBy: 'द्वारा विकसित'
@@ -2315,7 +2319,7 @@ export const translations: Record<Language, any> = {
       relatedNav: 'संबंधित नीतियां',
       orgRegisteredHq: 'भारतीय ट्रस्ट अधिनियम के तहत पंजीकृत एनजीओ, मुख्यालय मंगलुरु।',
       termsTitle: 'नियम और शर्तें',
-      termsDesc: 'यह वेबसाइट और हाइलैंड इस्लामिक फोरम (HIF INDIA) को दिए जाने वाले दान कैसे काम करते हैं।',
+      termsDesc: 'यह वेबसाइट और HIF को दिए जाने वाले दान कैसे काम करते हैं।',
       privacyTitle: 'गोपनीयता नीति',
       privacyDesc: 'HIF INDIA कौन-सी व्यक्तिगत जानकारी एकत्र करता है, उसका उपयोग क्यों करता है, और उसे किसके साथ साझा करता है।',
       refundTitle: 'धनवापसी नीति',
@@ -2325,7 +2329,7 @@ export const translations: Record<Language, any> = {
       terms: {
         aboutTitle: 'इन नियमों के बारे में',
         aboutBody:
-          'ये नियम HIF INDIA वेबसाइट के उपयोग और हाइलैंड इस्लामिक फोरम (HIF INDIA) — भारतीय ट्रस्ट अधिनियम के तहत पंजीकृत एनजीओ — को दिए गए किसी भी दान पर लागू होते हैं। वेबसाइट इस्तेमाल करने या दान देने से आप इन नियमों, हमारी गोपनीयता नीति, धनवापसी नीति और रद्दीकरण नीति से सहमत होते हैं।',
+          'ये नियम HIF INDIA वेबसाइट के उपयोग और HIF — भारतीय ट्रस्ट अधिनियम के तहत पंजीकृत एनजीओ — को दिए गए किसी भी दान पर लागू होते हैं। वेबसाइट इस्तेमाल करने या दान देने से आप इन नियमों, हमारी गोपनीयता नीति, धनवापसी नीति और रद्दीकरण नीति से सहमत होते हैं।',
         whatWeDoTitle: 'हम क्या करते हैं',
         whatWeDoBody:
           'HIF INDIA मंगलुरु स्थित जमीनी मानवीय ट्रस्ट है। वेबसाइट हमारे कार्यक्रम बताती है और समर्थकों को योगदान देने देती है। हम सामान नहीं बेचते। दान स्वैच्छिक योगदान है, किसी उत्पाद या सेवा की खरीद नहीं।',
@@ -2354,7 +2358,7 @@ export const translations: Record<Language, any> = {
           'ऑनलाइन कार्ड, नेट-बैंकिंग और UPI भुगतान Razorpay और आपके बैंक संभालते हैं। हम आपका पूरा कार्ड नंबर या UPI PIN नहीं रखते। भुगतान तभी पूरा होता है जब हम या हमारा भुगतान साझेदार पुष्टि करे। बैंक विलंब और असफल UPI हमारे नियंत्रण से बाहर हैं।',
         ipTitle: 'बौद्धिक संपदा',
         ipBody:
-          'HIF INDIA नाम, लोगो और वेबसाइट सामग्री हाइलैंड इस्लामिक फोरम की है, जब तक क्रेडिट कुछ और न कहे। आप हमारे पृष्ठों के लिंक साझा कर सकते हैं। लिखित अनुमति के बिना हमारी तस्वीरें या लोगो दूसरी संस्था के लिए न कॉपी करें।',
+          'HIF INDIA नाम, लोगो और वेबसाइट सामग्री HIF की है, जब तक क्रेडिट कुछ और न कहे। आप हमारे पृष्ठों के लिंक साझा कर सकते हैं। लिखित अनुमति के बिना हमारी तस्वीरें या लोगो दूसरी संस्था के लिए न कॉपी करें।',
         liabilityTitle: 'दायित्व',
         liabilityBody:
           'वेबसाइट सार्वजनिक जानकारी और दान का माध्यम है। भुगतान ऐप की गलती, बैंक विलंब या साइट के अस्थायी बंद से हुई हानि के लिए, भारतीय कानून जितनी अनुमति दे, हम जिम्मेदार नहीं हैं।',
@@ -2368,7 +2372,7 @@ export const translations: Record<Language, any> = {
       privacy: {
         whoTitle: 'कौन जिम्मेदार है',
         whoBody:
-          'इस वेबसाइट तथा हमारे फोन, ईमेल और WhatsApp माध्यमों से एकत्र व्यक्तिगत जानकारी के लिए हाइलैंड इस्लामिक फोरम (HIF INDIA) जिम्मेदार है।',
+          'इस वेबसाइट तथा हमारे फोन, ईमेल और WhatsApp माध्यमों से एकत्र व्यक्तिगत जानकारी के लिए HIF जिम्मेदार है।',
         collectTitle: 'हम कौन-सी जानकारी एकत्र करते हैं',
         collectIntro: 'दान लेने, पूछताछ का जवाब देने और कार्यक्रम चलाने के लिए जितनी जरूरत है, उतनी ही एकत्र करते हैं:',
         collectForm:
@@ -2410,7 +2414,7 @@ export const translations: Record<Language, any> = {
       refund: {
         notRefundableTitle: 'दान सामान्यतः वापस नहीं होता',
         notRefundableBody:
-          'हाइलैंड इस्लामिक फोरम (HIF INDIA) को दिया गया उपहार पंजीकृत एनजीओ को स्वैच्छिक दान है, सामान की खरीद नहीं। HIF INDIA उत्पाद नहीं भेजता और डिलीवरी शुल्क नहीं लेता। दान सफलतापूर्वक मिलने के बाद उसे आवास, अनाथ देखभाल, मस्जिद कार्य, चिकित्सा राहत या सामान्य मानवीय कोष में लगाया जाता है; मन बदलने पर वापसी नहीं होती।',
+          'HIF को दिया गया उपहार पंजीकृत एनजीओ को स्वैच्छिक दान है, सामान की खरीद नहीं। HIF INDIA उत्पाद नहीं भेजता और डिलीवरी शुल्क नहीं लेता। दान सफलतापूर्वक मिलने के बाद उसे आवास, अनाथ देखभाल, मस्जिद कार्य, चिकित्सा राहत या सामान्य मानवीय कोष में लगाया जाता है; मन बदलने पर वापसी नहीं होती।',
         whenTitle: 'हम कब धनवापसी करेंगे',
         whenIntro: 'इन स्थितियों में हम दान वापस करेंगे:',
         whenDuplicate: 'एक ही दान के लिए दो बार शुल्क लगा (डुप्लिकेट भुगतान)।',

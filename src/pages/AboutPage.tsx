@@ -66,7 +66,7 @@ export const AboutPage: React.FC = () => {
         title={t('about.title', 'A grassroots trust, built on community trust.')}
         description={t(
           'about.description',
-          'Highland Islamic Forum (HIF INDIA) is a registered NGO headquartered in Mangaluru, working across Karnataka and Andhra Pradesh.'
+          'HIF is a registered NGO headquartered in Mangaluru, working across Karnataka and Andhra Pradesh.'
         )}
         jsonLd={buildBreadcrumbJsonLd([
           { name: 'Home', path: '/' },
@@ -78,7 +78,7 @@ export const AboutPage: React.FC = () => {
         title={t('about.title', 'A grassroots trust, built on community trust.')}
         description={t(
           'about.description',
-          'Highland Islamic Forum (HIF INDIA) is a registered NGO headquartered in Mangaluru, working across Karnataka and Andhra Pradesh.'
+          'HIF is a registered NGO headquartered in Mangaluru, working across Karnataka and Andhra Pradesh.'
         )}
         image={HIF_ORGANIZATION.siteImages.about}
       />
@@ -109,10 +109,7 @@ export const AboutPage: React.FC = () => {
           </Reveal>
           <Reveal delay={0.1} className="order-1 lg:order-2">
             <span className="badge">{t('about.whoWeAreBadge', 'Who We Are')}</span>
-            <h2 className="font-display mt-4 text-3xl sm:text-4xl font-semibold text-text-main tracking-tight">
-              {t('about.whoWeAreTitle', HIF_ORGANIZATION.fullName)}
-            </h2>
-            <p className="mt-5 text-text-muted leading-relaxed">
+            <p className="mt-4 text-text-muted leading-relaxed">
               {t('about.whoWeAreText1', `${HIF_ORGANIZATION.tagline}. Since our founding, we have focused on tangible, measurable interventions — permanent housing for the homeless, a loving residential sanctuary for orphaned boys, restoration of abandoned rural masjids, and free-of-cost medical equipment loans and blood donation coordination for families in crisis.`)}
             </p>
             <p className="mt-4 text-text-muted leading-relaxed">

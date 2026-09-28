@@ -6,9 +6,9 @@
 export const SITE_URL = 'https://hif-india.web.app'
 export const SITE_NAME = 'HIF INDIA'
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-image.png?v=20260917b`
-export const DEFAULT_TITLE = 'HIF INDIA | Highland Islamic Forum'
+export const DEFAULT_TITLE = 'HIF INDIA'
 export const DEFAULT_DESCRIPTION =
-  'Highland Islamic Forum (HIF INDIA) is a registered grassroots humanitarian NGO in Mangaluru. 36 Ashiyana homes built, 176 masjids revived, 225+ orphans nurtured, and free MEDIBANK medical equipment — 100% direct impact.'
+  'HIF is a registered grassroots humanitarian NGO in Mangaluru. 36 Ashiyana homes built, 176 masjids revived, 225+ orphans nurtured, and free MEDIBANK medical equipment — 100% direct impact.'
 
 /** Locales that get a URL prefix. English ('en') is the unprefixed default. */
 export const LOCALES = ['kn', 'hi'] as const
