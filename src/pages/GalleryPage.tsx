@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { HIF_GALLERY, type GalleryItem } from '../data/hifData'
 import { PageHeader } from '../components/common/PageHeader'
 import { Lightbox } from '../components/common/Lightbox'
-import { Reveal } from '../components/common/Reveal'
 import { useLanguage } from '../context/LanguageContext'
 import { galleryCategoryLabel, localizeGalleryItem } from '../lib/localizeContent'
 import { Seo } from '../components/common/Seo'
@@ -70,7 +69,7 @@ export const GalleryPage: React.FC = () => {
 
       <section className="py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <Reveal className="flex flex-wrap gap-2 mb-10">
+          <div className="flex flex-wrap gap-2 mb-10">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -84,7 +83,7 @@ export const GalleryPage: React.FC = () => {
                 {galleryCategoryLabel(cat, t)}
               </button>
             ))}
-          </Reveal>
+          </div>
 
           {filtered.length === 0 ? (
             <p className="text-center text-text-muted py-16 text-sm">

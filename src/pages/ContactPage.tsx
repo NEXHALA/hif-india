@@ -40,22 +40,20 @@ export const ContactPage: React.FC = () => {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto space-y-5">
-          <Reveal>
-            <div className="card p-6 flex items-start gap-4">
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-700/60 flex items-center justify-center text-primary shrink-0">
-                <Building2 className="w-5 h-5" />
-              </div>
-              <div>
-                <h2 className="font-semibold text-text-main">
-                  {t('contact.centralSecretariat', 'Central Secretariat')}
-                </h2>
-                <p className="text-sm text-text-muted mt-1">{HIF_ORGANIZATION.address.full}</p>
-                <p className="text-xs text-primary font-medium mt-2 flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5" /> {t('contact.hoursValue', '9:00 AM – 7:00 PM (Mon–Sat)')}
-                </p>
-              </div>
+          <div className="card p-6 flex items-start gap-4">
+            <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-700/60 flex items-center justify-center text-primary shrink-0">
+              <Building2 className="w-5 h-5" />
             </div>
-          </Reveal>
+            <div>
+              <h2 className="font-semibold text-text-main">
+                {t('contact.centralSecretariat', 'Central Secretariat')}
+              </h2>
+              <p className="text-sm text-text-muted mt-1">{HIF_ORGANIZATION.address.full}</p>
+              <p className="text-xs text-primary font-medium mt-2 flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5" /> {t('contact.hoursValue', '9:00 AM – 7:00 PM (Mon–Sat)')}
+              </p>
+            </div>
+          </div>
 
           <Reveal delay={0.05}>
             <div className="card p-6 space-y-3">

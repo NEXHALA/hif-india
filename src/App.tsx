@@ -7,21 +7,22 @@ import { LanguageProvider } from './context/LanguageContext'
 import { RootLayout } from './layout/RootLayout'
 import { LocaleRoute } from './layout/LocaleRoute'
 import { LOCALES } from './lib/seoConfig'
+import { ROUTE_LOADERS } from './lib/routePrefetch'
 import type { Language } from './data/translations'
 
-const HomePage = lazy(() => import('./pages/HomePage'))
-const AboutPage = lazy(() => import('./pages/AboutPage'))
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
+const HomePage = lazy(ROUTE_LOADERS['/']!)
+const AboutPage = lazy(ROUTE_LOADERS['/about']!)
+const ProjectsPage = lazy(ROUTE_LOADERS['/projects']!)
 const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'))
-const ActivitiesPage = lazy(() => import('./pages/ActivitiesPage'))
+const ActivitiesPage = lazy(ROUTE_LOADERS['/activities']!)
 const ActivityDetailPage = lazy(() => import('./pages/ActivityDetailPage'))
-const GalleryPage = lazy(() => import('./pages/GalleryPage'))
-const GetInvolvedPage = lazy(() => import('./pages/GetInvolvedPage'))
-const ContactPage = lazy(() => import('./pages/ContactPage'))
-const TermsPage = lazy(() => import('./pages/legal/TermsPage'))
-const PrivacyPage = lazy(() => import('./pages/legal/PrivacyPage'))
-const RefundPage = lazy(() => import('./pages/legal/RefundPage'))
-const CancellationPage = lazy(() => import('./pages/legal/CancellationPage'))
+const GalleryPage = lazy(ROUTE_LOADERS['/gallery']!)
+const GetInvolvedPage = lazy(ROUTE_LOADERS['/get-involved']!)
+const ContactPage = lazy(ROUTE_LOADERS['/contact']!)
+const TermsPage = lazy(ROUTE_LOADERS['/terms']!)
+const PrivacyPage = lazy(ROUTE_LOADERS['/privacy-policy']!)
+const RefundPage = lazy(ROUTE_LOADERS['/refund-policy']!)
+const CancellationPage = lazy(ROUTE_LOADERS['/cancellation-policy']!)
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 /** Unprefixed ("canonical", English) page paths, mirrored under each locale prefix below. */

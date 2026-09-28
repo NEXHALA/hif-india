@@ -13,13 +13,13 @@ const easeOut = [0.22, 1, 0.36, 1] as const
 const container: Variants = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.15 }
+    transition: { staggerChildren: 0.04 }
   }
 }
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 26 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } }
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.28, ease: easeOut } }
 }
 
 export const Hero: React.FC = () => {
@@ -98,7 +98,7 @@ export const Hero: React.FC = () => {
         className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-white/70"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
+        transition={{ delay: 0.35, duration: 0.35 }}
       >
         <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">Scroll</span>
         <motion.span

@@ -63,14 +63,14 @@ export const GetInvolvedPage: React.FC = () => {
       {/* Impact Calculator */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <Reveal className="text-center mb-10">
+          <div className="text-center mb-10">
             <span className="badge">{t('getInvolved.calculatorBadge', 'Impact Calculator')}</span>
             <h2 className="font-display mt-4 text-3xl font-semibold text-text-main">
               {t('getInvolved.calculatorTitle', 'See what your gift can do')}
             </h2>
-          </Reveal>
+          </div>
 
-          <Reveal delay={0.1} className="card p-6 sm:p-10">
+          <div className="card p-6 sm:p-10">
             <div className="flex flex-wrap gap-2 justify-center">
               {IMPACT_CALCULATOR_PRESETS.map((preset) => (
                 <button
@@ -114,7 +114,7 @@ export const GetInvolvedPage: React.FC = () => {
                 <Heart className="w-4 h-4" /> {t('common.pledgeNow', 'Pledge')} ₹{amount.toLocaleString()} {t('common.now', 'Now')}
               </button>
             </motion.div>
-          </Reveal>
+          </div>
         </div>
       </section>
 

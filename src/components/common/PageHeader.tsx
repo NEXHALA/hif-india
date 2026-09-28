@@ -23,9 +23,9 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ eyebrow, title, descript
       <div className="absolute -bottom-16 -right-10 w-64 h-64 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
 
       <motion.div
-        initial={{ opacity: 0, y: 18 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 text-center"
       >
         <span className="badge-on-dark">{eyebrow}</span>

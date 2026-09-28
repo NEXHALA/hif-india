@@ -28,6 +28,7 @@ import { LocalizedNavLink } from './LocalizedLink'
 import { stripLocalePrefix } from '../../lib/localePaths'
 import { handleExternalAnchorClick } from '../../lib/openExternal'
 import { lockBodyScroll, unlockBodyScroll } from '../../lib/bodyScrollLock'
+import { idlePrefetchNavRoutes, prefetchRoute } from '../../lib/routePrefetch'
 
 function isNavActive(pathname: string, to: string): boolean {
   const current = stripLocalePrefix(pathname)
@@ -47,7 +48,6 @@ export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [headerHeight, setHeaderHeight] = useState(0)
-  const [hoveredPath, setHoveredPath] = useState<string | null>(null)
   const headerRef = useRef<HTMLElement>(null)
   const progressBarRef = useRef<HTMLDivElement>(null)
   const { openDonate } = useDonate()
@@ -137,6 +137,20 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('keydown', onKey)
   }, [menuOpen])
 
+  // After first paint, quietly warm the remaining primary-nav chunks during idle time.
+  useEffect(() => {
+    const current = stripLocalePrefix(location.pathname)
+    const segment = current.split('/').filter(Boolean)[0]
+    const navRoot = segment ? `/${segment}` : '/'
+    return idlePrefetchNavRoutes(navRoot)
+    // Intentionally once after mount — re-running on every route change would cancel the idle queue.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const prefetchNavTarget = (to: string) => {
+    prefetchRoute(to)
+  }
+
   return (
     <header ref={headerRef} className="sticky top-0 z-50 w-full">
       {/* Top Banner */}
@@ -190,6 +204,9 @@ export const Navbar: React.FC = () => {
             to="/"
             className="group flex items-center gap-2 sm:gap-3 min-w-0 flex-1 lg:flex-none lg:shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
             onClick={() => setMenuOpen(false)}
+            onMouseEnter={() => prefetchNavTarget('/')}
+            onFocus={() => prefetchNavTarget('/')}
+            onTouchStart={() => prefetchNavTarget('/')}
           >
             <div className="relative shrink-0">
               <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-emerald-500/20 via-amber-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
@@ -215,43 +232,32 @@ export const Navbar: React.FC = () => {
             </div>
           </LocalizedNavLink>
 
-          {/* Desktop Nav Items with Animated Gliding Hover Pill */}
-          <div
-            className="hidden lg:flex flex-wrap items-center justify-center gap-0.5 p-1 rounded-full bg-bg-alt/80 dark:bg-[#07231c]/90 border border-border/60 dark:border-[#184e3f]/80 backdrop-blur-sm max-w-[48rem]"
-            onMouseLeave={() => setHoveredPath(null)}
-          >
+          {/* Desktop Nav Items — per-link CSS pill (instant active, ~120ms hover fade) */}
+          <div className="hidden lg:flex flex-wrap items-center justify-center gap-0.5 p-1 rounded-full bg-bg-alt/80 dark:bg-[#07231c]/90 border border-border/60 dark:border-[#184e3f]/80 backdrop-blur-sm max-w-[48rem]">
             {navLinks.map((link) => {
               const isActive = isNavActive(location.pathname, link.to)
-              const isHovered = hoveredPath === link.to
 
               return (
                 <LocalizedNavLink
                   key={link.to}
                   to={link.to}
-                  onMouseEnter={() => setHoveredPath(link.to)}
-                  className={`relative px-2.5 xl:px-3.5 py-2 text-xs font-semibold rounded-full transition-colors duration-200 flex items-center gap-1.5 whitespace-nowrap leading-snug ${
+                  onMouseEnter={() => prefetchNavTarget(link.to)}
+                  onFocus={() => prefetchNavTarget(link.to)}
+                  onTouchStart={() => prefetchNavTarget(link.to)}
+                  className={`group relative px-2.5 xl:px-3.5 py-2 text-xs font-semibold rounded-full transition-colors duration-[120ms] flex items-center gap-1.5 whitespace-nowrap leading-snug ${
                     isActive
                       ? 'text-text-main dark:text-emerald-200 font-bold'
                       : 'text-text-muted hover:text-text-main dark:hover:text-emerald-100'
                   }`}
                 >
-                  {/* Active/Hover Animated Spring Pill */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="navbar-active-pill"
-                      className="absolute inset-0 bg-emerald-50 dark:bg-[#0b2f26] rounded-full shadow-sm border border-emerald-600/20 dark:border-emerald-500/40"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-
-                  {!isActive && isHovered && (
-                    <motion.div
-                      layoutId="navbar-hover-pill"
-                      className="absolute inset-0 bg-stone-200/70 dark:bg-emerald-900/40 rounded-full"
-                      transition={{ type: 'spring', stiffness: 450, damping: 35 }}
-                    />
-                  )}
-
+                  <span
+                    aria-hidden
+                    className={`absolute inset-0 rounded-full transition-opacity duration-[120ms] ${
+                      isActive
+                        ? 'opacity-100 bg-emerald-50 dark:bg-[#0b2f26] shadow-sm border border-emerald-600/20 dark:border-emerald-500/40'
+                        : 'opacity-0 bg-stone-200/70 dark:bg-emerald-900/40 group-hover:opacity-100'
+                    }`}
+                  />
                   <span className="relative z-10 flex items-center gap-1.5">
                     {link.name}
                   </span>
@@ -363,6 +369,9 @@ export const Navbar: React.FC = () => {
                         <LocalizedNavLink
                           to={link.to}
                           onClick={() => setMenuOpen(false)}
+                          onMouseEnter={() => prefetchNavTarget(link.to)}
+                          onFocus={() => prefetchNavTarget(link.to)}
+                          onTouchStart={() => prefetchNavTarget(link.to)}
                           className={`flex items-center justify-between py-3.5 border-b border-border dark:border-border/10 transition-colors ${
                             isActive
                               ? 'text-primary font-bold'

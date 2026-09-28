@@ -87,7 +87,7 @@ export const AboutPage: React.FC = () => {
       {/* About narrative */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <Reveal className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm border border-border order-2 lg:order-1">
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm border border-border order-2 lg:order-1">
             <button
               type="button"
               onClick={() =>
@@ -107,8 +107,8 @@ export const AboutPage: React.FC = () => {
                 loading="lazy"
               />
             </button>
-          </Reveal>
-          <Reveal delay={0.1} className="order-1 lg:order-2">
+          </div>
+          <div className="order-1 lg:order-2">
             <span className="badge">{t('about.whoWeAreBadge', 'Who We Are')}</span>
             <p className="mt-4 text-text-muted leading-relaxed">
               {t('about.whoWeAreText1', `${HIF_ORGANIZATION.tagline}. Since our founding, we have focused on tangible, measurable interventions — permanent housing for the homeless, a loving residential sanctuary for orphaned boys, restoration of abandoned rural masjids, and free-of-cost medical equipment loans and blood donation coordination for families in crisis.`)}
@@ -116,7 +116,7 @@ export const AboutPage: React.FC = () => {
             <p className="mt-4 text-text-muted leading-relaxed">
               {t('about.whoWeAreText2', `${HIF_ORGANIZATION.regDetails}, HIF INDIA operates on a strict zero-commission policy: every rupee donated toward a specific project is channeled directly into materials, labor, meals, or medical relief for the intended beneficiaries.`)}
             </p>
-          </Reveal>
+          </div>
         </div>
       </section>
 
