@@ -89,6 +89,10 @@ export interface TranslationDictionary {
     optional: string
     or: string
     call: string
+    whatsapp: string
+    tapToSwitch: string
+    registeredNgoMangaluru: string
+    openInMaps: string
     dayMode: string
     nightMode: string
     now: string
@@ -652,6 +656,10 @@ export const translations: Record<Language, any> = {
       optional: 'Optional',
       or: 'or',
       call: 'Call',
+      whatsapp: 'WhatsApp',
+      tapToSwitch: 'Tap to switch',
+      registeredNgoMangaluru: 'Registered NGO • Mangaluru',
+      openInMaps: 'Open in Maps',
       dayMode: 'Day (Light) Mode',
       nightMode: 'Night (Dark) Mode',
       now: 'Now'
@@ -1281,6 +1289,10 @@ export const translations: Record<Language, any> = {
       optional: 'ಐಚ್ಛಿಕ',
       or: 'ಅಥವಾ',
       call: 'ಕರೆ',
+      whatsapp: 'WhatsApp',
+      tapToSwitch: 'ಬದಲಾಯಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ',
+      registeredNgoMangaluru: 'ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ • ಮಂಗಳೂರು',
+      openInMaps: 'ನಕ್ಷೆಯಲ್ಲಿ ತೆರೆಯಿರಿ',
       dayMode: 'ಹಗಲು ಬಣ್ಣ',
       nightMode: 'ರಾತ್ರಿ ಬಣ್ಣ',
       now: 'ಈಗ'
@@ -1909,6 +1921,10 @@ export const translations: Record<Language, any> = {
       optional: 'वैकल्पिक',
       or: 'या',
       call: 'कॉल',
+      whatsapp: 'WhatsApp',
+      tapToSwitch: 'बदलने के लिए टैप करें',
+      registeredNgoMangaluru: 'पंजीकृत एनजीओ • मंगलुरु',
+      openInMaps: 'मानचित्र में खोलें',
       dayMode: 'दिन का रंग',
       nightMode: 'रात का रंग',
       now: 'अब'

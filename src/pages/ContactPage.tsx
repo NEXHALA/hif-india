@@ -8,6 +8,8 @@ import { Reveal } from '../components/common/Reveal'
 import { useLanguage } from '../context/LanguageContext'
 import { buildWhatsAppUrl } from '../lib/submitForm'
 import { Seo } from '../components/common/Seo'
+import { OfflineMap } from '../components/common/OfflineMap'
+import { handleExternalAnchorClick } from '../lib/openExternal'
 
 export const ContactPage: React.FC = () => {
   const { t } = useLanguage()
@@ -83,6 +85,7 @@ export const ContactPage: React.FC = () => {
               href={whatsAppHref}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleExternalAnchorClick}
               className="card p-6 flex items-center gap-4 hover:border-emerald-300 dark:hover:border-emerald-500 transition-colors group"
             >
               <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-700/60 flex items-center justify-center text-primary shrink-0 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/60 transition-colors">
@@ -103,16 +106,7 @@ export const ContactPage: React.FC = () => {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <div className="rounded-xl overflow-hidden border border-border h-64">
-              <iframe
-                title="HIF India location map"
-                src="https://maps.google.com/maps?q=Masjid%20Ehsaan,%20Kankanady,%20Mangalore&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-              />
-            </div>
+            <OfflineMap title="HIF India location map" heightClassName="h-64" />
           </Reveal>
         </div>
       </section>

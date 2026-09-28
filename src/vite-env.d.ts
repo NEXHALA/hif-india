@@ -7,3 +7,9 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
+
+interface Window {
+  hifDesktop?: {
+    openExternal: (url: string) => void
+  }
+}

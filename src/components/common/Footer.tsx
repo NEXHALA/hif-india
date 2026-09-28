@@ -4,6 +4,7 @@ import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa6'
 import { HIF_ORGANIZATION } from '../../data/hifData'
 import { useDonate } from '../../context/DonateContext'
 import { useLanguage } from '../../context/LanguageContext'
+import { handleExternalAnchorClick } from '../../lib/openExternal'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { LocalizedLink } from './LocalizedLink'
 
@@ -20,8 +21,8 @@ export const Footer: React.FC = () => {
   return (
     <footer className="surface-dark border-t border-white/5 pt-14 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-10 border-b border-white/10">
-          <div className="lg:col-span-2 space-y-4 flex flex-col items-center text-center md:items-start md:text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 pb-10 border-b border-white/10">
+          <div className="lg:col-span-2 space-y-4 flex flex-col items-center text-center lg:items-start lg:text-left">
             <LocalizedLink to="/" className="flex items-center gap-2.5">
               <img src={HIF_ORGANIZATION.siteImages.logo} alt="HIF INDIA logo" className="h-8 w-auto object-contain" />
               <span className="font-display text-lg font-semibold text-white">
@@ -34,17 +35,18 @@ export const Footer: React.FC = () => {
                 'A registered grassroots NGO in Mangaluru empowering families with permanent housing, orphan education, masjid revival, and free medical equipment.'
               )}
             </p>
-            <div className="flex items-center justify-center md:justify-start gap-2 text-xs text-emerald-200/80 font-medium">
+            <div className="flex items-center justify-center lg:justify-start gap-2 text-xs text-emerald-200/80 font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
               {t('footer.zeroCommission', '100% direct, zero-commission grassroots disbursement')}
             </div>
-            <div className="flex items-center justify-center md:justify-start gap-3 pt-1">
+            <div className="flex items-center justify-center lg:justify-start gap-3 pt-1">
               {socialLinks.map(({ href, label, Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  onClick={handleExternalAnchorClick}
                   aria-label={label}
                   className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 text-emerald-200 hover:text-white transition-colors flex items-center justify-center"
                 >
@@ -54,7 +56,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Language Switcher in Footer */}
-            <div className="pt-2 w-full flex justify-center md:justify-start">
+            <div className="pt-2 w-full flex justify-center lg:justify-start">
               <LanguageSwitcher variant="footer" />
             </div>
           </div>
@@ -75,15 +77,15 @@ export const Footer: React.FC = () => {
               { label: t('projects.ashiyana.title', 'Project Ashiyana'), to: '/projects/project-ashiyana' },
               { label: t('projects.chittor.title', 'HIF CHITOOR – D.U.R.J'), to: '/projects/chittor-dream-project' },
               { label: t('projects.masjid.title', 'Masjid Development Project'), to: '/projects/masjid-development' },
-              { label: t('activities.medical.title', 'HIF Medical Cell'), to: '/activities/hif-medical-cell' }
+              { label: t('activities.medical.title', 'HIF Medical Cell'), to: '/activities/medical-cell' }
             ]}
           />
 
-          <div className="space-y-3 text-center md:text-left">
+          <div className="space-y-3 text-center lg:text-left">
             <h4 className="text-sm font-semibold text-white uppercase tracking-wide">
               {t('footer.supportUs', 'Support Us')}
             </h4>
-            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 text-xs space-y-1.5">
+            <div className="mx-auto max-w-sm p-3.5 rounded-xl bg-white/5 border border-white/10 text-xs space-y-1.5 lg:mx-0">
               <p className="font-semibold text-white">{t('footer.bankAccount', 'HDFC Bank A/C')}</p>
               <p className="font-mono text-amber-300">{HIF_ORGANIZATION.bankDetails.accountNumber}</p>
               <p className="text-emerald-200/70">IFSC: {HIF_ORGANIZATION.bankDetails.ifscCode}</p>
@@ -105,7 +107,7 @@ export const Footer: React.FC = () => {
             <LocalizedLink to="/refund-policy" className="hover:text-white transition-colors">{t('legal.refundTitle', 'Refund Policy')}</LocalizedLink>
             <LocalizedLink to="/cancellation-policy" className="hover:text-white transition-colors">{t('legal.cancellationTitle', 'Cancellation Policy')}</LocalizedLink>
           </nav>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-emerald-200/60">
+          <div className="flex flex-col items-center justify-center text-center gap-3 text-xs text-emerald-200/60 lg:flex-row lg:justify-between lg:text-left">
             <p>© {new Date().getFullYear()} {t('footer.allRightsReserved', 'HIF. All rights reserved.')}</p>
             <p>{t('footer.addressFull', 'Masjid Ehsaan Complex, Kankanady, Mangalore – 575002')}</p>
           </div>
@@ -115,6 +117,7 @@ export const Footer: React.FC = () => {
               href="https://www.nexhala.com"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleExternalAnchorClick}
               className="font-medium text-emerald-300 hover:text-white transition-colors underline underline-offset-2 decoration-emerald-400/50 hover:decoration-emerald-300"
             >
               Nexhala Solutions LLP
@@ -127,7 +130,7 @@ export const Footer: React.FC = () => {
 }
 
 const FooterCol: React.FC<{ title: string; links: { label: string; to: string }[] }> = ({ title, links }) => (
-  <div className="space-y-3 text-center md:text-left">
+  <div className="space-y-3 text-center lg:text-left">
     <h4 className="text-sm font-semibold text-white uppercase tracking-wide">{title}</h4>
     <ul className="space-y-2 text-sm text-emerald-100/70">
       {links.map((l) => (

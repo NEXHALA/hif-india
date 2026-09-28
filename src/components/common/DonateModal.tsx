@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   X,
@@ -15,6 +15,9 @@ import { HIF_ORGANIZATION } from '../../data/hifData'
 import { useDonate } from '../../context/DonateContext'
 import { useLanguage } from '../../context/LanguageContext'
 import { buildWhatsAppUrl } from '../../lib/submitForm'
+import { copyText } from '../../lib/copyText'
+import { handleExternalAnchorClick } from '../../lib/openExternal'
+import { useDialogBehavior } from '../../hooks/useDialogBehavior'
 
 type Tab = 'qr' | 'bank'
 
@@ -23,28 +26,22 @@ export const DonateModal: React.FC = () => {
   const { t } = useLanguage()
   const [copiedField, setCopiedField] = useState<string | null>(null)
   const [tab, setTab] = useState<Tab>('qr')
+  const dialogRef = useRef<HTMLDivElement>(null)
+
+  useDialogBehavior(isOpen, closeDonate, dialogRef)
 
   const bank = HIF_ORGANIZATION.bankDetails
 
-  const copy = (text: string, field: string) => {
-    navigator.clipboard.writeText(text)
+  const copy = async (text: string, field: string) => {
+    const ok = await copyText(text)
+    if (!ok) return
     setCopiedField(field)
     setTimeout(() => setCopiedField(null), 2000)
   }
 
   useEffect(() => {
-    if (!isOpen) return
-    setTab('qr')
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeDonate()
-    }
-    window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [isOpen, closeDonate])
+    if (isOpen) setTab('qr')
+  }, [isOpen])
 
   return (
     <AnimatePresence>
@@ -59,13 +56,10 @@ export const DonateModal: React.FC = () => {
             className="fixed inset-0 bg-stone-900/60"
           />
 
-          {/* Scroll wrapper: min-h-full + items-center keeps the card centered
-              when it's shorter than the viewport, but still lets the user
-              scroll to the very top/bottom when it's taller (e.g. small
-              phones) — plain `items-center` on the overlay itself clips
-              content that overflows the viewport and can't be scrolled to. */}
           <div className="relative min-h-full flex items-start sm:items-center justify-center p-3 sm:p-6 py-6 sm:py-10">
             <motion.div
+              ref={dialogRef}
+              tabIndex={-1}
               initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.97, y: 12 }}
@@ -73,7 +67,7 @@ export const DonateModal: React.FC = () => {
               role="dialog"
               aria-modal="true"
               aria-labelledby="donate-modal-title"
-              className="relative w-full max-w-md bg-card dark:bg-[#082820] rounded-2xl shadow-2xl border border-border dark:border-emerald-800/50 z-10"
+              className="relative w-full max-w-md bg-card dark:bg-[#082820] rounded-2xl shadow-2xl border border-border dark:border-emerald-800/50 z-10 outline-none"
             >
               <div className="sticky top-0 z-20 flex items-start justify-between gap-3 p-4 sm:p-6 pb-4 border-b border-border bg-card dark:bg-[#082820] rounded-t-2xl">
                 <div className="flex items-center gap-3 min-w-0">
@@ -113,7 +107,6 @@ export const DonateModal: React.FC = () => {
                   </div>
                 )}
 
-                {/* Payment method tabs */}
                 <div className={`grid grid-cols-2 gap-2 p-1 rounded-xl bg-bg-alt dark:bg-[#051c15] border border-border dark:border-emerald-800/50 ${cause || amount ? 'mt-4' : ''}`}>
                   <button
                     type="button"
@@ -192,7 +185,13 @@ export const DonateModal: React.FC = () => {
                             </span>
                           </div>
                           <button
+                            type="button"
                             onClick={() => copy(bank.upiId, 'upi')}
+                            aria-label={
+                              copiedField === 'upi'
+                                ? t('common.copied', 'Copied!')
+                                : t('common.copy', 'Copy')
+                            }
                             className="px-2.5 py-1.5 rounded-lg bg-card dark:bg-[#082820] border border-emerald-200 dark:border-emerald-700/60 text-primary dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 text-xs font-semibold flex items-center gap-1 transition-colors shrink-0"
                           >
                             {copiedField === 'upi' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -213,6 +212,8 @@ export const DonateModal: React.FC = () => {
                           value={bank.accountName}
                           onCopy={() => copy(bank.accountName, 'name')}
                           copied={copiedField === 'name'}
+                          copyLabel={t('common.copy', 'Copy')}
+                          copiedLabel={t('common.copied', 'Copied!')}
                         />
                         <Row
                           label={t('donateModal.accountNumber', `Account Number (${bank.accountType})`)}
@@ -220,6 +221,8 @@ export const DonateModal: React.FC = () => {
                           mono
                           onCopy={() => copy(bank.accountNumber, 'acc')}
                           copied={copiedField === 'acc'}
+                          copyLabel={t('common.copy', 'Copy')}
+                          copiedLabel={t('common.copied', 'Copied!')}
                         />
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           <Row
@@ -228,12 +231,18 @@ export const DonateModal: React.FC = () => {
                             mono
                             onCopy={() => copy(bank.ifscCode, 'ifsc')}
                             copied={copiedField === 'ifsc'}
+                            copyLabel={t('common.copy', 'Copy')}
+                            copiedLabel={t('common.copied', 'Copied!')}
                           />
                           <Row
                             label={t('donateModal.branch', 'Branch')}
                             value={t('donateModal.branchValue', 'HDFC Bunder Branch, Mangalore')}
-                            onCopy={() => copy(bank.branch, 'branch')}
+                            onCopy={() =>
+                              copy(t('donateModal.branchValue', 'HDFC Bunder Branch, Mangalore'), 'branch')
+                            }
                             copied={copiedField === 'branch'}
+                            copyLabel={t('common.copy', 'Copy')}
+                            copiedLabel={t('common.copied', 'Copied!')}
                           />
                         </div>
                       </motion.div>
@@ -258,6 +267,7 @@ export const DonateModal: React.FC = () => {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleExternalAnchorClick}
                   className="mt-4 w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-sm font-semibold transition-colors active:scale-[0.98]"
                 >
                   <FaWhatsapp className="w-4 h-4" aria-hidden />
@@ -272,19 +282,26 @@ export const DonateModal: React.FC = () => {
   )
 }
 
-const Row: React.FC<{ label: string; value: string; mono?: boolean; onCopy: () => void; copied: boolean }> = ({
-  label,
-  value,
-  mono,
-  onCopy,
-  copied
-}) => (
+const Row: React.FC<{
+  label: string
+  value: string
+  mono?: boolean
+  onCopy: () => void
+  copied: boolean
+  copyLabel: string
+  copiedLabel: string
+}> = ({ label, value, mono, onCopy, copied, copyLabel, copiedLabel }) => (
   <div className="p-3 rounded-xl bg-bg-alt dark:bg-[#051c15] border border-border dark:border-emerald-800/50 flex items-start justify-between gap-2">
     <div className="min-w-0 flex-1">
       <span className="text-[10px] uppercase tracking-wide text-text-muted font-semibold block">{label}</span>
       <span className={`text-sm font-semibold text-text-main block ${mono ? 'font-mono break-all' : 'break-words'}`}>{value}</span>
     </div>
-    <button onClick={onCopy} className="p-1.5 rounded-lg text-text-muted dark:text-emerald-300 hover:text-primary dark:hover:text-emerald-100 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors shrink-0">
+    <button
+      type="button"
+      onClick={onCopy}
+      aria-label={copied ? copiedLabel : copyLabel}
+      className="p-1.5 rounded-lg text-text-muted dark:text-emerald-300 hover:text-primary dark:hover:text-emerald-100 hover:bg-emerald-50 dark:hover:bg-emerald-900/50 transition-colors shrink-0"
+    >
       {copied ? <Check className="w-4 h-4 text-primary" /> : <Copy className="w-4 h-4" />}
     </button>
   </div>

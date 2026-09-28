@@ -1,6 +1,7 @@
-import React, { Suspense, lazy } from 'react'
+import React, { lazy } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
+import { MotionConfig } from 'framer-motion'
 import { ThemeProvider } from './context/ThemeContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { RootLayout } from './layout/RootLayout'
@@ -50,8 +51,8 @@ export function App() {
     <HelmetProvider>
       <ThemeProvider>
         <LanguageProvider>
-          <BrowserRouter>
-            <Suspense fallback={null}>
+          <MotionConfig reducedMotion="user">
+            <BrowserRouter>
               <Routes>
                 <Route element={<RootLayout />}>
                   {PAGES.map(({ path, Component }) => (
@@ -81,8 +82,8 @@ export function App() {
                   <Route path="*" element={<NotFoundPage />} />
                 </Route>
               </Routes>
-            </Suspense>
-          </BrowserRouter>
+            </BrowserRouter>
+          </MotionConfig>
         </LanguageProvider>
       </ThemeProvider>
     </HelmetProvider>

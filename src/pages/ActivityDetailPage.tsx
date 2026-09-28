@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { Navigate, useLocation, useParams } from 'react-router-dom'
 import { CheckCircle2, Sparkles, Heart } from 'lucide-react'
 import { HIF_ACTIVITIES } from '../data/hifData'
 import { useDonate } from '../context/DonateContext'
@@ -10,6 +10,8 @@ import { LocalizedLink } from '../components/common/LocalizedLink'
 import { Seo } from '../components/common/Seo'
 import { buildBreadcrumbJsonLd } from '../lib/structuredData'
 import { SITE_URL } from '../lib/seoConfig'
+import { ACTIVITY_SLUGS } from '../lib/allRoutes'
+import { getLanguageFromPathname, localizePath } from '../lib/localePaths'
 
 const idBySlug: Record<string, string> = {
   'medical-cell': 'hif-medical-cell',
@@ -19,16 +21,26 @@ const idBySlug: Record<string, string> = {
 
 export const ActivityDetailPage: React.FC = () => {
   const { activityId } = useParams<{ activityId: string }>()
-  const resolvedId = activityId ? (idBySlug[activityId] || activityId) : undefined
-  const rawActivity = HIF_ACTIVITIES.find((a) => a.id === resolvedId)
+  const { pathname } = useLocation()
+  const lang = getLanguageFromPathname(pathname)
   const { openDonate } = useDonate()
   const { t, language } = useLanguage()
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
-  if (!rawActivity) return <Navigate to="/activities" replace />
+  // Canonicalize internal ids (e.g. hif-medical-cell) to public slugs.
+  if (activityId && ACTIVITY_SLUGS[activityId]) {
+    return <Navigate to={localizePath(`/activities/${ACTIVITY_SLUGS[activityId]}`, lang)} replace />
+  }
+
+  const resolvedId = activityId ? (idBySlug[activityId] || activityId) : undefined
+  const rawActivity = HIF_ACTIVITIES.find((a) => a.id === resolvedId)
+
+  if (!rawActivity) {
+    return <Navigate to={localizePath('/activities', lang)} replace />
+  }
 
   const activity = localizeActivity(rawActivity, t, language)
-  const canonicalSlug = activityId || rawActivity.id
+  const canonicalSlug = ACTIVITY_SLUGS[rawActivity.id] ?? rawActivity.id
 
   return (
     <>

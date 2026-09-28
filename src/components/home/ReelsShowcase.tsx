@@ -8,6 +8,7 @@ import { useLanguage } from '../../context/LanguageContext'
 import { localizeReel } from '../../lib/localizeContent'
 import { useAutoplayOnView } from '../../hooks/useAutoplayOnView'
 import { Reveal } from '../common/Reveal'
+import { handleExternalAnchorClick } from '../../lib/openExternal'
 
 /**
  * Homepage "reels" showcase: a phone-mockup carousel of self-hosted vertical
@@ -97,6 +98,7 @@ export const ReelsShowcase: React.FC = () => {
               href={HIF_ORGANIZATION.socials.instagram}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleExternalAnchorClick}
               className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-deep"
             >
               <FaInstagram className="w-4 h-4" /> {t('reels.followUs', 'Follow @hif_india for more')}
@@ -108,7 +110,7 @@ export const ReelsShowcase: React.FC = () => {
           <div className="relative w-[300px] sm:w-[330px] rounded-[2.75rem] bg-emerald-950 p-3 shadow-2xl ring-1 ring-black/10">
             <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-5 bg-emerald-950 rounded-full z-20 ring-1 ring-white/5" />
             <div className="relative rounded-[2.15rem] overflow-hidden bg-black aspect-[9/16]">
-              <AnimatePresence>
+              <AnimatePresence mode="wait">
                 <motion.video
                   key={active.id}
                   ref={setVideoNode}

@@ -26,6 +26,14 @@ import { buildWhatsAppUrl } from '../../lib/submitForm'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { LocalizedNavLink } from './LocalizedLink'
 import { stripLocalePrefix } from '../../lib/localePaths'
+import { handleExternalAnchorClick } from '../../lib/openExternal'
+import { lockBodyScroll, unlockBodyScroll } from '../../lib/bodyScrollLock'
+
+function isNavActive(pathname: string, to: string): boolean {
+  const current = stripLocalePrefix(pathname)
+  if (to === '/') return current === '/'
+  return current === to || current.startsWith(`${to}/`)
+}
 
 interface NavItem {
   key: string
@@ -112,12 +120,21 @@ export const Navbar: React.FC = () => {
     setMenuOpen(false)
   }, [location.pathname])
 
-  // Prevent background scroll when mobile menu is open
+  // Prevent background scroll when mobile menu is open (shared lock counter)
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
+    if (!menuOpen) return
+    lockBodyScroll()
+    return () => unlockBodyScroll()
+  }, [menuOpen])
+
+  // Close drawer on Escape
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false)
     }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
   }, [menuOpen])
 
   return (
@@ -150,6 +167,7 @@ export const Navbar: React.FC = () => {
               href="https://instagram.com/hif_india"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleExternalAnchorClick}
               className="inline-flex items-center gap-1.5 hover:text-amber-300 transition-colors font-medium"
             >
               <span>@hif_india</span>
@@ -170,7 +188,7 @@ export const Navbar: React.FC = () => {
           {/* Logo & Identity */}
           <LocalizedNavLink
             to="/"
-            className="group flex items-center gap-2 sm:gap-3 min-w-0 flex-1 lg:flex-none lg:shrink-0 focus:outline-none"
+            className="group flex items-center gap-2 sm:gap-3 min-w-0 flex-1 lg:flex-none lg:shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
             onClick={() => setMenuOpen(false)}
           >
             <div className="relative shrink-0">
@@ -203,7 +221,7 @@ export const Navbar: React.FC = () => {
             onMouseLeave={() => setHoveredPath(null)}
           >
             {navLinks.map((link) => {
-              const isActive = stripLocalePrefix(location.pathname) === link.to
+              const isActive = isNavActive(location.pathname, link.to)
               const isHovered = hoveredPath === link.to
 
               return (
@@ -333,7 +351,7 @@ export const Navbar: React.FC = () => {
                 <div className="flex flex-col">
                   {navLinks.map((link, idx) => {
                     const Icon = link.icon
-                    const isActive = stripLocalePrefix(location.pathname) === link.to
+                    const isActive = isNavActive(location.pathname, link.to)
 
                     return (
                       <motion.div
@@ -382,7 +400,7 @@ export const Navbar: React.FC = () => {
                       className="inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-bg-alt dark:bg-card/5 hover:bg-emerald-50 dark:hover:bg-card/10 text-text-main font-medium transition-colors"
                     >
                       <Phone className="w-4 h-4 text-primary" />
-                      <span>Call</span>
+                      <span>{t('common.call', 'Call')}</span>
                     </a>
                     <a
                       href={buildWhatsAppUrl(
@@ -391,10 +409,11 @@ export const Navbar: React.FC = () => {
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={handleExternalAnchorClick}
                       className="inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 text-primary-deep font-medium transition-colors"
                     >
                       <FaWhatsapp className="w-4 h-4 text-[#25D366]" aria-hidden />
-                      <span>WhatsApp</span>
+                      <span>{t('common.whatsapp', 'WhatsApp')}</span>
                     </a>
                   </div>
 
@@ -415,7 +434,7 @@ export const Navbar: React.FC = () => {
                       {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-primary-deep" />}
                       <span>{theme === 'dark' ? t('common.nightMode', 'Night (Dark) Mode') : t('common.dayMode', 'Day (Light) Mode')}</span>
                     </span>
-                    <span className="text-[11px] text-text-muted">Tap to Switch</span>
+                    <span className="text-[11px] text-text-muted">{t('common.tapToSwitch', 'Tap to switch')}</span>
                   </button>
                 </div>
 
@@ -425,7 +444,7 @@ export const Navbar: React.FC = () => {
                     <ShieldCheck className="w-3.5 h-3.5 text-primary" />
                     {t('common.zeroCommission', '100% Direct Grassroots Relief')}
                   </span>
-                  <span>Registered NGO • Mangaluru</span>
+                  <span>{t('common.registeredNgoMangaluru', 'Registered NGO • Mangaluru')}</span>
                 </div>
               </div>
             </motion.div>

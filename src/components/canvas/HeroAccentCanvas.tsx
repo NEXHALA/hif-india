@@ -24,11 +24,20 @@ const HeroAccentCanvas: React.FC<{ className?: string }> = ({ className = '' }) 
     const mount = mountRef.current
     if (!mount) return
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return
+
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(48, mount.clientWidth / mount.clientHeight, 0.1, 120)
     camera.position.z = 34
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+    let renderer: THREE.WebGLRenderer
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+    } catch {
+      // No WebGL — leave the empty backdrop div.
+      return
+    }
     renderer.setSize(mount.clientWidth, mount.clientHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
     mount.appendChild(renderer.domElement)
@@ -170,6 +179,7 @@ const HeroAccentCanvas: React.FC<{ className?: string }> = ({ className = '' }) 
     // idled), so an off-screen hero costs zero GPU/CPU per frame.
     let inView = false
     let pageVisible = document.visibilityState === 'visible'
+    let contextLost = false
     let running = false
     let rafId = 0
     let frame = 0
@@ -177,6 +187,7 @@ const HeroAccentCanvas: React.FC<{ className?: string }> = ({ className = '' }) 
 
     const animate = () => {
       rafId = requestAnimationFrame(animate)
+      if (contextLost) return
       frame++
       const t = clock.getElapsedTime()
 
@@ -247,7 +258,7 @@ const HeroAccentCanvas: React.FC<{ className?: string }> = ({ className = '' }) 
     }
 
     const start = () => {
-      if (running) return
+      if (running || contextLost) return
       running = true
       rafId = requestAnimationFrame(animate)
     }
@@ -257,9 +268,21 @@ const HeroAccentCanvas: React.FC<{ className?: string }> = ({ className = '' }) 
       cancelAnimationFrame(rafId)
     }
     const updateRunning = () => {
-      if (inView && pageVisible) start()
+      if (inView && pageVisible && !contextLost) start()
       else stop()
     }
+
+    const handleContextLost = (event: Event) => {
+      event.preventDefault()
+      contextLost = true
+      stop()
+    }
+    const handleContextRestored = () => {
+      contextLost = false
+      updateRunning()
+    }
+    renderer.domElement.addEventListener('webglcontextlost', handleContextLost)
+    renderer.domElement.addEventListener('webglcontextrestored', handleContextRestored)
 
     const handleVisibility = () => {
       pageVisible = document.visibilityState === 'visible'
@@ -291,6 +314,8 @@ const HeroAccentCanvas: React.FC<{ className?: string }> = ({ className = '' }) 
       window.removeEventListener('pointermove', handlePointerMove)
       window.removeEventListener('scroll', refreshRect)
       window.removeEventListener('resize', refreshRect)
+      renderer.domElement.removeEventListener('webglcontextlost', handleContextLost)
+      renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored)
       intersectionObserver.disconnect()
       resizeObserver.disconnect()
       if (mount && renderer.domElement.parentNode === mount) {

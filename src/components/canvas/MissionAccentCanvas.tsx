@@ -16,11 +16,20 @@ const MissionAccentCanvas: React.FC<{ className?: string }> = ({ className = '' 
     const mount = mountRef.current
     if (!mount) return
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return
+
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(42, mount.clientWidth / mount.clientHeight, 0.1, 100)
     camera.position.z = 22
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+    let renderer: THREE.WebGLRenderer
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+    } catch {
+      // No WebGL — leave the empty backdrop div.
+      return
+    }
     renderer.setSize(mount.clientWidth, mount.clientHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
     mount.appendChild(renderer.domElement)
@@ -93,11 +102,13 @@ const MissionAccentCanvas: React.FC<{ className?: string }> = ({ className = '' 
     // below the fold, and an always-on WebGL loop taxes every scroll frame.
     let inView = false
     let pageVisible = document.visibilityState === 'visible'
+    let contextLost = false
     let running = false
     let rafId = 0
 
     const animate = () => {
       rafId = requestAnimationFrame(animate)
+      if (contextLost) return
 
       const posAttr = dustGeometry.attributes.position as THREE.BufferAttribute
       const arr = posAttr.array as Float32Array
@@ -122,7 +133,7 @@ const MissionAccentCanvas: React.FC<{ className?: string }> = ({ className = '' 
     }
 
     const start = () => {
-      if (running) return
+      if (running || contextLost) return
       running = true
       rafId = requestAnimationFrame(animate)
     }
@@ -132,9 +143,21 @@ const MissionAccentCanvas: React.FC<{ className?: string }> = ({ className = '' 
       cancelAnimationFrame(rafId)
     }
     const updateRunning = () => {
-      if (inView && pageVisible) start()
+      if (inView && pageVisible && !contextLost) start()
       else stop()
     }
+
+    const handleContextLost = (event: Event) => {
+      event.preventDefault()
+      contextLost = true
+      stop()
+    }
+    const handleContextRestored = () => {
+      contextLost = false
+      updateRunning()
+    }
+    renderer.domElement.addEventListener('webglcontextlost', handleContextLost)
+    renderer.domElement.addEventListener('webglcontextrestored', handleContextRestored)
 
     const handleVisibility = () => {
       pageVisible = document.visibilityState === 'visible'
@@ -166,6 +189,8 @@ const MissionAccentCanvas: React.FC<{ className?: string }> = ({ className = '' 
       window.removeEventListener('pointermove', handlePointerMove)
       window.removeEventListener('scroll', refreshRect)
       window.removeEventListener('resize', refreshRect)
+      renderer.domElement.removeEventListener('webglcontextlost', handleContextLost)
+      renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored)
       intersectionObserver.disconnect()
       resizeObserver.disconnect()
       if (mount && renderer.domElement.parentNode === mount) {

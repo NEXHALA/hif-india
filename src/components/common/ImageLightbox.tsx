@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useRef } from 'react'
 import { AnimatePresence, motion, type PanInfo } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useDialogBehavior } from '../../hooks/useDialogBehavior'
+import { useLanguage } from '../../context/LanguageContext'
 
 interface ImageLightboxProps {
   images: string[]
@@ -11,6 +13,8 @@ interface ImageLightboxProps {
 }
 
 export const ImageLightbox: React.FC<ImageLightboxProps> = ({ images, index, alt, onClose, onSelect }) => {
+  const { t } = useLanguage()
+  const dialogRef = useRef<HTMLDivElement>(null)
   const isOpen = index !== null
 
   const handlePrev = () => {
@@ -22,10 +26,11 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({ images, index, alt
     onSelect((index + 1) % images.length)
   }
 
-  useEffect(() => {
+  useDialogBehavior(isOpen, onClose, dialogRef)
+
+  React.useEffect(() => {
     if (!isOpen) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowRight') handleNext()
       if (e.key === 'ArrowLeft') handlePrev()
     }
@@ -73,6 +78,8 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({ images, index, alt
 
           <div className="relative min-h-full flex items-center justify-center p-3 sm:p-6">
             <motion.div
+              ref={dialogRef}
+              tabIndex={-1}
               key={index}
               drag={images.length > 1 ? 'x' : false}
               dragConstraints={{ left: 0, right: 0 }}
@@ -82,7 +89,9 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({ images, index, alt
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.18 }}
-              className="relative z-[105] max-w-4xl w-full max-h-[85vh] flex flex-col rounded-2xl bg-card dark:bg-[#082820] border border-border/80 dark:border-emerald-800/50 overflow-hidden shadow-2xl touch-pan-y"
+              role="dialog"
+              aria-modal="true"
+              className="relative z-[105] max-w-4xl w-full max-h-[85vh] flex flex-col rounded-2xl bg-card dark:bg-[#082820] border border-border/80 dark:border-emerald-800/50 overflow-hidden shadow-2xl touch-pan-y outline-none"
             >
               <div className="relative flex-1 min-h-[240px] max-h-[75vh] bg-bg-alt dark:bg-[#03130e] flex items-center justify-center">
                 <img
@@ -94,7 +103,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({ images, index, alt
                 <button
                   onClick={onClose}
                   className="absolute top-3 right-3 z-10 p-2.5 rounded-full bg-black/50 hover:bg-black/70 active:bg-black/80 text-white transition-colors"
-                  aria-label="Close"
+                  aria-label={t('common.close', 'Close')}
                 >
                   <X className="w-5 h-5" />
                 </button>

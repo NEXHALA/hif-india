@@ -6,6 +6,7 @@ import { ImpactStatsBand } from '../components/home/ImpactStatsBand'
 import { PillarsOrbit3D } from '../components/home/PillarsOrbit3D'
 import { ReelsShowcase } from '../components/home/ReelsShowcase'
 import { FeatureVideoShowcase } from '../components/home/FeatureVideoShowcase'
+import { ErrorBoundary } from '../components/common/ErrorBoundary'
 
 // Lazy-loaded so the (large) Three.js bundle doesn't block first paint —
 // this section is well below the fold.
@@ -82,9 +83,11 @@ export const HomePage: React.FC = () => {
 
       {/* Mission teaser */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-editorial-wash overflow-hidden">
-        <Suspense fallback={null}>
-          <MissionAccentCanvas className="absolute inset-0" />
-        </Suspense>
+        <ErrorBoundary compact>
+          <Suspense fallback={null}>
+            <MissionAccentCanvas className="absolute inset-0" />
+          </Suspense>
+        </ErrorBoundary>
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <Reveal>
             <span className="badge">{t('about.missionTitle', 'Our Mission')}</span>

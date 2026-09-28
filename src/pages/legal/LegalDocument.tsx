@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { LocalizedLink } from '../../components/common/LocalizedLink'
+import { Seo } from '../../components/common/Seo'
 import { HIF_ORGANIZATION } from '../../data/hifData'
 import { PageHeader } from '../../components/common/PageHeader'
 import { useLanguage } from '../../context/LanguageContext'
+import { handleExternalAnchorClick } from '../../lib/openExternal'
 
 export const LegalDocument: React.FC<{
   title: string
@@ -10,14 +12,6 @@ export const LegalDocument: React.FC<{
   children: React.ReactNode
 }> = ({ title, description, children }) => {
   const { t } = useLanguage()
-
-  useEffect(() => {
-    const previous = document.title
-    document.title = `${title} | HIF INDIA`
-    return () => {
-      document.title = previous
-    }
-  }, [title])
 
   const related = [
     { to: '/terms', label: t('legal.termsTitle', 'Terms and Conditions') },
@@ -28,6 +22,7 @@ export const LegalDocument: React.FC<{
 
   return (
     <>
+      <Seo title={title} description={description} />
       <PageHeader eyebrow="HIF INDIA" title={title} description={description} />
       <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <article className="max-w-3xl mx-auto card p-6 sm:p-10 text-sm sm:text-[15px] leading-relaxed text-text-muted space-y-8">
@@ -76,6 +71,7 @@ function OrgDetails() {
           href={`https://wa.me/${contact.whatsapp.replace(/\D/g, '')}`}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleExternalAnchorClick}
         >
           {contact.whatsapp}
         </a>

@@ -7,6 +7,7 @@ import { UNSPLASH } from '../data/unsplashImages'
 import { Reveal } from '../components/common/Reveal'
 import { useLanguage } from '../context/LanguageContext'
 import { Seo } from '../components/common/Seo'
+import { OfflineMap } from '../components/common/OfflineMap'
 import { buildBreadcrumbJsonLd } from '../lib/structuredData'
 
 export const AboutPage: React.FC = () => {
@@ -244,14 +245,11 @@ export const AboutPage: React.FC = () => {
             <p className="mt-3 text-text-muted text-sm leading-relaxed">
               {t('org.hqLocation', HIF_ORGANIZATION.address.full)}
             </p>
-            <div className="mt-5 rounded-xl overflow-hidden border border-border dark:border-emerald-800/50 h-48">
-              <iframe
+            <div className="mt-5">
+              <OfflineMap
                 title="HIF India headquarters map"
-                src="https://maps.google.com/maps?q=Masjid%20Ehsaan,%20Kankanady,%20Mangalore&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
+                heightClassName="h-48"
+                className="dark:border-emerald-800/50"
               />
             </div>
           </Reveal>

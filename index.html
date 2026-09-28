@@ -34,8 +34,14 @@
     <script>
       (function () {
         try {
-          var lang = localStorage.getItem('hif_language');
-          if (lang !== 'en' && lang !== 'kn' && lang !== 'hi') lang = 'en';
+          var path = location.pathname || '/';
+          var lang = 'en';
+          if (path === '/kn' || path.indexOf('/kn/') === 0) lang = 'kn';
+          else if (path === '/hi' || path.indexOf('/hi/') === 0) lang = 'hi';
+          else {
+            lang = localStorage.getItem('hif_language');
+            if (lang !== 'en' && lang !== 'kn' && lang !== 'hi') lang = 'en';
+          }
           document.documentElement.lang = lang;
           document.documentElement.classList.add('lang-' + lang);
 
@@ -46,10 +52,6 @@
         } catch (e) {}
       })();
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Kannada:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Kannada:wght@500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-[#fefdfb] text-stone-800 antialiased selection:bg-emerald-200 selection:text-emerald-950">
     <div id="root"></div>

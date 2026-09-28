@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { Navigate, useLocation, useParams } from 'react-router-dom'
 import { CheckCircle2, Heart, Target } from 'lucide-react'
 import { HIF_PROJECTS } from '../data/hifData'
 import { useDonate } from '../context/DonateContext'
@@ -10,9 +10,11 @@ import { LocalizedLink } from '../components/common/LocalizedLink'
 import { Seo } from '../components/common/Seo'
 import { buildBreadcrumbJsonLd } from '../lib/structuredData'
 import { SITE_URL } from '../lib/seoConfig'
+import { getLanguageFromPathname, localizePath } from '../lib/localePaths'
 
 export const ProjectDetailPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>()
+  const { pathname } = useLocation()
   const rawProject = HIF_PROJECTS.find((p) => p.id === projectId)
   const { openDonate } = useDonate()
   const { t, language } = useLanguage()
@@ -20,8 +22,10 @@ export const ProjectDetailPage: React.FC = () => {
   const [beforeLightboxIndex, setBeforeLightboxIndex] = useState<number | null>(null)
   const [afterLightboxIndex, setAfterLightboxIndex] = useState<number | null>(null)
 
-  if (!rawProject) return <Navigate to="/projects" replace />
-
+  if (!rawProject) {
+    const lang = getLanguageFromPathname(pathname)
+    return <Navigate to={localizePath('/projects', lang)} replace />
+  }
   const project = localizeProject(rawProject, t, language)
   const beforeImages = project.beforeImages ?? []
   const afterImages = project.afterImages ?? []

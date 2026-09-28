@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import {
@@ -32,6 +32,8 @@ import { Reveal } from '../components/common/Reveal'
 import { localizeImpact } from '../lib/localizeContent'
 import { buildWhatsAppUrl } from '../lib/submitForm'
 import { Seo } from '../components/common/Seo'
+import { copyText } from '../lib/copyText'
+import { openExternal } from '../lib/openExternal'
 
 export const GetInvolvedPage: React.FC = () => {
   const [amount, setAmount] = useState(9000)
@@ -134,10 +136,47 @@ export const GetInvolvedPage: React.FC = () => {
   )
 }
 
+const VOLUNTEER_FORM_KEY = 'hif_volunteer_form'
+
+type VolunteerFormState = {
+  name: string
+  phone: string
+  city: string
+  skills: string[]
+}
+
+const emptyVolunteerForm = (): VolunteerFormState => ({
+  name: '',
+  phone: '',
+  city: 'Mangalore',
+  skills: []
+})
+
 const VolunteerForm: React.FC = () => {
   const { t } = useLanguage()
   const [submitted, setSubmitted] = useState(false)
-  const [form, setForm] = useState({ name: '', phone: '', city: 'Mangalore', skills: [] as string[] })
+  const [openBlocked, setOpenBlocked] = useState(false)
+  const [form, setForm] = useState<VolunteerFormState>(() => {
+    try {
+      const raw = sessionStorage.getItem(VOLUNTEER_FORM_KEY)
+      if (raw) {
+        const parsed = JSON.parse(raw) as VolunteerFormState
+        if (parsed && typeof parsed.name === 'string') return parsed
+      }
+    } catch {
+      // ignore
+    }
+    return emptyVolunteerForm()
+  })
+
+  useEffect(() => {
+    if (submitted) return
+    try {
+      sessionStorage.setItem(VOLUNTEER_FORM_KEY, JSON.stringify(form))
+    } catch {
+      // ignore
+    }
+  }, [form, submitted])
 
   const skillOptions = [
     { key: 'bloodDonation', label: t('getInvolved.skills.bloodDonation', 'Blood Donation / Medical Coordination'), icon: Droplet },
@@ -171,9 +210,22 @@ const VolunteerForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    window.open(whatsAppHref, '_blank', 'noopener,noreferrer')
+    const opened = openExternal(whatsAppHref)
+    if (!opened) {
+      setOpenBlocked(true)
+      return
+    }
+    try {
+      sessionStorage.removeItem(VOLUNTEER_FORM_KEY)
+    } catch {
+      // ignore
+    }
+    setOpenBlocked(false)
     setSubmitted(true)
-    confetti({ particleCount: 70, spread: 65, origin: { y: 0.6 } })
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!reduced) {
+      confetti({ particleCount: 70, spread: 65, origin: { y: 0.6 } })
+    }
   }
 
   return (
@@ -207,7 +259,7 @@ const VolunteerForm: React.FC = () => {
             type="button"
             onClick={() => {
               setSubmitted(false)
-              setForm({ name: '', phone: '', city: 'Mangalore', skills: [] })
+              setForm(emptyVolunteerForm())
             }}
             className="mt-4 px-4 py-2 text-xs font-semibold text-primary bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-700/60 rounded-lg hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors"
           >
@@ -217,10 +269,11 @@ const VolunteerForm: React.FC = () => {
       ) : (
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div>
-            <label className="text-xs font-semibold text-text-muted block mb-1">
+            <label htmlFor="volunteer-name" className="text-xs font-semibold text-text-muted block mb-1">
               {t('getInvolved.form.fullName', 'Full Name *')}
             </label>
             <input
+              id="volunteer-name"
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -230,10 +283,11 @@ const VolunteerForm: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="text-xs font-semibold text-text-muted block mb-1">
+              <label htmlFor="volunteer-phone" className="text-xs font-semibold text-text-muted block mb-1">
                 {t('getInvolved.form.phone', 'Phone / WhatsApp *')}
               </label>
               <input
+                id="volunteer-phone"
                 required
                 type="tel"
                 value={form.phone}
@@ -243,10 +297,11 @@ const VolunteerForm: React.FC = () => {
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-text-muted block mb-1">
+              <label htmlFor="volunteer-city" className="text-xs font-semibold text-text-muted block mb-1">
                 {t('getInvolved.form.city', 'City / Location *')}
               </label>
               <input
+                id="volunteer-city"
                 required
                 value={form.city}
                 onChange={(e) => setForm({ ...form, city: e.target.value })}
@@ -288,6 +343,22 @@ const VolunteerForm: React.FC = () => {
             <FaWhatsapp className="w-4 h-4" aria-hidden />
             {t('getInvolved.form.whatsAppButton', 'Send via WhatsApp')}
           </button>
+          {openBlocked && (
+            <p className="text-xs text-text-muted text-center">
+              {t(
+                'getInvolved.form.openBlocked',
+                'Could not open WhatsApp automatically. Use the link below:'
+              )}{' '}
+              <a
+                href={whatsAppHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-primary hover:underline"
+              >
+                {t('getInvolved.form.openWhatsAppLink', 'Open WhatsApp')}
+              </a>
+            </p>
+          )}
         </form>
       )}
     </div>
@@ -300,14 +371,12 @@ const BankDetailsCard: React.FC = () => {
   const [copiedField, setCopiedField] = useState<string | null>(null)
   const [showQR, setShowQR] = useState(false)
 
-  const copy = (text: string, field: string) => {
-    navigator.clipboard.writeText(text)
+  const copy = async (value: string, field: string) => {
+    const ok = await copyText(value)
+    if (!ok) return
     setCopiedField(field)
     setTimeout(() => setCopiedField(null), 2000)
   }
-
-  const upiPayUrl = `upi://pay?pa=${bank.upiId}&pn=${encodeURIComponent(bank.accountName)}&cu=INR`
-  const qrCodeImgUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiPayUrl)}&bgcolor=ffffff&color=065f46&margin=8`
 
   return (
     <div className="card p-7 sm:p-8">
@@ -341,7 +410,12 @@ const BankDetailsCard: React.FC = () => {
             </span>
             <span className="font-mono font-semibold text-text-main">{bank.accountNumber}</span>
           </div>
-          <button onClick={() => copy(bank.accountNumber, 'acc')} className="p-1.5 rounded-lg text-text-muted hover:text-primary dark:hover:text-emerald-100">
+          <button
+            type="button"
+            onClick={() => copy(bank.accountNumber, 'acc')}
+            aria-label={copiedField === 'acc' ? t('common.copied', 'Copied!') : t('common.copy', 'Copy')}
+            className="p-1.5 rounded-lg text-text-muted hover:text-primary dark:hover:text-emerald-100"
+          >
             {copiedField === 'acc' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
           </button>
         </div>
@@ -377,7 +451,7 @@ const BankDetailsCard: React.FC = () => {
           {showQR && (
             <div className="mt-4 pt-4 border-t border-emerald-200/70 dark:border-emerald-700/60 flex flex-col items-center">
               <div className="p-2 bg-white rounded-xl shadow-sm">
-                <img src={qrCodeImgUrl} alt="UPI QR" className="w-36 h-36 rounded-lg" loading="lazy" />
+                <img src="/images/donate/hif-qr.jpg" alt="HIF INDIA official UPI QR Code" className="w-36 h-36 rounded-lg object-contain" loading="lazy" />
               </div>
             </div>
           )}
