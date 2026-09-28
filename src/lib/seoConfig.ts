@@ -27,5 +27,9 @@ export const STATIC_ROUTES = [
   '/activities',
   '/gallery',
   '/get-involved',
-  '/contact'
+  '/contact',
+  '/terms',
+  '/privacy-policy',
+  '/refund-policy',
+  '/cancellation-policy'
 ]
