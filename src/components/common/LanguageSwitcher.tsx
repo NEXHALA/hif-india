@@ -69,12 +69,12 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
   if (variant === 'footer') {
     return (
-      <div className={`flex flex-col gap-2 ${className}`}>
+      <div className={`flex flex-col gap-2 items-center md:items-start ${className}`}>
         <span className="text-xs font-semibold text-emerald-200/80 uppercase tracking-wider flex items-center gap-1.5">
           <Globe className="w-3.5 h-3.5 text-emerald-400" />
           Language / ಭಾಷೆ / भाषा
         </span>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap justify-center md:justify-start gap-2">
           {supportedLanguages.map((lang) => {
             const isActive = language === lang.code
             return (

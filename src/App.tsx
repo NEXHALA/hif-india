@@ -17,6 +17,10 @@ const ActivityDetailPage = lazy(() => import('./pages/ActivityDetailPage'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage'))
 const GetInvolvedPage = lazy(() => import('./pages/GetInvolvedPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
+const TermsPage = lazy(() => import('./pages/legal/TermsPage'))
+const PrivacyPage = lazy(() => import('./pages/legal/PrivacyPage'))
+const RefundPage = lazy(() => import('./pages/legal/RefundPage'))
+const CancellationPage = lazy(() => import('./pages/legal/CancellationPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 /** Unprefixed ("canonical", English) page paths, mirrored under each locale prefix below. */
@@ -29,7 +33,11 @@ const PAGES: { path: string; Component: React.LazyExoticComponent<React.Componen
   { path: '/activities/:activityId', Component: ActivityDetailPage },
   { path: '/gallery', Component: GalleryPage },
   { path: '/get-involved', Component: GetInvolvedPage },
-  { path: '/contact', Component: ContactPage }
+  { path: '/contact', Component: ContactPage },
+  { path: '/terms', Component: TermsPage },
+  { path: '/privacy-policy', Component: PrivacyPage },
+  { path: '/refund-policy', Component: RefundPage },
+  { path: '/cancellation-policy', Component: CancellationPage }
 ]
 
 function localizedRoutePath(lang: Language, path: string): string {

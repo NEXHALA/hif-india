@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
     <footer className="surface-dark border-t border-white/5 pt-14 pb-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-10 border-b border-white/10">
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-4 flex flex-col items-center text-center md:items-start md:text-left">
             <LocalizedLink to="/" className="flex items-center gap-2.5">
               <img src={HIF_ORGANIZATION.siteImages.logo} alt="HIF INDIA logo" className="h-8 w-auto object-contain" />
               <span className="font-display text-lg font-semibold text-white">
@@ -34,11 +34,11 @@ export const Footer: React.FC = () => {
                 'A registered grassroots NGO in Mangaluru empowering families with permanent housing, orphan education, masjid revival, and free medical equipment.'
               )}
             </p>
-            <div className="flex items-center gap-2 text-xs text-emerald-200/80 font-medium">
+            <div className="flex items-center justify-center md:justify-start gap-2 text-xs text-emerald-200/80 font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
               {t('footer.zeroCommission', '100% direct, zero-commission grassroots disbursement')}
             </div>
-            <div className="flex items-center gap-3 pt-1">
+            <div className="flex items-center justify-center md:justify-start gap-3 pt-1">
               {socialLinks.map(({ href, label, Icon }) => (
                 <a
                   key={label}
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Language Switcher in Footer */}
-            <div className="pt-2">
+            <div className="pt-2 w-full flex justify-center md:justify-start">
               <LanguageSwitcher variant="footer" />
             </div>
           </div>
@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
             ]}
           />
 
-          <div className="space-y-3">
+          <div className="space-y-3 text-center md:text-left">
             <h4 className="text-sm font-semibold text-white uppercase tracking-wide">
               {t('footer.supportUs', 'Support Us')}
             </h4>
@@ -99,6 +99,12 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="pt-6 space-y-3">
+          <nav aria-label={t('legal.relatedNav', 'Related policies')} className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-emerald-100/80">
+            <LocalizedLink to="/terms" className="hover:text-white transition-colors">{t('legal.termsTitle', 'Terms and Conditions')}</LocalizedLink>
+            <LocalizedLink to="/privacy-policy" className="hover:text-white transition-colors">{t('legal.privacyTitle', 'Privacy Policy')}</LocalizedLink>
+            <LocalizedLink to="/refund-policy" className="hover:text-white transition-colors">{t('legal.refundTitle', 'Refund Policy')}</LocalizedLink>
+            <LocalizedLink to="/cancellation-policy" className="hover:text-white transition-colors">{t('legal.cancellationTitle', 'Cancellation Policy')}</LocalizedLink>
+          </nav>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-emerald-200/60">
             <p>© {new Date().getFullYear()} {t('footer.allRightsReserved', 'Highland Islamic Forum (HIF INDIA). All rights reserved.')}</p>
             <p>{t('footer.addressFull', 'Masjid Ehsaan Complex, Kankanady, Mangalore – 575002')}</p>
@@ -121,7 +127,7 @@ export const Footer: React.FC = () => {
 }
 
 const FooterCol: React.FC<{ title: string; links: { label: string; to: string }[] }> = ({ title, links }) => (
-  <div className="space-y-3">
+  <div className="space-y-3 text-center md:text-left">
     <h4 className="text-sm font-semibold text-white uppercase tracking-wide">{title}</h4>
     <ul className="space-y-2 text-sm text-emerald-100/70">
       {links.map((l) => (

@@ -460,6 +460,115 @@ export interface TranslationDictionary {
     slogan: string
     developedBy: string
   }
+  legal: {
+    lastUpdated: string
+    lastUpdatedDate: string
+    relatedNav: string
+    orgRegisteredHq: string
+    termsTitle: string
+    termsDesc: string
+    privacyTitle: string
+    privacyDesc: string
+    refundTitle: string
+    refundDesc: string
+    cancellationTitle: string
+    cancellationDesc: string
+    terms: {
+      aboutTitle: string
+      aboutBody: string
+      whatWeDoTitle: string
+      whatWeDoBody: string
+      whatWeDoListIntro: string
+      programAshiyana: string
+      programChitoor: string
+      programMasjid: string
+      programMedical: string
+      donationsTitle: string
+      donationsBody1: string
+      donationsBody2: string
+      donationsBody3: string
+      donationsBody4: string
+      responsibilitiesTitle: string
+      responsibilitiesBody: string
+      contentTitle: string
+      contentBody: string
+      paymentsTitle: string
+      paymentsBody: string
+      ipTitle: string
+      ipBody: string
+      liabilityTitle: string
+      liabilityBody: string
+      lawTitle: string
+      lawBody: string
+      changesTitle: string
+      changesBody: string
+    }
+    privacy: {
+      whoTitle: string
+      whoBody: string
+      collectTitle: string
+      collectIntro: string
+      collectForm: string
+      collectDonation: string
+      collectPayment: string
+      collectPrefs: string
+      useTitle: string
+      useIntro: string
+      useConfirm: string
+      use80g: string
+      useReply: string
+      useBooks: string
+      useProtect: string
+      useNoSell: string
+      shareTitle: string
+      shareIntro: string
+      shareRazorpay: string
+      shareBank: string
+      shareAudit: string
+      shareHost: string
+      shareProviders: string
+      retainTitle: string
+      retainBody: string
+      choicesTitle: string
+      choicesBody: string
+      childrenTitle: string
+      childrenBody: string
+      changesTitle: string
+      changesBody: string
+    }
+    refund: {
+      notRefundableTitle: string
+      notRefundableBody: string
+      whenTitle: string
+      whenIntro: string
+      whenDuplicate: string
+      whenFailed: string
+      whenMistake: string
+      whenUnauthorised: string
+      whenSpent: string
+      howTitle: string
+      howBody: string
+      howReply: string
+      timelineTitle: string
+      timelineBody: string
+      failedTitle: string
+      failedBody: string
+    }
+    cancellation: {
+      beforeTitle: string
+      beforeBody: string
+      beforeNoSub: string
+      afterTitle: string
+      afterLead: string
+      afterTrail: string
+      ifHifTitle: string
+      ifHifBody: string
+      volunteerTitle: string
+      volunteerBody: string
+      shippingTitle: string
+      shippingBody: string
+    }
+  }
 }
 
 export const translations: Record<Language, any> = {
@@ -945,6 +1054,149 @@ export const translations: Record<Language, any> = {
       addressFull: 'Masjid Ehsaan Complex, Kankanady, Mangalore – 575002',
       slogan: 'Empowering Communities, Transforming Lives with Compassion & Dignity',
       developedBy: 'Developed by'
+    },
+    legal: {
+      lastUpdated: 'Last updated: {date}',
+      lastUpdatedDate: '28 September 2026',
+      relatedNav: 'Related policies',
+      orgRegisteredHq: 'Registered NGO under the Indian Trusts Act, headquartered in Mangaluru.',
+      termsTitle: 'Terms and Conditions',
+      termsDesc: 'How this website and donations to Highland Islamic Forum (HIF INDIA) work.',
+      privacyTitle: 'Privacy Policy',
+      privacyDesc: 'What personal information HIF INDIA collects, why we use it, and who we share it with.',
+      refundTitle: 'Refund Policy',
+      refundDesc: 'When a donation to HIF INDIA can be refunded, and how long that takes.',
+      cancellationTitle: 'Cancellation Policy',
+      cancellationDesc: 'When you can cancel a donation or a volunteer request to HIF INDIA.',
+      terms: {
+        aboutTitle: 'About these terms',
+        aboutBody:
+          'These terms apply to your use of the HIF INDIA website and to any donation you make to Highland Islamic Forum (HIF INDIA), a registered NGO under the Indian Trusts Act. By using the website or making a donation, you agree to these terms, our Privacy Policy, Refund Policy, and Cancellation Policy.',
+        whatWeDoTitle: 'What we do',
+        whatWeDoBody:
+          'HIF INDIA is a grassroots humanitarian trust based in Mangaluru. The website describes our programmes and lets supporters contribute to them. We do not sell goods. A donation is a voluntary contribution, not a purchase of a product or service.',
+        whatWeDoListIntro: 'Our main programmes are:',
+        programAshiyana: 'Project Ashiyana — permanent housing for homeless and destitute families',
+        programChitoor: 'HIF CHITOOR (D.U.R.J) — residential care, Hifz, and schooling for orphaned children',
+        programMasjid: 'Masjid Development — restoration and upkeep of rural masjids',
+        programMedical: 'HIF Medical Cell — free medical-equipment support and blood-donation coordination',
+        donationsTitle: 'Donations and pricing',
+        donationsBody1:
+          'You choose the amount. Suggested amounts on a project page are guidance only. There is no minimum fee to browse the website, and we do not charge a subscription.',
+        donationsBody2:
+          'You may donate by bank transfer or UPI to the HIF INDIA account shown on the website, or by an online payment processed by our payment partner, Razorpay. Please confirm the beneficiary name is HIF INDIA before you pay.',
+        donationsBody3:
+          'Donations marked for a specific project are used for that project’s materials, labour, meals, or medical relief. HIF INDIA does not take an administrative commission on those gifts. A payment gateway may deduct its own processing charge before the amount reaches us.',
+        donationsBody4:
+          'Where applicable, donations are eligible for 80G tax exemption under the Income Tax Act. Share your payment receipt with us on WhatsApp or email and we will issue the certificate.',
+        responsibilitiesTitle: 'Your responsibilities',
+        responsibilitiesBody:
+          'You must give accurate contact details when you ask for a receipt, and you must use funds you are allowed to give. Do not use the website to send false, harmful, or unlawful content, or to interfere with the site.',
+        contentTitle: 'Website content',
+        contentBody:
+          'Project updates, photographs, and figures are published in good faith and may change as work in the field changes. Nothing on the site is a promise of a particular construction date or a personal benefit in return for a donation.',
+        paymentsTitle: 'Payments',
+        paymentsBody:
+          'Online card, net-banking, and UPI payments are handled by Razorpay and your bank. We do not store your full card number or UPI PIN. A payment is complete only when we or our payment partner confirms it. Bank delays and failed UPI attempts are outside our control.',
+        ipTitle: 'Intellectual property',
+        ipBody:
+          'The HIF INDIA name, logo, and website content belong to Highland Islamic Forum unless a credit says otherwise. You may share links to our pages. Please do not copy our photographs or logo for another organisation without written permission.',
+        liabilityTitle: 'Liability',
+        liabilityBody:
+          'The website is provided as a public information and donation channel. We are not liable for loss caused by a payment-app error, a bank delay, or a temporary outage of this site, to the extent allowed by Indian law.',
+        lawTitle: 'Governing law',
+        lawBody:
+          'These terms are governed by the laws of India. Courts in Mangaluru, Karnataka, have jurisdiction over disputes arising from this website or a donation to HIF INDIA.',
+        changesTitle: 'Changes',
+        changesBody:
+          'We may update these terms when our programmes or payment methods change. The date at the top of this page is the latest version. Continued use of the website after an update means you accept the revised terms.'
+      },
+      privacy: {
+        whoTitle: 'Who is responsible',
+        whoBody:
+          'Highland Islamic Forum (HIF INDIA) is responsible for personal information collected through this website and through our phone, email, and WhatsApp channels.',
+        collectTitle: 'Information we collect',
+        collectIntro: 'We collect only what we need to receive donations, answer enquiries, and run our programmes:',
+        collectForm:
+          'Details you send us: your name, phone number, city, and volunteer skills when you use the Get Involved form (it opens WhatsApp with the message you typed), and anything you later write to us by email, phone, or WhatsApp.',
+        collectDonation:
+          'Donation records: amount, date, project or cause if you named one, and a transaction reference (such as a UTR or payment id) so we can issue a receipt and, where applicable, an 80G certificate.',
+        collectPayment:
+          'Payment details entered on Razorpay’s page (card, net-banking, or UPI) are collected by Razorpay and your bank. We do not receive or store your full card number, CVV, or UPI PIN.',
+        collectPrefs:
+          'A language choice and a light/dark display preference saved in your browser (local storage). We do not run advertising trackers on this website.',
+        useTitle: 'How we use it',
+        useIntro: 'We use this information to:',
+        useConfirm: 'Confirm and receipt your donation',
+        use80g: 'Issue 80G certificates when you ask and the donation qualifies',
+        useReply: 'Reply to volunteer, medical-equipment, and general enquiries',
+        useBooks: 'Keep ordinary books of account required of a registered trust',
+        useProtect: 'Protect the organisation against mistaken or unauthorised payments',
+        useNoSell: 'We do not sell personal information, and we do not use it for third-party advertising.',
+        shareTitle: 'Who we share it with',
+        shareIntro: 'We share information only with:',
+        shareRazorpay: 'Razorpay and your bank or UPI app, to complete a payment you start',
+        shareBank: 'Our bankers (HDFC Bank) for donations received by transfer',
+        shareAudit: 'Auditors and authorities when Indian law requires it',
+        shareHost: 'A service provider who hosts email or this website, only to operate that service',
+        shareProviders:
+          'Razorpay processes payments under its own privacy policy. Firebase Hosting serves this website. Those providers see technical data such as IP address that is needed to deliver the page or the payment.',
+        retainTitle: 'How long we keep it',
+        retainBody:
+          'Donation and receipt records are kept for as long as Indian tax and trust law requires. Enquiry messages are kept while we are corresponding with you and for a reasonable period afterwards. You can ask us to delete a volunteer enquiry if we no longer need it for a legal record.',
+        choicesTitle: 'Your choices',
+        choicesBody:
+          'You may ask what donation or enquiry records we hold about you, ask us to correct them, or ask us to stop contacting you. Write to info@hif.org.in or call the numbers at the top of this page. We may need to keep a donation record even after a contact request, because receipts and accounts cannot be deleted.',
+        childrenTitle: 'Children',
+        childrenBody:
+          'This website is for adult donors and volunteers. We do not knowingly collect personal information from children through the site. Programme information about children in our care is published only with the consent of the guardian or the institution, and without exposing private records.',
+        changesTitle: 'Changes',
+        changesBody: 'If we start collecting new kinds of information, we will update this page and change the date at the top.'
+      },
+      refund: {
+        notRefundableTitle: 'Donations are generally not refundable',
+        notRefundableBody:
+          'A gift to Highland Islamic Forum (HIF INDIA) is a voluntary donation to a registered NGO, not a purchase of goods. HIF INDIA does not ship products and does not charge a delivery fee. Once a donation is successfully received, it is allocated to housing, orphan care, masjid work, medical relief, or the general humanitarian fund, and it is not refundable as a change of mind.',
+        whenTitle: 'When we will refund',
+        whenIntro: 'We will refund a donation in these cases:',
+        whenDuplicate: 'You were charged twice for the same donation (a duplicate payment).',
+        whenFailed: 'Money left your account but HIF INDIA did not receive it because of a technical failure.',
+        whenMistake: 'You paid HIF INDIA by genuine mistake, and the amount has not yet been spent on a project.',
+        whenUnauthorised:
+          'The payment was unauthorised. We will follow up with the bank or Razorpay and refund what they confirm was unauthorised.',
+        whenSpent:
+          'A donation already spent on a named project — for example materials for a house, a student’s support, or medical aid — cannot be refunded.',
+        howTitle: 'How to request a refund',
+        howBody:
+          'Email info@hif.org.in or message us on WhatsApp within 7 days of the transaction. Include your name, phone number, date, amount, the project if you chose one, and the UTR, UPI reference, or Razorpay payment id.',
+        howReply: 'We will review the request and reply within 7 working days.',
+        timelineTitle: 'Refund timeline',
+        timelineBody:
+          'If we approve the refund, we send it to the original payment method (the same card, UPI id, or bank account). We initiate the refund within 7 working days of approval. Banks, UPI apps, and Razorpay may take a further 5 to 7 working days to show the credit. We cannot refund in cash or to a different person’s account.',
+        failedTitle: 'Failed payments',
+        failedBody:
+          'If a payment fails or you close the page before paying, no donation is taken and there is nothing to refund. If your bank shows a debit that never reached us, write to us with the reference number and we will trace it with the bank or Razorpay.'
+      },
+      cancellation: {
+        beforeTitle: 'Before you pay',
+        beforeBody:
+          'You may cancel a donation at any time before payment is completed. Close the donation window, or do not finish the UPI, card, or net-banking step. If you do not pay, nothing is charged and no cancellation request is needed.',
+        beforeNoSub: 'HIF INDIA does not set up automatic recurring debits. There is no subscription or membership fee to cancel.',
+        afterTitle: 'After a successful payment',
+        afterLead:
+          'A completed donation cannot be cancelled as an order, because it is a voluntary gift and not a product purchase. If the payment was duplicated, failed on our side, or made by mistake, use the',
+        afterTrail:
+          '. Requests must reach us within 7 days of the transaction. Approved refunds are initiated within 7 working days and then follow your bank or Razorpay’s usual credit time of about 5 to 7 working days.',
+        ifHifTitle: 'If HIF cancels an activity',
+        ifHifBody:
+          'If we cancel a drive or event for which you gave a specifically marked donation, and that amount has not been spent, we will contact you. You may ask us to move it to the nearest related programme, or to refund it under the Refund Policy.',
+        volunteerTitle: 'Volunteer and enquiry requests',
+        volunteerBody:
+          'You may withdraw a volunteer signup or any other enquiry by emailing info@hif.org.in or messaging us on WhatsApp. Tell us the phone number you used. We will stop following up on that request. This does not cancel a donation already received.',
+        shippingTitle: 'No shipping to cancel',
+        shippingBody:
+          'We do not sell or ship physical goods through this website. There is no shipping order and no shipping cancellation. Medical equipment, where provided by the Medical Cell, is a programme service arranged with the family directly, not an online store order.'
+      }
     }
   },
 
@@ -1429,6 +1681,149 @@ export const translations: Record<Language, any> = {
       addressFull: 'ಮಸೀದಿ ಎಹ್ಸಾನ್ ಕಾಂಪ್ಲೆಕ್ಸ್, ಕಂಕನಾಡಿ, ಮಂಗಳೂರು – 575002',
       slogan: 'ಕರುಣೆ ಮತ್ತು ಗೌರವದಿಂದ ಜನರನ್ನು ಬಲಪಡಿಸಿ, ಜೀವನ ಬದಲಿಸಿ',
       developedBy: 'ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ್ದು'
+    },
+    legal: {
+      lastUpdated: 'ಕೊನೆಯ ಬದಲಾವಣೆ: {date}',
+      lastUpdatedDate: '28 ಸೆಪ್ಟೆಂಬರ್ 2026',
+      relatedNav: 'ಸಂಬಂಧಿತ ನೀತಿಗಳು',
+      orgRegisteredHq: 'ಭಾರತೀಯ ಟ್ರಸ್ಟ್ ಕಾಯ್ದೆಯಡಿ ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ. ಮುಖ್ಯ ಕಚೇರಿ ಮಂಗಳೂರು.',
+      termsTitle: 'ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು',
+      termsDesc: 'ಈ ವೆಬ್‌ಸೈಟ್ ಮತ್ತು ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) ಗೆ ನೀಡುವ ದೇಣಿಗೆ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ.',
+      privacyTitle: 'ಗೌಪ್ಯತಾ ನೀತಿ',
+      privacyDesc: 'HIF INDIA ಯಾವ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಸಂಗ್ರಹಿಸುತ್ತದೆ, ಏಕೆ ಬಳಸುತ್ತದೆ, ಮತ್ತು ಯಾರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ.',
+      refundTitle: 'ಮರುಪಾವತಿ ನೀತಿ',
+      refundDesc: 'HIF INDIA ಗೆ ನೀಡಿದ ದೇಣಿಗೆಯನ್ನು ಯಾವಾಗ ಮರುಪಾವತಿ ಮಾಡಬಹುದು, ಮತ್ತು ಅದಕ್ಕೆ ಎಷ್ಟು ಸಮಯ ಬೇಕು.',
+      cancellationTitle: 'ರದ್ದುಪಡಿಸುವ ನೀತಿ',
+      cancellationDesc: 'HIF INDIA ಗೆ ದೇಣಿಗೆ ಅಥವಾ ಸ್ವಯಂಸೇವಾ ವಿನಂತಿಯನ್ನು ಯಾವಾಗ ರದ್ದು ಮಾಡಬಹುದು.',
+      terms: {
+        aboutTitle: 'ಈ ನಿಯಮಗಳ ಬಗ್ಗೆ',
+        aboutBody:
+          'ಈ ನಿಯಮಗಳು HIF INDIA ವೆಬ್‌ಸೈಟ್ ಬಳಕೆ ಮತ್ತು ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) — ಭಾರತೀಯ ಟ್ರಸ್ಟ್ ಕಾಯ್ದೆಯಡಿ ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒ — ಗೆ ನೀಡುವ ಯಾವುದೇ ದೇಣಿಗೆಗೆ ಅನ್ವಯಿಸುತ್ತವೆ. ವೆಬ್‌ಸೈಟ್ ಬಳಸಿದರೆ ಅಥವಾ ದೇಣಿಗೆ ನೀಡಿದರೆ, ಈ ನಿಯಮಗಳು, ನಮ್ಮ ಗೌಪ್ಯತಾ ನೀತಿ, ಮರುಪಾವತಿ ನೀತಿ ಮತ್ತು ರದ್ದುಪಡಿಸುವ ನೀತಿಗೆ ನೀವು ಒಪ್ಪುತ್ತೀರಿ.',
+        whatWeDoTitle: 'ನಾವು ಏನು ಮಾಡುತ್ತೇವೆ',
+        whatWeDoBody:
+          'HIF INDIA ಮಂಗಳೂರಿನ ಜನರ ನೆರವಿನ ಟ್ರಸ್ಟ್. ವೆಬ್‌ಸೈಟ್ ನಮ್ಮ ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ವಿವರಿಸುತ್ತದೆ ಮತ್ತು ಬೆಂಬಲಿಗರು ದೇಣಿಗೆ ನೀಡಲು ಅನುವು ಮಾಡುತ್ತದೆ. ನಾವು ಸರಕು ಮಾರಾಟ ಮಾಡುವುದಿಲ್ಲ. ದೇಣಿಗೆ ಸ್ವಯಂಪ್ರೇರಿತ ಕೊಡುಗೆ; ಉತ್ಪನ್ನ ಅಥವಾ ಸೇವೆಯ ಖರೀದಿ ಅಲ್ಲ.',
+        whatWeDoListIntro: 'ನಮ್ಮ ಮುಖ್ಯ ಕಾರ್ಯಕ್ರಮಗಳು:',
+        programAshiyana: 'Project Ashiyana — ನಿರಾಶ್ರಿತ ಮತ್ತು ಬಡ ಕುಟುಂಬಗಳಿಗೆ ಶಾಶ್ವತ ಮನೆ',
+        programChitoor: 'HIF CHITOOR (D.U.R.J) — ಅನಾಥ ಮಕ್ಕಳಿಗೆ ವಸತಿ, ಹಿಫ್ಜ್ ಮತ್ತು ಶಾಲಾ ಶಿಕ್ಷಣ',
+        programMasjid: 'ಮಸೀದಿ ಅಭಿವೃದ್ಧಿ — ಗ್ರಾಮೀಣ ಮಸೀದಿಗಳ ದುರಸ್ತಿ ಮತ್ತು ನಿರ್ವಹಣೆ',
+        programMedical: 'HIF Medical Cell — ಉಚಿತ ವೈದ್ಯಕೀಯ ಉಪಕರಣ ಮತ್ತು ರಕ್ತದಾನ ಸಂಯೋಜನೆ',
+        donationsTitle: 'ದೇಣಿಗೆ ಮತ್ತು ಮೊತ್ತ',
+        donationsBody1:
+          'ಮೊತ್ತವನ್ನು ನೀವು ಆರಿಸುತ್ತೀರಿ. ಯೋಜನೆ ಪುಟದ ಸೂಚಿತ ಮೊತ್ತಗಳು ಮಾರ್ಗದರ್ಶನ ಮಾತ್ರ. ವೆಬ್‌ಸೈಟ್ ನೋಡಲು ಕನಿಷ್ಠ ಶುಲ್ಕವಿಲ್ಲ, ಚಂದಾ ಶುಲ್ಕವೂ ಇಲ್ಲ.',
+        donationsBody2:
+          'ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ತೋರಿಸಿರುವ HIF INDIA ಖಾತೆಗೆ ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆ ಅಥವಾ UPI ಮೂಲಕ, ಅಥವಾ ನಮ್ಮ ಪಾವತಿ ಪಾಲುದಾರ Razorpay ಮೂಲಕ ಆನ್‌ಲೈನ್ ಪಾವತಿ ಮಾಡಬಹುದು. ಪಾವತಿಸುವ ಮುನ್ನ ಲಾಭಾರ್ಥಿ ಹೆಸರು HIF INDIA ಎಂದು ದೃಢಪಡಿಸಿ.',
+        donationsBody3:
+          'ನಿರ್ದಿಷ್ಟ ಯೋಜನೆಗೆ ಗುರುತು ಮಾಡಿದ ದೇಣಿಗೆಯನ್ನು ಆ ಯೋಜನೆಯ ಸಾಮಗ್ರಿ, ಕೂಲಿ, ಊಟ ಅಥವಾ ವೈದ್ಯಕೀಯ ನೆರವಿಗೆ ಬಳಸಲಾಗುತ್ತದೆ. HIF INDIA ಆ ದೇಣಿಗೆಯ ಮೇಲೆ ಆಡಳಿತ ಕಮಿಷನ್ ತೆಗೆದುಕೊಳ್ಳುವುದಿಲ್ಲ. ಪಾವತಿ ಗೇಟ್‌ವೇ ತನ್ನ ಪ್ರಕ್ರಿಯಾ ಶುಲ್ಕವನ್ನು ಕಡಿತಗೊಳಿಸಬಹುದು.',
+        donationsBody4:
+          'ಅನ್ವಯವಾಗುವಲ್ಲಿ, ದೇಣಿಗೆಗಳಿಗೆ ಆದಾಯ ತೆರಿಗೆ ಕಾಯ್ದೆಯ 80G ವಿನಾಯಿತಿ ಸಿಗುತ್ತದೆ. ಪಾವತಿ ರಸೀದಿಯನ್ನು WhatsApp ಅಥವಾ ಇಮೇಲ್‌ನಲ್ಲಿ ಹಂಚಿ; ನಾವು ಪ್ರಮಾಣಪತ್ರ ನೀಡುತ್ತೇವೆ.',
+        responsibilitiesTitle: 'ನಿಮ್ಮ ಜವಾಬ್ದಾರಿಗಳು',
+        responsibilitiesBody:
+          'ರಸೀದಿ ಕೇಳುವಾಗ ಸರಿಯಾದ ಸಂಪರ್ಕ ವಿವರ ನೀಡಿ, ಮತ್ತು ನೀವು ಕೊಡಲು ಅನುಮತಿ ಇರುವ ಹಣವನ್ನು ಮಾತ್ರ ಬಳಸಿ. ಸುಳ್ಳು, ಹಾನಿಕಾರಕ ಅಥವಾ ಕಾನೂನುಬಾಹಿರ ವಿಷಯ ಕಳುಹಿಸಬೇಡಿ, ಸೈಟ್‌ಗೆ ಅಡ್ಡಿ ಮಾಡಬೇಡಿ.',
+        contentTitle: 'ವೆಬ್‌ಸೈಟ್ ವಿಷಯ',
+        contentBody:
+          'ಯೋಜನೆ ನವೀಕರಣಗಳು, ಛಾಯಾಚಿತ್ರಗಳು ಮತ್ತು ಅಂಕಿಗಳನ್ನು ಒಳ್ಳೆಯ ನಂಬಿಕೆಯಿಂದ ಪ್ರಕಟಿಸಲಾಗುತ್ತದೆ; ಕ್ಷೇತ್ರದ ಕೆಲಸ ಬದಲಾದಂತೆ ಇವು ಬದಲಾಗಬಹುದು. ನಿರ್ದಿಷ್ಟ ನಿರ್ಮಾಣ ದಿನಾಂಕ ಅಥವಾ ದೇಣಿಗೆಗೆ ವೈಯಕ್ತಿಕ ಲಾಭದ ಭರವಸೆ ಇಲ್ಲ.',
+        paymentsTitle: 'ಪಾವತಿಗಳು',
+        paymentsBody:
+          'ಆನ್‌ಲೈನ್ ಕಾರ್ಡ್, ನೆಟ್-ಬ್ಯಾಂಕಿಂಗ್ ಮತ್ತು UPI ಪಾವತಿಗಳನ್ನು Razorpay ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ನಿರ್ವಹಿಸುತ್ತವೆ. ನಿಮ್ಮ ಪೂರ್ಣ ಕಾರ್ಡ್ ಸಂಖ್ಯೆ ಅಥವಾ UPI PIN ನಾವು ಇಡುವುದಿಲ್ಲ. ನಾವು ಅಥವಾ ಪಾವತಿ ಪಾಲುದಾರ ದೃಢಪಡಿಸಿದಾಗ ಮಾತ್ರ ಪಾವತಿ ಪೂರ್ಣ. ಬ್ಯಾಂಕ್ ವಿಳಂಬ ಮತ್ತು ವಿಫಲ UPI ನಮ್ಮ ನಿಯಂತ್ರಣದ ಹೊರಗೆ.',
+        ipTitle: 'ಬೌದ್ಧಿಕ ಆಸ್ತಿ',
+        ipBody:
+          'HIF INDIA ಹೆಸರು, ಲೋಗೋ ಮತ್ತು ವೆಬ್‌ಸೈಟ್ ವಿಷಯ ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್‌ಗೆ ಸೇರಿದವು, ಕ್ರೆಡಿಟ್ ಬೇರೆ ಹೇಳದ ಹೊರತು. ನಮ್ಮ ಪುಟಗಳ ಲಿಂಕ್ ಹಂಚಬಹುದು. ಬೇರೆ ಸಂಸ್ಥೆಗಾಗಿ ನಮ್ಮ ಛಾಯಾಚಿತ್ರ ಅಥವಾ ಲೋಗೋವನ್ನು ಲಿಖಿತ ಅನುಮತಿ ಇಲ್ಲದೆ ನಕಲಿಸಬೇಡಿ.',
+        liabilityTitle: 'ಹೊಣೆಗಾರಿಕೆ',
+        liabilityBody:
+          'ಈ ವೆಬ್‌ಸೈಟ್ ಸಾರ್ವಜನಿಕ ಮಾಹಿತಿ ಮತ್ತು ದೇಣಿಗೆ ಮಾರ್ಗ. ಪಾವತಿ ಆಪ್ ದೋಷ, ಬ್ಯಾಂಕ್ ವಿಳಂಬ ಅಥವಾ ತಾತ್ಕಾಲಿಕ ಸೈಟ್ ನಿಲುಗಡೆಯಿಂದಾಗುವ ನಷ್ಟಕ್ಕೆ, ಭಾರತೀಯ ಕಾನೂನು ಅನುಮತಿಸುವ ಮಟ್ಟಿಗೆ, ನಾವು ಹೊಣೆಯಲ್ಲ.',
+        lawTitle: 'ಅನ್ವಯಿಸುವ ಕಾನೂನು',
+        lawBody:
+          'ಈ ನಿಯಮಗಳಿಗೆ ಭಾರತದ ಕಾನೂನು ಅನ್ವಯಿಸುತ್ತದೆ. ಈ ವೆಬ್‌ಸೈಟ್ ಅಥವಾ HIF INDIA ಗೆ ದೇಣಿಗೆಯಿಂದ ಉಂಟಾಗುವ ವಿವಾದಗಳಿಗೆ ಮಂಗಳೂರು, ಕರ್ನಾಟಕ ನ್ಯಾಯಾಲಯಗಳು ಅಧಿಕಾರ ಹೊಂದಿವೆ.',
+        changesTitle: 'ಬದಲಾವಣೆಗಳು',
+        changesBody:
+          'ಕಾರ್ಯಕ್ರಮಗಳು ಅಥವಾ ಪಾವತಿ ವಿಧಾನ ಬದಲಾದಾಗ ಈ ನಿಯಮಗಳನ್ನು ನವೀಕರಿಸಬಹುದು. ಈ ಪುಟದ ಮೇಲಿನ ದಿನಾಂಕ ಇತ್ತೀಚಿನ ಆವೃತ್ತಿ. ನವೀಕರಣದ ನಂತರ ವೆಬ್‌ಸೈಟ್ ಬಳಸುವುದು ತಿದ್ದುಪಡಿ ನಿಯಮಗಳ ಒಪ್ಪಿಗೆ.'
+      },
+      privacy: {
+        whoTitle: 'ಯಾರು ಜವಾಬ್ದಾರಿ',
+        whoBody:
+          'ಈ ವೆಬ್‌ಸೈಟ್ ಮತ್ತು ನಮ್ಮ ದೂರವಾಣಿ, ಇಮೇಲ್, WhatsApp ಮಾರ್ಗಗಳ ಮೂಲಕ ಸಂಗ್ರಹಿಸಿದ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಗೆ ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) ಜವಾಬ್ದಾರಿ.',
+        collectTitle: 'ನಾವು ಸಂಗ್ರಹಿಸುವ ಮಾಹಿತಿ',
+        collectIntro: 'ದೇಣಿಗೆ ಸ್ವೀಕರಿಸಲು, ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಲು ಮತ್ತು ಕಾರ್ಯಕ್ರಮ ನಡೆಸಲು ಬೇಕಾದಷ್ಟು ಮಾತ್ರ ಸಂಗ್ರಹಿಸುತ್ತೇವೆ:',
+        collectForm:
+          'ನೀವು ಕಳುಹಿಸುವ ವಿವರ: Get Involved ಫಾರ್ಮ್‌ನಲ್ಲಿ ಹೆಸರು, ದೂರವಾಣಿ, ನಗರ, ಸ್ವಯಂಸೇವಾ ಕೌಶಲ್ಯ (ಇದು ನೀವು ಟೈಪ್ ಮಾಡಿದ ಸಂದೇಶದೊಂದಿಗೆ WhatsApp ತೆರೆಯುತ್ತದೆ), ಮತ್ತು ನಂತರ ಇಮೇಲ್, ದೂರವಾಣಿ ಅಥವಾ WhatsApp ನಲ್ಲಿ ಬರೆಯುವುದು.',
+        collectDonation:
+          'ದೇಣಿಗೆ ದಾಖಲೆ: ಮೊತ್ತ, ದಿನಾಂಕ, ನೀವು ಹೆಸರಿಸಿದ ಯೋಜನೆ ಅಥವಾ ಉದ್ದೇಶ, ಮತ್ತು ವಹಿವಾಟು ಉಲ್ಲೇಖ (UTR ಅಥವಾ ಪಾವತಿ id) — ರಸೀದಿ ಮತ್ತು ಅನ್ವಯವಾಗುವಲ್ಲಿ 80G ಪ್ರಮಾಣಪತ್ರಕ್ಕಾಗಿ.',
+        collectPayment:
+          'Razorpay ಪುಟದಲ್ಲಿ ನಮೂದಿಸುವ ಪಾವತಿ ವಿವರ (ಕಾರ್ಡ್, ನೆಟ್-ಬ್ಯಾಂಕಿಂಗ್, ಅಥವಾ UPI) Razorpay ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಸಂಗ್ರಹಿಸುತ್ತವೆ. ಪೂರ್ಣ ಕಾರ್ಡ್ ಸಂಖ್ಯೆ, CVV ಅಥವಾ UPI PIN ನಾವು ಪಡೆಯುವುದಿಲ್ಲ ಅಥವಾ ಇಡುವುದಿಲ್ಲ.',
+        collectPrefs:
+          'ಭಾಷೆ ಆಯ್ಕೆ ಮತ್ತು ತಿಳಿ/ಕತ್ತಲೆ ಪ್ರದರ್ಶನ ಆದ್ಯತೆ ನಿಮ್ಮ ಬ್ರೌಸರ್‌ನಲ್ಲಿ (local storage) ಉಳಿಯುತ್ತದೆ. ಈ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ಜಾಹೀರಾತು ಟ್ರಾಕರ್‌ಗಳಿಲ್ಲ.',
+        useTitle: 'ನಾವು ಹೇಗೆ ಬಳಸುತ್ತೇವೆ',
+        useIntro: 'ಈ ಮಾಹಿತಿಯನ್ನು ನಾವು ಬಳಸುವುದು:',
+        useConfirm: 'ದೇಣಿಗೆಯನ್ನು ದೃಢಪಡಿಸಿ ರಸೀದಿ ನೀಡಲು',
+        use80g: 'ನೀವು ಕೇಳಿದಾಗ ಮತ್ತು ದೇಣಿಗೆ ಅರ್ಹವಾದಾಗ 80G ಪ್ರಮಾಣಪತ್ರ ನೀಡಲು',
+        useReply: 'ಸ್ವಯಂಸೇವೆ, ವೈದ್ಯಕೀಯ ಉಪಕರಣ ಮತ್ತು ಸಾಮಾನ್ಯ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಲು',
+        useBooks: 'ನೋಂದಾಯಿತ ಟ್ರಸ್ಟ್‌ಗೆ ಬೇಕಾದ ಸಾಮಾನ್ಯ ಲೆಕ್ಕಪತ್ರ ಇಡಲು',
+        useProtect: 'ತಪ್ಪು ಅಥವಾ ಅನಧಿಕೃತ ಪಾವತಿಗಳಿಂದ ಸಂಸ್ಥೆಯನ್ನು ರಕ್ಷಿಸಲು',
+        useNoSell: 'ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಮಾರಾಟ ಮಾಡುವುದಿಲ್ಲ, ಮೂರನೇ ವ್ಯಕ್ತಿಯ ಜಾಹೀರಾತಿಗೆ ಬಳಸುವುದಿಲ್ಲ.',
+        shareTitle: 'ಯಾರೊಂದಿಗೆ ಹಂಚುತ್ತೇವೆ',
+        shareIntro: 'ಮಾಹಿತಿ ಹಂಚುವುದು ಇವರೊಂದಿಗೆ ಮಾತ್ರ:',
+        shareRazorpay: 'ನೀವು ಪ್ರಾರಂಭಿಸಿದ ಪಾವತಿ ಪೂರೈಸಲು Razorpay ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಅಥವಾ UPI ಆಪ್',
+        shareBank: 'ವರ್ಗಾವಣೆಯಿಂದ ಬಂದ ದೇಣಿಗೆಗಾಗಿ ನಮ್ಮ ಬ್ಯಾಂಕರ್‌ಗಳು (HDFC Bank)',
+        shareAudit: 'ಭಾರತೀಯ ಕಾನೂನು ಬೇಡಿದಾಗ ಲೆಕ್ಕಪರಿಶೋಧಕರು ಮತ್ತು ಅಧಿಕಾರಿಗಳು',
+        shareHost: 'ಇಮೇಲ್ ಅಥವಾ ಈ ವೆಬ್‌ಸೈಟ್ ಹೋಸ್ಟ್ ಮಾಡುವ ಸೇವಾ ಪೂರೈಕೆದಾರ, ಆ ಸೇವೆ ನಡೆಸಲು ಮಾತ್ರ',
+        shareProviders:
+          'Razorpay ತನ್ನ ಗೌಪ್ಯತಾ ನೀತಿಯಡಿ ಪಾವತಿ ಪ್ರಕ್ರಿಯೆ ಮಾಡುತ್ತದೆ. ಈ ವೆಬ್‌ಸೈಟ್ Firebase Hosting ನಿಂದ ನೀಡಲಾಗುತ್ತದೆ. ಪುಟ ಅಥವಾ ಪಾವತಿ ತಲುಪಿಸಲು ಬೇಕಾದ IP ವಿಳಾಸದಂತಹ ತಾಂತ್ರಿಕ ದತ್ತಾಂಶ ಅವರಿಗೆ ಕಾಣುತ್ತದೆ.',
+        retainTitle: 'ಎಷ್ಟು ಕಾಲ ಇಡುತ್ತೇವೆ',
+        retainBody:
+          'ದೇಣಿಗೆ ಮತ್ತು ರಸೀದಿ ದಾಖಲೆಗಳನ್ನು ಭಾರತೀಯ ತೆರಿಗೆ ಮತ್ತು ಟ್ರಸ್ಟ್ ಕಾನೂನು ಬೇಡುವವರೆಗೆ ಇಡಲಾಗುತ್ತದೆ. ಪತ್ರವ್ಯವಹಾರ ನಡೆಯುವಾಗ ಮತ್ತು ನಂತರ ಸಮಂಜಸ ಅವಧಿ ಪ್ರಶ್ನೆ ಸಂದೇಶಗಳನ್ನು ಇಡುತ್ತೇವೆ. ಕಾನೂನು ದಾಖಲೆಗೆ ಬೇಕಿಲ್ಲದ ಸ್ವಯಂಸೇವಾ ಪ್ರಶ್ನೆಯನ್ನು ಅಳಿಸಲು ಕೇಳಬಹುದು.',
+        choicesTitle: 'ನಿಮ್ಮ ಆಯ್ಕೆಗಳು',
+        choicesBody:
+          'ನಿಮ್ಮ ಬಗ್ಗೆ ಇರುವ ದೇಣಿಗೆ ಅಥವಾ ಪ್ರಶ್ನೆ ದಾಖಲೆ ಏನು ಎಂದು ಕೇಳಬಹುದು, ತಿದ್ದುಪಡಿ ಕೇಳಬಹುದು, ಅಥವಾ ಸಂಪರ್ಕ ನಿಲ್ಲಿಸಲು ಕೇಳಬಹುದು. info@hif.org.in ಗೆ ಬರೆಯಿರಿ ಅಥವಾ ಈ ಪುಟದ ಮೇಲಿನ ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿ. ರಸೀದಿ ಮತ್ತು ಲೆಕ್ಕ ಅಳಿಸಲಾಗದುದರಿಂದ, ಸಂಪರ್ಕ ವಿನಂತಿಯ ನಂತರವೂ ದೇಣಿಗೆ ದಾಖಲೆ ಇಡಬೇಕಾಗಬಹುದು.',
+        childrenTitle: 'ಮಕ್ಕಳು',
+        childrenBody:
+          'ಈ ವೆಬ್‌ಸೈಟ್ ವಯಸ್ಕ ದಾನಿಗಳು ಮತ್ತು ಸ್ವಯಂಸೇವಕರಿಗಾಗಿ. ಸೈಟ್ ಮೂಲಕ ಮಕ್ಕಳ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಸಂಗ್ರಹಿಸುವುದಿಲ್ಲ. ನಮ್ಮ ಆರೈಕೆಯಲ್ಲಿರುವ ಮಕ್ಕಳ ಕಾರ್ಯಕ್ರಮ ಮಾಹಿತಿ ಪೋಷಕ ಅಥವಾ ಸಂಸ್ಥೆಯ ಒಪ್ಪಿಗೆಯೊಂದಿಗೆ ಮಾತ್ರ, ಖಾಸಗಿ ದಾಖಲೆ ಬಹಿರಂಗಪಡಿಸದೆ ಪ್ರಕಟಿಸಲಾಗುತ್ತದೆ.',
+        changesTitle: 'ಬದಲಾವಣೆಗಳು',
+        changesBody: 'ಹೊಸ ರೀತಿಯ ಮಾಹಿತಿ ಸಂಗ್ರಹಿಸಲು ಪ್ರಾರಂಭಿಸಿದರೆ ಈ ಪುಟ ನವೀಕರಿಸಿ ಮೇಲಿನ ದಿನಾಂಕ ಬದಲಾಯಿಸುತ್ತೇವೆ.'
+      },
+      refund: {
+        notRefundableTitle: 'ದೇಣಿಗೆ ಸಾಮಾನ್ಯವಾಗಿ ಮರುಪಾವತಿ ಆಗುವುದಿಲ್ಲ',
+        notRefundableBody:
+          'ಹೈಲ್ಯಾಂಡ್ ಇಸ್ಲಾಮಿಕ್ ಫೋರಮ್ (HIF INDIA) ಗೆ ನೀಡುವುದು ನೋಂದಾಯಿತ ಎನ್‌ಜಿಒಗೆ ಸ್ವಯಂಪ್ರೇರಿತ ದೇಣಿಗೆ, ಸರಕು ಖರೀದಿ ಅಲ್ಲ. HIF INDIA ಉತ್ಪನ್ನ ಕಳುಹಿಸುವುದಿಲ್ಲ, ಡೆಲಿವರಿ ಶುಲ್ಕ ವಿಧಿಸುವುದಿಲ್ಲ. ದೇಣಿಗೆ ಯಶಸ್ವಿಯಾಗಿ ಬಂದ ನಂತರ ಅದನ್ನು ವಸತಿ, ಅನಾಥ ಆರೈಕೆ, ಮಸೀದಿ ಕೆಲಸ, ವೈದ್ಯಕೀಯ ನೆರವು ಅಥವಾ ಸಾಮಾನ್ಯ ಮಾನವೀಯ ನಿಧಿಗೆ ನಿಯೋಜಿಸಲಾಗುತ್ತದೆ; ಮನಸ್ಸು ಬದಲಾದುದಕ್ಕೆ ಮರುಪಾವತಿ ಇಲ್ಲ.',
+        whenTitle: 'ಯಾವಾಗ ಮರುಪಾವತಿ ಮಾಡುತ್ತೇವೆ',
+        whenIntro: 'ಈ ಸಂದರ್ಭಗಳಲ್ಲಿ ದೇಣಿಗೆ ಮರುಪಾವತಿ ಮಾಡುತ್ತೇವೆ:',
+        whenDuplicate: 'ಅದೇ ದೇಣಿಗೆಗೆ ಎರಡು ಬಾರಿ ಹಣ ಕಡಿತವಾಯಿತು (ಎರಡು ಬಾರಿ ಪಾವತಿ).',
+        whenFailed: 'ನಿಮ್ಮ ಖಾತೆಯಿಂದ ಹಣ ಹೊರಟಿತು ಆದರೆ ತಾಂತ್ರಿಕ ವೈಫಲ್ಯದಿಂದ HIF INDIA ಗೆ ಬರಲಿಲ್ಲ.',
+        whenMistake: 'ನಿಜವಾದ ತಪ್ಪಿನಿಂದ HIF INDIA ಗೆ ಪಾವತಿಸಿದಿರಿ, ಮತ್ತು ಆ ಮೊತ್ತ ಇನ್ನೂ ಯೋಜನೆಗೆ ಖರ್ಚಾಗಿಲ್ಲ.',
+        whenUnauthorised:
+          'ಪಾವತಿ ಅನಧಿಕೃತವಾಗಿತ್ತು. ಬ್ಯಾಂಕ್ ಅಥವಾ Razorpay ಜೊತೆ ಪರಿಶೀಲಿಸಿ, ಅವರು ಅನಧಿಕೃತ ಎಂದು ದೃಢಪಡಿಸಿದ ಮೊತ್ತವನ್ನು ಮರುಪಾವತಿ ಮಾಡುತ್ತೇವೆ.',
+        whenSpent:
+          'ಹೆಸರಿಸಿದ ಯೋಜನೆಗೆ ಈಗಾಗಲೇ ಖರ್ಚಾದ ದೇಣಿಗೆ — ಉದಾಹರಣೆಗೆ ಮನೆಯ ಸಾಮಗ್ರಿ, ವಿದ್ಯಾರ್ಥಿ ಬೆಂಬಲ, ಅಥವಾ ವೈದ್ಯಕೀಯ ನೆರವು — ಮರುಪಾವತಿ ಆಗುವುದಿಲ್ಲ.',
+        howTitle: 'ಮರುಪಾವತಿ ಹೇಗೆ ಕೇಳುವುದು',
+        howBody:
+          'ವಹಿವಾಟಿನ 7 ದಿನಗಳೊಳಗೆ info@hif.org.in ಗೆ ಇಮೇಲ್ ಮಾಡಿ ಅಥವಾ WhatsApp ನಲ್ಲಿ ಸಂದೇಶ ಕಳುಹಿಸಿ. ಹೆಸರು, ದೂರವಾಣಿ, ದಿನಾಂಕ, ಮೊತ್ತ, ಆಯ್ದ ಯೋಜನೆ, ಮತ್ತು UTR, UPI ಉಲ್ಲೇಖ ಅಥವಾ Razorpay ಪಾವತಿ id ಸೇರಿಸಿ.',
+        howReply: 'ವಿನಂತಿ ಪರಿಶೀಲಿಸಿ 7 ಕೆಲಸದ ದಿನಗಳೊಳಗೆ ಉತ್ತರಿಸುತ್ತೇವೆ.',
+        timelineTitle: 'ಮರುಪಾವತಿ ಅವಧಿ',
+        timelineBody:
+          'ಮರುಪಾವತಿ ಅನುಮೋದಿಸಿದರೆ, ಮೂಲ ಪಾವತಿ ವಿಧಾನಕ್ಕೆ (ಅದೇ ಕಾರ್ಡ್, UPI id, ಅಥವಾ ಬ್ಯಾಂಕ್ ಖಾತೆ) ಕಳುಹಿಸುತ್ತೇವೆ. ಅನುಮೋದನೆಯ 7 ಕೆಲಸದ ದಿನಗಳೊಳಗೆ ಮರುಪಾವತಿ ಪ್ರಾರಂಭಿಸುತ್ತೇವೆ. ಬ್ಯಾಂಕ್, UPI ಆಪ್ ಮತ್ತು Razorpay ಕ್ರೆಡಿಟ್ ತೋರಿಸಲು ಇನ್ನೂ 5 ರಿಂದ 7 ಕೆಲಸದ ದಿನ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. ನಗದು ಅಥವಾ ಬೇರೆ ವ್ಯಕ್ತಿಯ ಖಾತೆಗೆ ಮರುಪಾವತಿ ಮಾಡಲಾಗುವುದಿಲ್ಲ.',
+        failedTitle: 'ವಿಫಲ ಪಾವತಿಗಳು',
+        failedBody:
+          'ಪಾವತಿ ವಿಫಲವಾದರೆ ಅಥವಾ ಪಾವತಿಸುವ ಮುನ್ನ ಪುಟ ಮುಚ್ಚಿದರೆ, ದೇಣಿಗೆ ತೆಗೆದುಕೊಳ್ಳುವುದಿಲ್ಲ; ಮರುಪಾವತಿ ಬೇಕಾಗಿಲ್ಲ. ಬ್ಯಾಂಕ್ ಡೆಬಿಟ್ ತೋರಿಸಿದರೂ ನಮಗೆ ಹಣ ಬರದಿದ್ದರೆ, ಉಲ್ಲೇಖ ಸಂಖ್ಯೆಯೊಂದಿಗೆ ಬರೆಯಿರಿ; ಬ್ಯಾಂಕ್ ಅಥವಾ Razorpay ಜೊತೆ ಹುಡುಕುತ್ತೇವೆ.'
+      },
+      cancellation: {
+        beforeTitle: 'ಪಾವತಿಸುವ ಮುನ್ನ',
+        beforeBody:
+          'ಪಾವತಿ ಪೂರ್ಣವಾಗುವ ಮುನ್ನ ಯಾವಾಗ ಬೇಕಾದರೂ ದೇಣಿಗೆ ರದ್ದು ಮಾಡಬಹುದು. ದೇಣಿಗೆ ವಿಂಡೋ ಮುಚ್ಚಿ, ಅಥವಾ UPI, ಕಾರ್ಡ್, ನೆಟ್-ಬ್ಯಾಂಕಿಂಗ್ ಹಂತ ಮುಗಿಸಬೇಡಿ. ಪಾವತಿಸದಿದ್ದರೆ ಹಣ ಕಡಿತವಿಲ್ಲ; ರದ್ದು ವಿನಂತಿ ಬೇಕಿಲ್ಲ.',
+        beforeNoSub: 'HIF INDIA ಸ್ವಯಂಚಾಲಿತ ಪುನರಾವರ್ತಿತ ಡೆಬಿಟ್ ಹಾಕುವುದಿಲ್ಲ. ರದ್ದು ಮಾಡಬೇಕಾದ ಚಂದಾ ಅಥವಾ ಸದಸ್ಯತ್ವ ಶುಲ್ಕವಿಲ್ಲ.',
+        afterTitle: 'ಯಶಸ್ವಿ ಪಾವತಿಯ ನಂತರ',
+        afterLead:
+          'ಪೂರ್ಣವಾದ ದೇಣಿಗೆಯನ್ನು ಆರ್ಡರ್ ಎಂದು ರದ್ದು ಮಾಡಲಾಗುವುದಿಲ್ಲ, ಏಕೆಂದರೆ ಅದು ಸ್ವಯಂಪ್ರೇರಿತ ಕೊಡುಗೆ, ಉತ್ಪನ್ನ ಖರೀದಿ ಅಲ್ಲ. ಪಾವತಿ ಎರಡು ಬಾರಿ ಆಗಿದ್ದರೆ, ನಮ್ಮ ಬದಿಯಲ್ಲಿ ವಿಫಲವಾಗಿದ್ದರೆ, ಅಥವಾ ತಪ್ಪಾಗಿ ಆಗಿದ್ದರೆ, ನೋಡಿ',
+        afterTrail:
+          '. ವಿನಂತಿ ವಹಿವಾಟಿನ 7 ದಿನಗಳೊಳಗೆ ನಮಗೆ ತಲುಪಬೇಕು. ಅನುಮೋದಿತ ಮರುಪಾವತಿಯನ್ನು 7 ಕೆಲಸದ ದಿನಗಳೊಳಗೆ ಪ್ರಾರಂಭಿಸಿ, ನಂತರ ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಅಥವಾ Razorpay ನ ಸಾಮಾನ್ಯ 5 ರಿಂದ 7 ಕೆಲಸದ ದಿನಗಳ ಕ್ರೆಡಿಟ್ ಸಮಯ ಅನುಸರಿಸುತ್ತದೆ.',
+        ifHifTitle: 'HIF ಚಟುವಟಿಕೆ ರದ್ದು ಮಾಡಿದರೆ',
+        ifHifBody:
+          'ನಿರ್ದಿಷ್ಟ ಗುರುತು ಮಾಡಿದ ದೇಣಿಗೆ ನೀಡಿದ ಡ್ರೈವ್ ಅಥವಾ ಕಾರ್ಯಕ್ರಮವನ್ನು ನಾವು ರದ್ದು ಮಾಡಿದರೆ, ಮತ್ತು ಆ ಮೊತ್ತ ಖರ್ಚಾಗಿಲ್ಲದಿದ್ದರೆ, ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತೇವೆ. ಹತ್ತಿರದ ಸಂಬಂಧಿತ ಕಾರ್ಯಕ್ರಮಕ್ಕೆ ವರ್ಗಾಯಿಸಲು ಅಥವಾ ಮರುಪಾವತಿ ನೀತಿಯಡಿ ಮರುಪಾವತಿ ಕೇಳಬಹುದು.',
+        volunteerTitle: 'ಸ್ವಯಂಸೇವೆ ಮತ್ತು ಪ್ರಶ್ನೆ ವಿನಂತಿಗಳು',
+        volunteerBody:
+          'ಸ್ವಯಂಸೇವಾ ನೋಂದಣಿ ಅಥವಾ ಇತರ ಪ್ರಶ್ನೆಯನ್ನು info@hif.org.in ಗೆ ಇಮೇಲ್ ಮಾಡಿ ಅಥವಾ WhatsApp ನಲ್ಲಿ ಸಂದೇಶ ಕಳುಹಿಸಿ ಹಿಂತೆಗೆದುಕೊಳ್ಳಬಹುದು. ನೀವು ಬಳಸಿದ ದೂರವಾಣಿ ಹೇಳಿ. ಆ ವಿನಂತಿಯ ಮೇಲೆ ಹಿಂಬಾಲಿಸುವುದನ್ನು ನಿಲ್ಲಿಸುತ್ತೇವೆ. ಈಗಾಗಲೇ ಬಂದ ದೇಣಿಗೆ ರದ್ದಾಗುವುದಿಲ್ಲ.',
+        shippingTitle: 'ರದ್ದು ಮಾಡುವ ಶಿಪ್ಪಿಂಗ್ ಇಲ್ಲ',
+        shippingBody:
+          'ಈ ವೆಬ್‌ಸೈಟ್ ಮೂಲಕ ಭೌತಿಕ ಸರಕು ಮಾರಾಟ ಅಥವಾ ಕಳುಹಿಸುವುದಿಲ್ಲ. ಶಿಪ್ಪಿಂಗ್ ಆರ್ಡರ್ ಇಲ್ಲ, ಶಿಪ್ಪಿಂಗ್ ರದ್ದು ಇಲ್ಲ. Medical Cell ನೀಡುವ ವೈದ್ಯಕೀಯ ಉಪಕರಣ ಕುಟುಂಬದೊಂದಿಗೆ ನೇರವಾಗಿ ಏರ್ಪಡಿಸುವ ಕಾರ್ಯಕ್ರಮ ಸೇವೆ, ಆನ್‌ಲೈನ್ ಅಂಗಡಿ ಆರ್ಡರ್ ಅಲ್ಲ.'
+      }
     }
   },
 
@@ -1913,6 +2308,149 @@ export const translations: Record<Language, any> = {
       addressFull: 'मस्जिद एहसान कॉम्प्लेक्स, कंकनाडी, मंगलुरु – 575002',
       slogan: 'सहानुभूति और गरिमा के साथ समुदायों को मजबूत बनाना, जीवन में बदलाव',
       developedBy: 'द्वारा विकसित'
+    },
+    legal: {
+      lastUpdated: 'अंतिम अद्यतन: {date}',
+      lastUpdatedDate: '28 सितंबर 2026',
+      relatedNav: 'संबंधित नीतियां',
+      orgRegisteredHq: 'भारतीय ट्रस्ट अधिनियम के तहत पंजीकृत एनजीओ, मुख्यालय मंगलुरु।',
+      termsTitle: 'नियम और शर्तें',
+      termsDesc: 'यह वेबसाइट और हाइलैंड इस्लामिक फोरम (HIF INDIA) को दिए जाने वाले दान कैसे काम करते हैं।',
+      privacyTitle: 'गोपनीयता नीति',
+      privacyDesc: 'HIF INDIA कौन-सी व्यक्तिगत जानकारी एकत्र करता है, उसका उपयोग क्यों करता है, और उसे किसके साथ साझा करता है।',
+      refundTitle: 'धनवापसी नीति',
+      refundDesc: 'HIF INDIA को दिए गए दान की धनवापसी कब हो सकती है, और उसमें कितना समय लगता है।',
+      cancellationTitle: 'रद्दीकरण नीति',
+      cancellationDesc: 'HIF INDIA को दान या स्वयंसेवा अनुरोध कब रद्द कर सकते हैं।',
+      terms: {
+        aboutTitle: 'इन नियमों के बारे में',
+        aboutBody:
+          'ये नियम HIF INDIA वेबसाइट के उपयोग और हाइलैंड इस्लामिक फोरम (HIF INDIA) — भारतीय ट्रस्ट अधिनियम के तहत पंजीकृत एनजीओ — को दिए गए किसी भी दान पर लागू होते हैं। वेबसाइट इस्तेमाल करने या दान देने से आप इन नियमों, हमारी गोपनीयता नीति, धनवापसी नीति और रद्दीकरण नीति से सहमत होते हैं।',
+        whatWeDoTitle: 'हम क्या करते हैं',
+        whatWeDoBody:
+          'HIF INDIA मंगलुरु स्थित जमीनी मानवीय ट्रस्ट है। वेबसाइट हमारे कार्यक्रम बताती है और समर्थकों को योगदान देने देती है। हम सामान नहीं बेचते। दान स्वैच्छिक योगदान है, किसी उत्पाद या सेवा की खरीद नहीं।',
+        whatWeDoListIntro: 'हमारे मुख्य कार्यक्रम हैं:',
+        programAshiyana: 'Project Ashiyana — बेघर और जरूरतमंद परिवारों के लिए स्थायी आवास',
+        programChitoor: 'HIF CHITOOR (D.U.R.J) — अनाथ बच्चों के लिए आवासीय देखभाल, हिफ्ज और स्कूली शिक्षा',
+        programMasjid: 'मस्जिद विकास — ग्रामीण मस्जिदों की मरम्मत और रखरखाव',
+        programMedical: 'HIF Medical Cell — निःशुल्क चिकित्सा उपकरण सहायता और रक्तदान समन्वय',
+        donationsTitle: 'दान और राशि',
+        donationsBody1:
+          'राशि आप चुनते हैं। परियोजना पृष्ठ पर सुझाई गई राशि केवल मार्गदर्शन है। वेबसाइट देखने के लिए कोई न्यूनतम शुल्क नहीं है, और कोई सदस्यता शुल्क भी नहीं है।',
+        donationsBody2:
+          'वेबसाइट पर दिखाए गए HIF INDIA खाते में बैंक ट्रांसफर या UPI से, या हमारे भुगतान साझेदार Razorpay से ऑनलाइन भुगतान कर सकते हैं। भुगतान से पहले लाभार्थी का नाम HIF INDIA सुनिश्चित करें।',
+        donationsBody3:
+          'किसी खास परियोजना के लिए चिह्नित दान उसी परियोजना की सामग्री, मजदूरी, भोजन या चिकित्सा राहत पर लगता है। HIF INDIA उन उपहारों पर प्रशासनिक कमीशन नहीं लेता। भुगतान गेटवे अपना प्रसंस्करण शुल्क काट सकता है।',
+        donationsBody4:
+          'जहां लागू हो, दान आयकर अधिनियम के तहत 80G छूट के पात्र हैं। भुगतान रसीद WhatsApp या ईमेल पर साझा करें; हम प्रमाण पत्र जारी करेंगे।',
+        responsibilitiesTitle: 'आपकी जिम्मेदारियां',
+        responsibilitiesBody:
+          'रसीद मांगते समय सही संपर्क विवरण दें, और वही धन दें जिसकी आपको अनुमति है। वेबसाइट से झूठी, हानिकारक या अवैध सामग्री न भेजें, और साइट में बाधा न डालें।',
+        contentTitle: 'वेबसाइट सामग्री',
+        contentBody:
+          'परियोजना अपडेट, तस्वीरें और आंकड़े सद्भाव से प्रकाशित होते हैं और मैदानी काम बदलने पर बदल सकते हैं। साइट पर कोई खास निर्माण तिथि या दान के बदले व्यक्तिगत लाभ का वादा नहीं है।',
+        paymentsTitle: 'भुगतान',
+        paymentsBody:
+          'ऑनलाइन कार्ड, नेट-बैंकिंग और UPI भुगतान Razorpay और आपके बैंक संभालते हैं। हम आपका पूरा कार्ड नंबर या UPI PIN नहीं रखते। भुगतान तभी पूरा होता है जब हम या हमारा भुगतान साझेदार पुष्टि करे। बैंक विलंब और असफल UPI हमारे नियंत्रण से बाहर हैं।',
+        ipTitle: 'बौद्धिक संपदा',
+        ipBody:
+          'HIF INDIA नाम, लोगो और वेबसाइट सामग्री हाइलैंड इस्लामिक फोरम की है, जब तक क्रेडिट कुछ और न कहे। आप हमारे पृष्ठों के लिंक साझा कर सकते हैं। लिखित अनुमति के बिना हमारी तस्वीरें या लोगो दूसरी संस्था के लिए न कॉपी करें।',
+        liabilityTitle: 'दायित्व',
+        liabilityBody:
+          'वेबसाइट सार्वजनिक जानकारी और दान का माध्यम है। भुगतान ऐप की गलती, बैंक विलंब या साइट के अस्थायी बंद से हुई हानि के लिए, भारतीय कानून जितनी अनुमति दे, हम जिम्मेदार नहीं हैं।',
+        lawTitle: 'लागू कानून',
+        lawBody:
+          'इन नियमों पर भारत के कानून लागू होते हैं। इस वेबसाइट या HIF INDIA को दान से जुड़े विवादों पर मंगलुरु, कर्नाटक की अदालतों का क्षेत्राधिकार है।',
+        changesTitle: 'परिवर्तन',
+        changesBody:
+          'कार्यक्रम या भुगतान तरीके बदलने पर हम ये नियम अपडेट कर सकते हैं। इस पृष्ठ के शीर्ष की तिथि नवीनतम संस्करण है। अपडेट के बाद वेबसाइट का उपयोग संशोधित नियमों की स्वीकृति है।'
+      },
+      privacy: {
+        whoTitle: 'कौन जिम्मेदार है',
+        whoBody:
+          'इस वेबसाइट तथा हमारे फोन, ईमेल और WhatsApp माध्यमों से एकत्र व्यक्तिगत जानकारी के लिए हाइलैंड इस्लामिक फोरम (HIF INDIA) जिम्मेदार है।',
+        collectTitle: 'हम कौन-सी जानकारी एकत्र करते हैं',
+        collectIntro: 'दान लेने, पूछताछ का जवाब देने और कार्यक्रम चलाने के लिए जितनी जरूरत है, उतनी ही एकत्र करते हैं:',
+        collectForm:
+          'आप जो विवरण भेजते हैं: Get Involved फॉर्म पर नाम, फोन नंबर, शहर और स्वयंसेवा कौशल (यह आपके टाइप किए संदेश के साथ WhatsApp खोलता है), और बाद में ईमेल, फोन या WhatsApp पर लिखा गया कुछ भी।',
+        collectDonation:
+          'दान रिकॉर्ड: राशि, तिथि, यदि आपने कोई परियोजना या कारण बताया हो, और लेनदेन संदर्भ (जैसे UTR या भुगतान id) ताकि रसीद और जहां लागू हो 80G प्रमाण पत्र जारी कर सकें।',
+        collectPayment:
+          'Razorpay पृष्ठ पर दर्ज भुगतान विवरण (कार्ड, नेट-बैंकिंग या UPI) Razorpay और आपका बैंक एकत्र करते हैं। पूरा कार्ड नंबर, CVV या UPI PIN हमें नहीं मिलता और हम उसे नहीं रखते।',
+        collectPrefs:
+          'भाषा चयन और हल्का/गहरा प्रदर्शन वरीयता आपके ब्राउज़र में (local storage) सहेजी जाती है। इस वेबसाइट पर विज्ञापन ट्रैकर नहीं चलते।',
+        useTitle: 'हम इसका उपयोग कैसे करते हैं',
+        useIntro: 'हम इस जानकारी का उपयोग करते हैं:',
+        useConfirm: 'आपके दान की पुष्टि और रसीद देने के लिए',
+        use80g: 'आपके अनुरोध पर और दान पात्र होने पर 80G प्रमाण पत्र जारी करने के लिए',
+        useReply: 'स्वयंसेवा, चिकित्सा उपकरण और सामान्य पूछताछ का जवाब देने के लिए',
+        useBooks: 'पंजीकृत ट्रस्ट के लिए आवश्यक सामान्य खाते रखने के लिए',
+        useProtect: 'गलत या अनधिकृत भुगतान से संस्था की रक्षा के लिए',
+        useNoSell: 'हम व्यक्तिगत जानकारी नहीं बेचते, और तीसरे पक्ष के विज्ञापन के लिए उसका उपयोग नहीं करते।',
+        shareTitle: 'हम इसे किसके साथ साझा करते हैं',
+        shareIntro: 'जानकारी केवल इनके साथ साझा होती है:',
+        shareRazorpay: 'आपके शुरू किए भुगतान को पूरा करने के लिए Razorpay और आपका बैंक या UPI ऐप',
+        shareBank: 'ट्रांसफर से आए दान के लिए हमारे बैंकर (HDFC Bank)',
+        shareAudit: 'जब भारतीय कानून मांगे, लेखा परीक्षक और अधिकारी',
+        shareHost: 'ईमेल या इस वेबसाइट को होस्ट करने वाला सेवा प्रदाता, केवल वह सेवा चलाने के लिए',
+        shareProviders:
+          'Razorpay अपनी गोपनीयता नीति के तहत भुगतान संसाधित करता है। यह वेबसाइट Firebase Hosting से चलती है। पृष्ठ या भुगतान पहुंचाने के लिए जरूरी IP पते जैसे तकनीकी डेटा उन्हें दिखता है।',
+        retainTitle: 'हम इसे कितने समय रखते हैं',
+        retainBody:
+          'दान और रसीद रिकॉर्ड भारतीय कर और ट्रस्ट कानून जितने समय मांगता है, उतने समय रखे जाते हैं। पूछताछ संदेश पत्राचार के दौरान और उसके बाद उचित अवधि तक रखे जाते हैं। यदि कानूनी रिकॉर्ड के लिए अब जरूरत न हो, स्वयंसेवा पूछताछ हटाने को कह सकते हैं।',
+        choicesTitle: 'आपके विकल्प',
+        choicesBody:
+          'आप पूछ सकते हैं कि आपके बारे में कौन से दान या पूछताछ रिकॉर्ड हैं, उन्हें सही करने को कह सकते हैं, या संपर्क बंद करने को कह सकते हैं। info@hif.org.in पर लिखें या इस पृष्ठ के शीर्ष पर दिए नंबर पर कॉल करें। रसीद और खाते मिटाए नहीं जा सकते, इसलिए संपर्क अनुरोध के बाद भी दान रिकॉर्ड रखना पड़ सकता है।',
+        childrenTitle: 'बच्चे',
+        childrenBody:
+          'यह वेबसाइट वयस्क दानदाताओं और स्वयंसेवकों के लिए है। हम जानबूझकर साइट से बच्चों की व्यक्तिगत जानकारी नहीं लेते। हमारी देखभाल में बच्चों की कार्यक्रम जानकारी अभिभावक या संस्था की सहमति से ही, निजी रिकॉर्ड उजागर किए बिना प्रकाशित होती है।',
+        changesTitle: 'परिवर्तन',
+        changesBody: 'यदि हम नई तरह की जानकारी एकत्र करने लगें, तो यह पृष्ठ अपडेट कर शीर्ष की तिथि बदलेंगे।'
+      },
+      refund: {
+        notRefundableTitle: 'दान सामान्यतः वापस नहीं होता',
+        notRefundableBody:
+          'हाइलैंड इस्लामिक फोरम (HIF INDIA) को दिया गया उपहार पंजीकृत एनजीओ को स्वैच्छिक दान है, सामान की खरीद नहीं। HIF INDIA उत्पाद नहीं भेजता और डिलीवरी शुल्क नहीं लेता। दान सफलतापूर्वक मिलने के बाद उसे आवास, अनाथ देखभाल, मस्जिद कार्य, चिकित्सा राहत या सामान्य मानवीय कोष में लगाया जाता है; मन बदलने पर वापसी नहीं होती।',
+        whenTitle: 'हम कब धनवापसी करेंगे',
+        whenIntro: 'इन स्थितियों में हम दान वापस करेंगे:',
+        whenDuplicate: 'एक ही दान के लिए दो बार शुल्क लगा (डुप्लिकेट भुगतान)।',
+        whenFailed: 'पैसे आपके खाते से निकले पर तकनीकी खराबी से HIF INDIA तक नहीं पहुंचे।',
+        whenMistake: 'आपने वास्तविक गलती से HIF INDIA को भुगतान किया, और वह राशि अभी किसी परियोजना पर खर्च नहीं हुई।',
+        whenUnauthorised:
+          'भुगतान अनधिकृत था। हम बैंक या Razorpay से जांच कर वही राशि वापस करेंगे जिसे वे अनधिकृत पुष्टि करें।',
+        whenSpent:
+          'नामित परियोजना पर पहले ही खर्च हो चुका दान — जैसे घर की सामग्री, छात्र सहायता, या चिकित्सा मदद — वापस नहीं हो सकता।',
+        howTitle: 'धनवापसी कैसे मांगें',
+        howBody:
+          'लेनदेन के 7 दिनों के भीतर info@hif.org.in पर ईमेल करें या WhatsApp पर संदेश भेजें। नाम, फोन नंबर, तिथि, राशि, चुनी परियोजना, और UTR, UPI संदर्भ या Razorpay भुगतान id शामिल करें।',
+        howReply: 'हम अनुरोध की समीक्षा कर 7 कार्य दिवसों में जवाब देंगे।',
+        timelineTitle: 'धनवापसी की समयसीमा',
+        timelineBody:
+          'यदि हम धनवापसी स्वीकृत करें, तो उसे मूल भुगतान विधि (वही कार्ड, UPI id, या बैंक खाता) पर भेजते हैं। स्वीकृति के 7 कार्य दिवसों में धनवापसी शुरू करते हैं। बैंक, UPI ऐप और Razorpay क्रेडिट दिखाने में और 5 से 7 कार्य दिवस ले सकते हैं। नकद या किसी अन्य व्यक्ति के खाते में वापसी नहीं हो सकती।',
+        failedTitle: 'असफल भुगतान',
+        failedBody:
+          'यदि भुगतान असफल हो या भुगतान से पहले पृष्ठ बंद कर दें, तो कोई दान नहीं लिया जाता और वापस करने को कुछ नहीं। यदि बैंक डेबिट दिखाए जो हमें न मिला हो, संदर्भ संख्या लिखें; हम बैंक या Razorpay से पता करेंगे।'
+      },
+      cancellation: {
+        beforeTitle: 'भुगतान से पहले',
+        beforeBody:
+          'भुगतान पूरा होने से पहले आप कभी भी दान रद्द कर सकते हैं। दान विंडो बंद करें, या UPI, कार्ड या नेट-बैंकिंग चरण पूरा न करें। यदि आप भुगतान नहीं करते, तो कोई शुल्क नहीं लगता और रद्दीकरण अनुरोध की जरूरत नहीं।',
+        beforeNoSub: 'HIF INDIA स्वचालित आवर्ती डेबिट नहीं लगाता। रद्द करने के लिए कोई सदस्यता या शुल्क नहीं है।',
+        afterTitle: 'सफल भुगतान के बाद',
+        afterLead:
+          'पूरा हुआ दान ऑर्डर की तरह रद्द नहीं हो सकता, क्योंकि यह स्वैच्छिक उपहार है, उत्पाद खरीद नहीं। यदि भुगतान डुप्लिकेट था, हमारी ओर से असफल था, या गलती से हुआ था, तो देखें',
+        afterTrail:
+          '। अनुरोध लेनदेन के 7 दिनों के भीतर हमें पहुंचने चाहिए। स्वीकृत धनवापसी 7 कार्य दिवसों में शुरू होती है, फिर आपके बैंक या Razorpay का सामान्य लगभग 5 से 7 कार्य दिवस का क्रेडिट समय लगता है।',
+        ifHifTitle: 'यदि HIF कोई गतिविधि रद्द करे',
+        ifHifBody:
+          'यदि हम कोई अभियान या कार्यक्रम रद्द करें जिसके लिए आपने खास चिह्नित दान दिया हो, और वह राशि खर्च न हुई हो, तो हम आपसे संपर्क करेंगे। आप उसे निकटतम संबंधित कार्यक्रम में लगाने को कह सकते हैं, या धनवापसी नीति के तहत वापस मांग सकते हैं।',
+        volunteerTitle: 'स्वयंसेवा और पूछताछ अनुरोध',
+        volunteerBody:
+          'स्वयंसेवा पंजीकरण या कोई अन्य पूछताछ info@hif.org.in पर ईमेल कर या WhatsApp पर संदेश भेजकर वापस ले सकते हैं। जो फोन नंबर इस्तेमाल किया बताएं। हम उस अनुरोध पर फॉलो-अप बंद कर देंगे। इससे पहले से प्राप्त दान रद्द नहीं होता।',
+        shippingTitle: 'रद्द करने के लिए शिपिंग नहीं',
+        shippingBody:
+          'हम इस वेबसाइट से भौतिक सामान नहीं बेचते और नहीं भेजते। कोई शिपिंग ऑर्डर नहीं, कोई शिपिंग रद्दीकरण नहीं। Medical Cell द्वारा दिया गया चिकित्सा उपकरण परिवार के साथ सीधे व्यवस्थित कार्यक्रम सेवा है, ऑनलाइन स्टोर ऑर्डर नहीं।'
+      }
     }
   }
 }
