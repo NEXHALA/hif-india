@@ -1,9 +1,13 @@
+import { PROJECT_DONATE } from './donateLinks'
+
 export interface ProjectTier {
   title: string
   amount: number
   unit: string
   description: string
   isPopular?: boolean
+  /** PhilSof ERP donate URL for this tier; falls back to project or general link. */
+  donateUrl?: string
 }
 
 export interface ProjectData {
@@ -27,6 +31,8 @@ export interface ProjectData {
   beforeImages?: string[]
   afterImages?: string[]
   color: string
+  /** PhilSof ERP donate URL for this project; falls back to general link. */
+  donateUrl?: string
 }
 
 export interface ActivityData {
@@ -177,6 +183,7 @@ export const HIF_PROJECTS: ProjectData[] = [
       '/images/projects/ashiyana13.jpg',
     ],
     color: 'emerald',
+    donateUrl: PROJECT_DONATE.ashiyana.general,
     stats: [
       { label: 'Homes Built', value: '36' },
       { label: 'Target by 2030', value: '150 Homes' },
@@ -205,25 +212,29 @@ export const HIF_PROJECTS: ProjectData[] = [
         amount: 750000,
         unit: 'per home',
         description: 'Fund the complete end-to-end construction of a 2-bedroom home for a homeless destitute family.',
-        isPopular: true
+        isPopular: true,
+        donateUrl: PROJECT_DONATE.ashiyana.fullHome
       },
       {
         title: 'Roofing & Structural Reinforcement',
         amount: 150000,
         unit: 'per unit',
-        description: 'Provide concrete slab, weather-proof roofing, and foundational reinforcement.'
+        description: 'Provide concrete slab, weather-proof roofing, and foundational reinforcement.',
+        donateUrl: PROJECT_DONATE.ashiyana.roof
       },
       {
         title: 'Water & Sanitation Infrastructure',
         amount: 100000,
         unit: 'per household',
-        description: 'Build an attached modern bathroom, septic tank, and pipeline connection.'
+        description: 'Build an attached modern bathroom, septic tank, and pipeline connection.',
+        donateUrl: PROJECT_DONATE.ashiyana.water
       },
       {
         title: 'Ashiyana Brick & Cement Fund',
         amount: 10000,
         unit: 'per share',
-        description: 'Contribute a fractional share towards ongoing home construction batches.'
+        description: 'Contribute a fractional share towards ongoing home construction batches.',
+        donateUrl: PROJECT_DONATE.ashiyana.brickShare
       }
     ]
   },
@@ -252,6 +263,7 @@ export const HIF_PROJECTS: ProjectData[] = [
       '/images/projects/chitttor.jpg'
     ],
     color: 'amber',
+    donateUrl: PROJECT_DONATE.chitoor.general,
     stats: [
       { label: 'Campus Area', value: '2.5 Acres' },
       { label: 'Building', value: '20,000 sq. ft.' },
@@ -279,33 +291,38 @@ export const HIF_PROJECTS: ProjectData[] = [
         amount: 15000,
         unit: 'per student / year',
         description: 'Covers full tuition, school books, uniforms, hostel lodging, and medical care for one orphan student for a year.',
-        isPopular: true
+        isPopular: true,
+        donateUrl: PROJECT_DONATE.chitoor.studentCare
       },
       {
         title: 'Special Food',
         amount: 14500,
         unit: 'per day (225 students)',
         description:
-          'Full-day special meals for all 225 students: breakfast (dosa/poha/idli), Chicken Biryani + Chicken Kebab for lunch, tea & biscuit, and chapathi or rice for dinner.'
+          'Full-day special meals for all 225 students: breakfast (dosa/poha/idli), Chicken Biryani + Chicken Kebab for lunch, tea & biscuit, and chapathi or rice for dinner.',
+        donateUrl: PROJECT_DONATE.chitoor.specialFood
       },
       {
         title: 'Normal Food',
         amount: 9000,
         unit: 'per day (225 students)',
         description:
-          'Full-day normal meals for all 225 students: breakfast (dosa/poha/idli), Ghee Rice + Dal + Chicken Kebab for lunch, tea & biscuit, and chapathi or rice for dinner.'
+          'Full-day normal meals for all 225 students: breakfast (dosa/poha/idli), Ghee Rice + Dal + Chicken Kebab for lunch, tea & biscuit, and chapathi or rice for dinner.',
+        donateUrl: PROJECT_DONATE.chitoor.normalFood
       },
       {
         title: 'Annual Clothing & Uniform Kit',
         amount: 2500,
         unit: 'per student / year',
-        description: 'Provides 2 sets of school uniforms, traditional attire, shoes, winter wear, and bedding essentials.'
+        description: 'Provides 2 sets of school uniforms, traditional attire, shoes, winter wear, and bedding essentials.',
+        donateUrl: PROJECT_DONATE.chitoor.clothing
       },
       {
         title: 'Future Expansion Land',
         amount: 4000000,
         unit: 'per acre',
-        description: 'Contribute towards acquiring land for future campus expansion (₹40 lakh per acre).'
+        description: 'Contribute towards acquiring land for future campus expansion (₹40 lakh per acre).',
+        donateUrl: PROJECT_DONATE.chitoor.expansionLand
       }
     ]
   },
@@ -327,6 +344,7 @@ export const HIF_PROJECTS: ProjectData[] = [
       '/images/projects/masjid10.jpg'
     ],
     color: 'emerald',
+    donateUrl: PROJECT_DONATE.mdp.general,
     stats: [
       { label: 'Masjids Supported', value: '176' },
       { label: 'Started With', value: '1 Masjid' },
@@ -357,43 +375,50 @@ export const HIF_PROJECTS: ProjectData[] = [
         amount: 10000,
         unit: 'per month (₹8,000–₹10,000)',
         description: 'Support a dedicated Imam and teacher serving in a remote rural village masjid (₹8,000–₹10,000 monthly).',
-        isPopular: true
+        isPopular: true,
+        donateUrl: PROJECT_DONATE.mdp.imamPay
       },
       {
         title: 'New Masjid Construction',
         amount: 2000000,
         unit: 'per masjid (full cost)',
-        description: 'Fund the complete construction of a new village masjid.'
+        description: 'Fund the complete construction of a new village masjid.',
+        donateUrl: PROJECT_DONATE.mdp.newMasjid
       },
       {
         title: 'New Masjid Half Payment',
         amount: 1000000,
         unit: 'per masjid (half cost)',
-        description: 'Cover half the cost of building a new village masjid.'
+        description: 'Cover half the cost of building a new village masjid.',
+        donateUrl: PROJECT_DONATE.mdp.halfPayment
       },
       {
         title: 'Masjid Solar & Wudhu Infrastructure',
         amount: 35000,
         unit: 'per masjid',
-        description: 'Provide solar backup power, PA system, and clean water filtration setup.'
+        description: 'Provide solar backup power, PA system, and clean water filtration setup.',
+        donateUrl: PROJECT_DONATE.mdp.solarWudhu
       },
       {
         title: 'Wudhu Khana',
         amount: 80000,
         unit: 'per masjid (approx)',
-        description: 'Build or upgrade the wudhu (ablution) facility for a masjid.'
+        description: 'Build or upgrade the wudhu (ablution) facility for a masjid.',
+        donateUrl: PROJECT_DONATE.mdp.wudhuKhana
       },
       {
         title: 'Mayyath Structure',
         amount: 30000,
         unit: 'per unit',
-        description: 'Support construction of a mayyath (funeral) structure for the community.'
+        description: 'Support construction of a mayyath (funeral) structure for the community.',
+        donateUrl: PROJECT_DONATE.mdp.mayyath
       },
       {
         title: 'Water Connection',
         amount: 45000,
         unit: 'per masjid',
-        description: 'Provide a water connection for masjid use.'
+        description: 'Provide a water connection for masjid use.',
+        donateUrl: PROJECT_DONATE.mdp.water
       }
     ]
   },
@@ -409,6 +434,7 @@ export const HIF_PROJECTS: ProjectData[] = [
       '/images/projects/about-us.jpg'
     ],
     color: 'amber',
+    donateUrl: PROJECT_DONATE.educationCity.general,
     stats: [
       { label: 'Campus Area', value: '3.82 Acres' },
       { label: 'Location', value: 'Assaigoli, Mangaluru' },
@@ -436,25 +462,29 @@ export const HIF_PROJECTS: ProjectData[] = [
         amount: 500000,
         unit: 'per pledge',
         description: 'Become a founding donor of HIF Education City, supporting core construction of the Arabic Academy campus.',
-        isPopular: true
+        isPopular: true,
+        donateUrl: PROJECT_DONATE.educationCity.foundingPatron
       },
       {
         title: 'Classroom Construction Share',
         amount: 100000,
         unit: 'per share',
-        description: 'Contribute a share towards the construction of a classroom block on the new campus.'
+        description: 'Contribute a share towards the construction of a classroom block on the new campus.',
+        donateUrl: PROJECT_DONATE.educationCity.classroomShare
       },
       {
         title: 'Campus Building Fund',
         amount: 25000,
         unit: 'per share',
-        description: 'Support ongoing construction costs as the campus rises from foundation to finished structure.'
+        description: 'Support ongoing construction costs as the campus rises from foundation to finished structure.',
+        donateUrl: PROJECT_DONATE.educationCity.buildingFund
       },
       {
         title: 'Brick & Cement Contribution',
         amount: 5000,
         unit: 'per share',
-        description: 'A fractional contribution towards materials for the Education City campus.'
+        description: 'A fractional contribution towards materials for the Education City campus.',
+        donateUrl: PROJECT_DONATE.educationCity.brickCement
       }
     ]
   },
@@ -483,6 +513,7 @@ export const HIF_PROJECTS: ProjectData[] = [
       '/images/gallery/22.jpg'
     ],
     color: 'emerald',
+    donateUrl: PROJECT_DONATE.boondh.general,
     stats: [
       { label: 'Water Projects Completed', value: '18' },
       { label: 'Focus Area', value: 'Underserved Villages' },
@@ -510,31 +541,36 @@ export const HIF_PROJECTS: ProjectData[] = [
         amount: 150000,
         unit: 'per project',
         description: 'Fund a complete borewell, storage, and filtration setup for an underserved community.',
-        isPopular: true
+        isPopular: true,
+        donateUrl: PROJECT_DONATE.boondh.fullWater
       },
       {
         title: 'Borewell',
         amount: 150000,
         unit: '₹1.5–₹2.5 Lakh',
-        description: 'Fund a borewell for an underserved community. Cost typically ranges from ₹1.5 to ₹2.5 lakh.'
+        description: 'Fund a borewell for an underserved community. Cost typically ranges from ₹1.5 to ₹2.5 lakh.',
+        donateUrl: PROJECT_DONATE.boondh.borewell
       },
       {
         title: 'Well',
         amount: 150000,
         unit: 'per well',
-        description: 'Fund construction of a well to provide lasting access to water.'
+        description: 'Fund construction of a well to provide lasting access to water.',
+        donateUrl: PROJECT_DONATE.boondh.well
       },
       {
         title: 'Water Dispenser',
         amount: 55000,
         unit: '₹55,000–₹85,000',
-        description: 'Provide a water dispenser unit for community drinking water access.'
+        description: 'Provide a water dispenser unit for community drinking water access.',
+        donateUrl: PROJECT_DONATE.boondh.dispenser
       },
       {
         title: 'Filtration Unit Contribution',
         amount: 5000,
         unit: 'per share',
-        description: 'Contribute towards clean water filtration equipment for a village water point.'
+        description: 'Contribute towards clean water filtration equipment for a village water point.',
+        donateUrl: PROJECT_DONATE.boondh.filtration
       }
     ]
   },
@@ -565,6 +601,7 @@ export const HIF_PROJECTS: ProjectData[] = [
       '/images/gallery/libaas-wedding-dress-distribution-2015.jpg'
     ],
     color: 'amber',
+    donateUrl: PROJECT_DONATE.libaas.general,
     stats: [
       { label: 'Wedding Dresses Provided', value: '100+' },
       { label: 'Beneficiaries', value: 'Brides & Grooms' },
@@ -592,37 +629,43 @@ export const HIF_PROJECTS: ProjectData[] = [
         amount: 15000,
         unit: 'per couple',
         description: 'Sponsor a complete wedding outfit for a bride and groom from an underprivileged family.',
-        isPopular: true
+        isPopular: true,
+        donateUrl: PROJECT_DONATE.libaas.fullWedding
       },
       {
         title: 'Bridal Dress Contribution',
         amount: 8000,
         unit: 'per bride',
-        description: 'Provide a dignified wedding dress for a bride from a low-income family.'
+        description: 'Provide a dignified wedding dress for a bride from a low-income family.',
+        donateUrl: PROJECT_DONATE.libaas.bridalDress
       },
       {
         title: 'Cloth Set for Bride',
         amount: 15000,
         unit: 'per bride',
-        description: 'Provide a complete cloth set for a bride from a low-income family. We also accept good-condition bridal clothes.'
+        description: 'Provide a complete cloth set for a bride from a low-income family. We also accept good-condition bridal clothes.',
+        donateUrl: PROJECT_DONATE.libaas.clothSet
       },
       {
         title: 'Groom\'s Attire Contribution',
         amount: 5000,
         unit: 'per groom',
-        description: 'Provide wedding attire for a groom from an underprivileged family.'
+        description: 'Provide wedding attire for a groom from an underprivileged family.',
+        donateUrl: PROJECT_DONATE.libaas.groomAttire
       },
       {
         title: 'Quran, Jubba & Janamaz',
         amount: 5000,
         unit: 'per set',
-        description: 'Sponsor a Quran, jubba, and janamaz set for a couple starting married life.'
+        description: 'Sponsor a Quran, jubba, and janamaz set for a couple starting married life.',
+        donateUrl: PROJECT_DONATE.libaas.quranSet
       },
       {
         title: 'Sandal & Slipper',
         amount: 3000,
         unit: 'per set',
-        description: 'Provide sandals and slippers as part of wedding support for underprivileged couples.'
+        description: 'Provide sandals and slippers as part of wedding support for underprivileged couples.',
+        donateUrl: PROJECT_DONATE.libaas.sandal
       }
     ]
   }

@@ -8,7 +8,9 @@ import {
   QrCode,
   ShieldCheck,
   AlertTriangle,
-  Sparkles
+  Sparkles,
+  Receipt,
+  ExternalLink
 } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa6'
 import { HIF_ORGANIZATION } from '../../data/hifData'
@@ -19,13 +21,13 @@ import { copyText } from '../../lib/copyText'
 import { handleExternalAnchorClick } from '../../lib/openExternal'
 import { useDialogBehavior } from '../../hooks/useDialogBehavior'
 
-type Tab = 'qr' | 'bank'
+type Tab = 'online' | 'qr' | 'bank'
 
 export const DonateModal: React.FC = () => {
-  const { isOpen, cause, amount, closeDonate } = useDonate()
+  const { isOpen, cause, amount, donateUrl, closeDonate } = useDonate()
   const { t } = useLanguage()
   const [copiedField, setCopiedField] = useState<string | null>(null)
-  const [tab, setTab] = useState<Tab>('qr')
+  const [tab, setTab] = useState<Tab>('online')
   const dialogRef = useRef<HTMLDivElement>(null)
 
   useDialogBehavior(isOpen, closeDonate, dialogRef)
@@ -40,8 +42,15 @@ export const DonateModal: React.FC = () => {
   }
 
   useEffect(() => {
-    if (isOpen) setTab('qr')
+    if (isOpen) setTab('online')
   }, [isOpen])
+
+  const showManualNotify = tab === 'qr' || tab === 'bank'
+  const causeLabel = cause || t('donateModal.generalFund', 'General Humanitarian Fund')
+  const CAUSE_SEP = ' — '
+  const sepIndex = causeLabel.lastIndexOf(CAUSE_SEP)
+  const causeProject = sepIndex === -1 ? causeLabel : causeLabel.slice(0, sepIndex)
+  const causeTier = sepIndex === -1 ? undefined : causeLabel.slice(sepIndex + CAUSE_SEP.length)
 
   return (
     <AnimatePresence>
@@ -79,7 +88,7 @@ export const DonateModal: React.FC = () => {
                       {t('donateModal.title', 'Donate to HIF INDIA')}
                     </h3>
                     <p className="text-xs text-text-muted">
-                      {t('donateModal.subtitle', 'Bank transfer & UPI details')}
+                      {t('donateModal.subtitle', 'Online receipt, UPI & bank transfer')}
                     </p>
                   </div>
                 </div>
@@ -94,54 +103,116 @@ export const DonateModal: React.FC = () => {
 
               <div className="p-4 sm:p-6 pt-4">
                 {(cause || amount) && (
-                  <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-700/50 flex items-center justify-between gap-2 text-xs">
-                    <div className="min-w-0">
-                      <span className="text-text-muted dark:text-amber-200/80 block">{t('donateModal.forCause', 'For')}</span>
-                      <span className="font-semibold text-text-main dark:text-amber-100 line-clamp-2">{cause || t('donateModal.generalFund', 'General Humanitarian Fund')}</span>
+                  <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-700/50">
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-amber-800/70 dark:text-amber-200/70">
+                      {t('donateModal.forCause', 'For')}
+                    </p>
+                    <div className="mt-1 min-w-0">
+                      <p className="text-sm font-semibold text-text-main dark:text-amber-100 leading-snug break-words">
+                        {causeProject}
+                      </p>
+                      {causeTier && (
+                        <p className="mt-0.5 text-xs text-text-muted dark:text-amber-200/80 leading-snug break-words">
+                          {causeTier}
+                        </p>
+                      )}
                     </div>
-                    {amount && (
-                      <span className="font-bold text-accent dark:text-amber-300 text-base shrink-0">
+                    {amount != null && (
+                      <p className="mt-2 font-display text-lg font-semibold text-accent dark:text-amber-300 tabular-nums">
                         ₹{amount.toLocaleString()}
-                      </span>
+                      </p>
                     )}
                   </div>
                 )}
 
-                <div className={`grid grid-cols-2 gap-2 p-1 rounded-xl bg-bg-alt dark:bg-[#051c15] border border-border dark:border-emerald-800/50 ${cause || amount ? 'mt-4' : ''}`}>
+                <div className={`grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-bg-alt dark:bg-[#051c15] border border-border dark:border-emerald-800/50 ${cause || amount ? 'mt-4' : ''}`}>
+                  <button
+                    type="button"
+                    onClick={() => setTab('online')}
+                    className={`relative flex flex-col sm:flex-row items-center justify-center gap-1 py-2.5 px-1 rounded-lg text-[10px] sm:text-xs font-semibold transition-colors ${
+                      tab === 'online'
+                        ? 'bg-emerald-700 dark:bg-emerald-600 text-white shadow-sm'
+                        : 'text-text-muted hover:text-text-main'
+                    }`}
+                  >
+                    <Receipt className="w-3.5 h-3.5 shrink-0" />
+                    <span className="leading-tight text-center">{t('donateModal.tabOnline', 'Pay online')}</span>
+                    {tab !== 'online' && (
+                      <span className="absolute -top-2 -right-0.5 px-1.5 py-0.5 rounded-full bg-amber-500 text-emerald-950 text-[9px] font-bold flex items-center gap-0.5 shadow">
+                        <Sparkles className="w-2.5 h-2.5" /> {t('donateModal.receiptBadge', 'Receipt')}
+                      </span>
+                    )}
+                  </button>
                   <button
                     type="button"
                     onClick={() => setTab('qr')}
-                    className={`relative flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-semibold transition-colors ${
+                    className={`flex flex-col sm:flex-row items-center justify-center gap-1 py-2.5 px-1 rounded-lg text-[10px] sm:text-xs font-semibold transition-colors ${
                       tab === 'qr'
                         ? 'bg-emerald-700 dark:bg-emerald-600 text-white shadow-sm'
                         : 'text-text-muted hover:text-text-main'
                     }`}
                   >
-                    <QrCode className="w-3.5 h-3.5" />
-                    {t('donateModal.tabScanQr', 'Scan & Pay')}
-                    {tab !== 'qr' && (
-                      <span className="absolute -top-2 -right-1.5 px-1.5 py-0.5 rounded-full bg-amber-500 text-emerald-950 text-[9px] font-bold flex items-center gap-0.5 shadow">
-                        <Sparkles className="w-2.5 h-2.5" /> {t('donateModal.fastestBadge', 'Fastest')}
-                      </span>
-                    )}
+                    <QrCode className="w-3.5 h-3.5 shrink-0" />
+                    <span className="leading-tight text-center">{t('donateModal.tabScanQr', 'Google Pay')}</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setTab('bank')}
-                    className={`flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-semibold transition-colors ${
+                    className={`flex flex-col sm:flex-row items-center justify-center gap-1 py-2.5 px-1 rounded-lg text-[10px] sm:text-xs font-semibold transition-colors ${
                       tab === 'bank'
                         ? 'bg-emerald-700 dark:bg-emerald-600 text-white shadow-sm'
                         : 'text-text-muted hover:text-text-main'
                     }`}
                   >
-                    <Building2 className="w-3.5 h-3.5" />
-                    {t('donateModal.tabBankTransfer', 'Bank Transfer')}
+                    <Building2 className="w-3.5 h-3.5 shrink-0" />
+                    <span className="leading-tight text-center">{t('donateModal.tabBankTransfer', 'Bank account')}</span>
                   </button>
                 </div>
 
                 <div className="mt-4 text-sm overflow-hidden">
                   <AnimatePresence mode="wait" initial={false}>
-                    {tab === 'qr' ? (
+                    {tab === 'online' ? (
+                      <motion.div
+                        key="online"
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 8 }}
+                        transition={{ duration: 0.18 }}
+                        className="space-y-3"
+                      >
+                        <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-700/60 text-center">
+                          <div className="mx-auto w-12 h-12 rounded-2xl bg-emerald-700 dark:bg-emerald-600 text-white flex items-center justify-center shadow-sm">
+                            <Receipt className="w-6 h-6" />
+                          </div>
+                          <h4 className="mt-3 text-base font-bold text-text-main">
+                            {t('donateModal.onlineHeadline', 'Get your receipt as you pay.')}
+                          </h4>
+                          <p className="mt-1.5 text-xs text-text-muted leading-relaxed">
+                            {t(
+                              'donateModal.onlineSubheadline',
+                              'Pay on HIF’s secure donation page. Your official donation receipt is issued with the payment.'
+                            )}
+                          </p>
+                        </div>
+
+                        <a
+                          href={donateUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={handleExternalAnchorClick}
+                          className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-sm font-semibold transition-colors active:scale-[0.98]"
+                        >
+                          {t('donateModal.onlineCta', 'Donate and get receipt')}
+                          <ExternalLink className="w-4 h-4" aria-hidden />
+                        </a>
+                        <p className="text-[11px] text-text-muted text-center leading-relaxed">
+                          {t(
+                            'donateModal.onlineCtaHint',
+                            'Opens HIF’s donation page — enter the amount, your details, and pay.'
+                          )}
+                        </p>
+                      </motion.div>
+                    ) : tab === 'qr' ? (
                       <motion.div
                         key="qr"
                         initial={{ opacity: 0, x: -8 }}
@@ -250,29 +321,33 @@ export const DonateModal: React.FC = () => {
                   </AnimatePresence>
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-border flex items-start gap-2 text-[11px] text-text-muted">
-                  <ShieldCheck className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>
-                    {t(
-                      'donateModal.tax80GNote',
-                      '80G Tax Exemption applies. Please share payment receipt on WhatsApp for your certificate.'
-                    )}
-                  </span>
-                </div>
+                {showManualNotify && (
+                  <>
+                    <div className="mt-5 pt-4 border-t border-border flex items-start gap-2 text-[11px] text-text-muted">
+                      <ShieldCheck className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>
+                        {t(
+                          'donateModal.tax80GNote',
+                          '80G Tax Exemption applies. Please share payment receipt on WhatsApp for your certificate.'
+                        )}
+                      </span>
+                    </div>
 
-                <a
-                  href={buildWhatsAppUrl(
-                    HIF_ORGANIZATION.contact.whatsapp,
-                    'Assalamu Alaikum, I have made a donation to HIF INDIA.'
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleExternalAnchorClick}
-                  className="mt-4 w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-sm font-semibold transition-colors active:scale-[0.98]"
-                >
-                  <FaWhatsapp className="w-4 h-4" aria-hidden />
-                  {t('donateModal.notifyWhatsapp', "I've Transferred — Notify HIF on WhatsApp")}
-                </a>
+                    <a
+                      href={buildWhatsAppUrl(
+                        HIF_ORGANIZATION.contact.whatsapp,
+                        'Assalamu Alaikum, I have made a donation to HIF INDIA.'
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleExternalAnchorClick}
+                      className="mt-4 w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-sm font-semibold transition-colors active:scale-[0.98]"
+                    >
+                      <FaWhatsapp className="w-4 h-4" aria-hidden />
+                      {t('donateModal.notifyWhatsapp', "I've Transferred — Notify HIF on WhatsApp")}
+                    </a>
+                  </>
+                )}
               </div>
             </motion.div>
           </div>

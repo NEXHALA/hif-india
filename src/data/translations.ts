@@ -432,9 +432,19 @@ export interface TranslationDictionary {
     presetAmounts: string
     customAmount: string
     customAmountPlaceholder: string
+    tabOnline: string
     tabScanQr: string
     tabBankTransfer: string
+    receiptBadge: string
     fastestBadge: string
+    onlineHeadline: string
+    onlineSubheadline: string
+    onlineBenefitReceipt: string
+    onlineBenefit80G: string
+    onlineBenefitSecure: string
+    onlineCauseHint: string
+    onlineCta: string
+    onlineCtaHint: string
     beneficiaryName: string
     accountNumber: string
     ifscCode: string
@@ -1024,15 +1034,27 @@ export const translations: Record<Language, any> = {
     },
     donateModal: {
       title: 'Donate to HIF INDIA',
-      subtitle: 'Bank transfer & UPI payment details',
+      subtitle: 'Online receipt, UPI & bank transfer',
       forCause: 'For',
       generalFund: 'General Humanitarian Fund',
       presetAmounts: 'Quick Amounts',
       customAmount: 'Custom Amount',
       customAmountPlaceholder: 'Enter custom amount (₹)',
-      tabScanQr: 'Scan & Pay',
-      tabBankTransfer: 'Bank Transfer',
+      tabOnline: 'Pay online',
+      tabScanQr: 'Google Pay',
+      tabBankTransfer: 'Bank account',
+      receiptBadge: 'Receipt',
       fastestBadge: 'Fastest',
+      onlineHeadline: 'Get your receipt as you pay.',
+      onlineSubheadline:
+        'Pay on HIF’s secure donation page. Your official donation receipt is issued with the payment.',
+      onlineBenefitReceipt: 'Official receipt issued when your payment succeeds',
+      onlineBenefit80G: '80G tax benefit if you enter your PAN on the next page',
+      onlineBenefitSecure: 'Paid to HIF INDIA through the secure donation page',
+      onlineCauseHint:
+        'On the next page, enter the same amount and choose the matching purpose for this donation.',
+      onlineCta: 'Donate and get receipt',
+      onlineCtaHint: 'Opens HIF’s donation page — enter the amount, your details, and pay.',
       beneficiaryName: 'Beneficiary Name',
       accountNumber: 'Account Number (Current Account)',
       ifscCode: 'IFSC Code',
@@ -1656,15 +1678,27 @@ export const translations: Record<Language, any> = {
     },
     donateModal: {
       title: 'HIF INDIA ಗೆ ದಾನ ಮಾಡಿ',
-      subtitle: 'ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆ ಮತ್ತು UPI ಪಾವತಿ ವಿವರಗಳು',
+      subtitle: 'ಆನ್‌ಲೈನ್ ರಸೀದಿ, UPI ಮತ್ತು ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆ',
       forCause: 'ಯೋಜನೆ',
       generalFund: 'ಸಾಮಾನ್ಯ ಮಾನವೀಯ ನಿಧಿ',
       presetAmounts: 'ತ್ವರಿತ ಮೊತ್ತಗಳು',
       customAmount: 'ಇತರ ಮೊತ್ತ',
       customAmountPlaceholder: 'ಮೊತ್ತ ನಮೂದಿಸಿ (₹)',
-      tabScanQr: 'ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಪಾವತಿಸಿ',
-      tabBankTransfer: 'ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆ',
+      tabOnline: 'ಆನ್‌ಲೈನ್ ಪಾವತಿ',
+      tabScanQr: 'Google Pay',
+      tabBankTransfer: 'ಬ್ಯಾಂಕ್ ಖಾತೆ',
+      receiptBadge: 'ರಸೀದಿ',
       fastestBadge: 'ವೇಗದ',
+      onlineHeadline: 'ಪಾವತಿ ಮಾಡುತ್ತಲೇ ರಸೀದಿ ಪಡೆಯಿರಿ.',
+      onlineSubheadline:
+        'HIF ನ ಸುರಕ್ಷಿತ ದಾನ ಪುಟದಲ್ಲಿ ಪಾವತಿ ಮಾಡಿ. ಅಧಿಕೃತ ದಾನ ರಸೀದಿ ಪಾವತಿಯೊಂದಿಗೆ ನೀಡಲಾಗುತ್ತದೆ.',
+      onlineBenefitReceipt: 'ಪಾವತಿ ಯಶಸ್ವಿಯಾದಾಗ ಅಧಿಕೃತ ರಸೀದಿ ನೀಡಲಾಗುತ್ತದೆ',
+      onlineBenefit80G: 'ಮುಂದಿನ ಪುಟದಲ್ಲಿ PAN ನಮೂದಿಸಿದರೆ 80G ತೆರಿಗೆ ಪ್ರಯೋಜನ',
+      onlineBenefitSecure: 'ಸುರಕ್ಷಿತ ದಾನ ಪುಟದ ಮೂಲಕ HIF INDIA ಗೆ ಪಾವತಿ',
+      onlineCauseHint:
+        'ಮುಂದಿನ ಪುಟದಲ್ಲಿ ಅದೇ ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಈ ದಾನಕ್ಕೆ ಹೊಂದುವ ಉದ್ದೇಶವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
+      onlineCta: 'ದಾನ ಮಾಡಿ ಮತ್ತು ರಸೀದಿ ಪಡೆಯಿರಿ',
+      onlineCtaHint: 'HIF ದಾನ ಪುಟ ತೆರೆಯುತ್ತದೆ — ಮೊತ್ತ, ನಿಮ್ಮ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಪಾವತಿ ಮಾಡಿ.',
       beneficiaryName: 'ಫಲಾನುಭವಿಯ ಹೆಸರು (ಖಾತೆ)',
       accountNumber: 'ಖಾತೆ ಸಂಖ್ಯೆ (ಚಾಲ್ತಿ ಖಾತೆ)',
       ifscCode: 'IFSC ಕೋಡ್',
@@ -2288,15 +2322,27 @@ export const translations: Record<Language, any> = {
     },
     donateModal: {
       title: 'HIF INDIA को दान करें',
-      subtitle: 'बैंक ट्रांसफर और UPI भुगतान विवरण',
+      subtitle: 'ऑनलाइन रसीद, UPI और बैंक ट्रांसफर',
       forCause: 'इसके लिए',
       generalFund: 'सामान्य मानवीय राहत कोष',
       presetAmounts: 'सुझाई गई राशि',
       customAmount: 'अन्य राशि',
       customAmountPlaceholder: 'राशि दर्ज करें (₹)',
-      tabScanQr: 'स्कैन करें और भुगतान करें',
-      tabBankTransfer: 'बैंक ट्रांसफर',
+      tabOnline: 'ऑनलाइन भुगतान',
+      tabScanQr: 'Google Pay',
+      tabBankTransfer: 'बैंक खाता',
+      receiptBadge: 'रसीद',
       fastestBadge: 'सबसे तेज़',
+      onlineHeadline: 'भुगतान करते ही रसीद पाएँ।',
+      onlineSubheadline:
+        'HIF के सुरक्षित दान पृष्ठ पर भुगतान करें। आधिकारिक दान रसीद भुगतान के साथ जारी होती है।',
+      onlineBenefitReceipt: 'भुगतान सफल होने पर आधिकारिक रसीद जारी होती है',
+      onlineBenefit80G: 'अगले पृष्ठ पर PAN दर्ज करने पर 80G कर लाभ',
+      onlineBenefitSecure: 'सुरक्षित दान पृष्ठ के माध्यम से HIF INDIA को भुगतान',
+      onlineCauseHint:
+        'अगले पृष्ठ पर वही राशि दर्ज करें और इस दान के लिए सही उद्देश्य चुनें।',
+      onlineCta: 'दान करें और रसीद पाएँ',
+      onlineCtaHint: 'HIF का दान पृष्ठ खुलता है — राशि, अपना विवरण दर्ज करें और भुगतान करें।',
       beneficiaryName: 'लाभार्थी का नाम (खाताधारक)',
       accountNumber: 'खाता संख्या (चालू खाता)',
       ifscCode: 'IFSC कोड',

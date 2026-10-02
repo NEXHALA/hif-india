@@ -206,7 +206,13 @@ export const ProjectDetailPage: React.FC = () => {
                 {project.supportTiers.map((tier) => (
                   <button
                     key={tier.title}
-                    onClick={() => openDonate(`${project.title} — ${tier.title}`, tier.amount)}
+                    onClick={() =>
+                      openDonate(
+                        `${project.title} — ${tier.title}`,
+                        tier.amount,
+                        tier.donateUrl ?? project.donateUrl
+                      )
+                    }
                     className={`w-full text-left p-4 rounded-xl border transition-colors ${
                       tier.isPopular
                         ? 'border-emerald-300 dark:border-emerald-600/60 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30'
@@ -226,7 +232,7 @@ export const ProjectDetailPage: React.FC = () => {
                 ))}
               </div>
               <button
-                onClick={() => openDonate(project.title)}
+                onClick={() => openDonate(project.title, undefined, project.donateUrl)}
                 className="mt-4 w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-sm font-semibold transition-colors"
               >
                 <Heart className="w-4 h-4" /> {t('common.donateNow', 'Donate to This Project')}

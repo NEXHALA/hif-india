@@ -1,23 +1,33 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react'
+import { GENERAL_DONATE_URL } from '../data/donateLinks'
 
 interface DonateState {
   isOpen: boolean
   cause?: string
   amount?: number
+  donateUrl: string
 }
 
 interface DonateContextValue extends DonateState {
-  openDonate: (cause?: string, amount?: number) => void
+  openDonate: (cause?: string, amount?: number, donateUrl?: string) => void
   closeDonate: () => void
 }
 
 const DonateContext = createContext<DonateContextValue | null>(null)
 
 export const DonateProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [state, setState] = useState<DonateState>({ isOpen: false })
+  const [state, setState] = useState<DonateState>({
+    isOpen: false,
+    donateUrl: GENERAL_DONATE_URL
+  })
 
-  const openDonate = useCallback((cause?: string, amount?: number) => {
-    setState({ isOpen: true, cause, amount })
+  const openDonate = useCallback((cause?: string, amount?: number, donateUrl?: string) => {
+    setState({
+      isOpen: true,
+      cause,
+      amount,
+      donateUrl: donateUrl || GENERAL_DONATE_URL
+    })
   }, [])
 
   const closeDonate = useCallback(() => {
