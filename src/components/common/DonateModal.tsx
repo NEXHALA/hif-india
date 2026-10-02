@@ -102,23 +102,23 @@ export const DonateModal: React.FC = () => {
               </div>
 
               <div className="p-4 sm:p-6 pt-4">
-                {(cause || amount) && (
-                  <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-700/50">
-                    <p className="text-[10px] font-semibold uppercase tracking-wide text-amber-800/70 dark:text-amber-200/70">
-                      {t('donateModal.forCause', 'For')}
-                    </p>
-                    <div className="mt-1 min-w-0">
+                {(cause || amount != null) && (
+                  <div
+                    className="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-700/50"
+                    aria-label={`${t('donateModal.forCause', 'For')} ${causeLabel}`}
+                  >
+                    <div className="min-w-0 flex-1">
                       <p className="text-sm font-semibold text-text-main dark:text-amber-100 leading-snug break-words">
-                        {causeProject}
+                        {causeTier || causeProject}
                       </p>
                       {causeTier && (
-                        <p className="mt-0.5 text-xs text-text-muted dark:text-amber-200/80 leading-snug break-words">
-                          {causeTier}
+                        <p className="mt-0.5 text-xs text-text-muted dark:text-amber-200/75 leading-snug break-words">
+                          {causeProject}
                         </p>
                       )}
                     </div>
                     {amount != null && (
-                      <p className="mt-2 font-display text-lg font-semibold text-accent dark:text-amber-300 tabular-nums">
+                      <p className="shrink-0 pl-3 border-l border-amber-300/80 dark:border-amber-700/60 font-display text-xl font-semibold text-accent dark:text-amber-300 tabular-nums leading-none">
                         ₹{amount.toLocaleString()}
                       </p>
                     )}
