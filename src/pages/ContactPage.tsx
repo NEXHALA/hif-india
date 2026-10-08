@@ -64,11 +64,10 @@ export const ContactPage: React.FC = () => {
                 href={`tel:${HIF_ORGANIZATION.contact.primaryPhone.replace(/\s+/g, '')}`}
               />
               <ContactRow
-                icon={FaWhatsapp}
-                label={t('contact.altPhoneLabel', 'WhatsApp')}
-                value={HIF_ORGANIZATION.contact.whatsapp}
-                href={whatsAppHref}
-                external
+                icon={Phone}
+                label={t('contact.altPhoneLabel', 'Alternate Number')}
+                value={HIF_ORGANIZATION.contact.altPhone}
+                href={`tel:${HIF_ORGANIZATION.contact.altPhone.replace(/\s+/g, '')}`}
               />
               <ContactRow
                 icon={Mail}
