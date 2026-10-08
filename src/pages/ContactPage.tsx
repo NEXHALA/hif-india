@@ -59,15 +59,16 @@ export const ContactPage: React.FC = () => {
             <div className="card p-6 space-y-3">
               <ContactRow
                 icon={Phone}
-                label={t('contact.primaryPhoneLabel', 'Primary Office & Medical Cell')}
+                label={t('contact.primaryPhoneLabel', 'Primary Office')}
                 value={HIF_ORGANIZATION.contact.primaryPhone}
                 href={`tel:${HIF_ORGANIZATION.contact.primaryPhone.replace(/\s+/g, '')}`}
               />
               <ContactRow
-                icon={Phone}
-                label={t('contact.altPhoneLabel', 'Alternate Helpline')}
-                value={HIF_ORGANIZATION.contact.altPhone}
-                href={`tel:${HIF_ORGANIZATION.contact.altPhone.replace(/\s+/g, '')}`}
+                icon={FaWhatsapp}
+                label={t('contact.altPhoneLabel', 'WhatsApp')}
+                value={HIF_ORGANIZATION.contact.whatsapp}
+                href={whatsAppHref}
+                external
               />
               <ContactRow
                 icon={Mail}
@@ -112,14 +113,18 @@ export const ContactPage: React.FC = () => {
   )
 }
 
-const ContactRow: React.FC<{ icon: React.ElementType; label: string; value: string; href: string }> = ({
-  icon: Icon,
-  label,
-  value,
-  href
-}) => (
+const ContactRow: React.FC<{
+  icon: React.ElementType
+  label: string
+  value: string
+  href: string
+  external?: boolean
+}> = ({ icon: Icon, label, value, href, external }) => (
   <a
     href={href}
+    {...(external
+      ? { target: '_blank', rel: 'noopener noreferrer', onClick: handleExternalAnchorClick }
+      : {})}
     className="flex items-center justify-between p-3.5 rounded-xl bg-bg-alt dark:bg-card-tint border border-border hover:border-emerald-300 dark:hover:border-emerald-500 transition-colors group"
   >
     <div className="flex items-center gap-3">

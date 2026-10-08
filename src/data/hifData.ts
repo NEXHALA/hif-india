@@ -92,7 +92,7 @@ export const HIF_ORGANIZATION = {
   },
   contact: {
     primaryPhone: '+91 98450 81312',
-    altPhone: '+91 98450 81312',
+    altPhone: '+91 63662 96133',
     email: 'info@hif.org.in',
     website: 'https://hif.org.in',
     whatsapp: '+91 63662 96133'
