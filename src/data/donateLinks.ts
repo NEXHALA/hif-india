@@ -56,4 +56,27 @@ export const PROJECT_DONATE = {
     sandal: erpProjectDonateUrl(35),
     general: erpProjectDonateUrl(36),
   },
+  /** Get Involved Impact Calculator presets (reuses project tiers where amounts match). */
+  impact: {
+    schoolKits: erpProjectDonateUrl(38),
+    clothing: erpProjectDonateUrl(8),
+    normalFood: erpProjectDonateUrl(7),
+    specialFood: erpProjectDonateUrl(6),
+    studentCare: erpProjectDonateUrl(5),
+    solarWudhu: erpProjectDonateUrl(13),
+    solarOrToilet: erpProjectDonateUrl(39),
+    homeShare: erpProjectDonateUrl(3),
+  },
 } as const
+
+/** Map Impact Calculator amount → ERP donate URL. */
+export function impactDonateUrlForAmount(amount: number): string {
+  if (amount < 2000) return PROJECT_DONATE.impact.schoolKits
+  if (amount < 9000) return PROJECT_DONATE.impact.clothing
+  if (amount < 14500) return PROJECT_DONATE.impact.normalFood
+  if (amount < 15000) return PROJECT_DONATE.impact.specialFood
+  if (amount < 35000) return PROJECT_DONATE.impact.studentCare
+  if (amount === 50000) return PROJECT_DONATE.impact.solarOrToilet
+  if (amount < 75000) return PROJECT_DONATE.impact.solarWudhu
+  return PROJECT_DONATE.impact.homeShare
+}

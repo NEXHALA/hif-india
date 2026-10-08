@@ -24,6 +24,7 @@ import {
   HIF_ORGANIZATION,
   IMPACT_CALCULATOR_PRESETS,
 } from '../data/hifData'
+import { impactDonateUrlForAmount } from '../data/donateLinks'
 import { PageHeader } from '../components/common/PageHeader'
 import { useDonate } from '../context/DonateContext'
 import { useLanguage } from '../context/LanguageContext'
@@ -108,7 +109,9 @@ export const GetInvolvedPage: React.FC = () => {
               </div>
 
               <button
-                onClick={() => openDonate(impact.recommendedProgram, amount)}
+                onClick={() =>
+                  openDonate(impact.recommendedProgram, amount, impactDonateUrlForAmount(amount))
+                }
                 className="mt-6 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-sm font-semibold transition-colors"
               >
                 <Heart className="w-4 h-4" /> {t('common.pledgeNow', 'Pledge')} ₹{amount.toLocaleString()} {t('common.now', 'Now')}
