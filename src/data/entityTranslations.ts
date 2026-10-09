@@ -241,14 +241,34 @@ const en: Record<string, string> = {
     'Every year we give need-and-merit aid for PUC, degree, engineering, nursing, and medical studies.',
   'education.story3':
     'Weekend computer classes and youth camps build speaking skills and confidence.',
+  'education.story4':
+    'Through our new Seva Kendra desk, families also get guided help with voter ID, PAN, Aadhaar updates, welfare cards, state schemes, and scholarship paperwork.',
   'education.feat1': 'Scholarships for poor students in college and professional courses.',
   'education.feat2': 'Free bags, books, and kits for 500+ school children each year.',
   'education.feat3': 'Free computer and basic coding classes.',
   'education.feat4': 'Personality and speaking camps in school holidays.',
   'education.feat5': 'Career guidance for 10th and 12th students.',
+  'education.feat6':
+    'Seva Kendra: free help with government documents, welfare schemes, and scholarship applications.',
   'education.imp1': 'First-generation engineers, teachers, nurses, and accountants from poor areas.',
   'education.imp2': 'School dropouts fell to near zero in our target neighbourhoods.',
   'education.imp3': 'More than 60% of scholarships went to girls.',
+
+  'education.initiative.seva-kendra.title': 'HIF Seva Kendra',
+  'education.initiative.seva-kendra.subtitle':
+    'One-stop citizen services desk for documents, welfare schemes & scholarships',
+  'education.initiative.seva-kendra.badge': 'New Initiative',
+  'education.initiative.seva-kendra.description':
+    'Seva Kendra is HIF India’s new community facilitation centre that helps families apply for essential government documents and welfare benefits — free of confusion and middlemen. Walk in for guided support with voter ID, PAN, Aadhaar, senior citizen and Ayushman cards, state schemes, and scholarship paperwork.',
+  'education.initiative.seva-kendra.service1': 'Voter ID — New Application / Correction',
+  'education.initiative.seva-kendra.service2': 'PAN Card — New Application / Correction',
+  'education.initiative.seva-kendra.service3': 'Aadhaar — Update / Address Change',
+  'education.initiative.seva-kendra.service4': 'Senior Citizen Card Application',
+  'education.initiative.seva-kendra.service5': 'Ayushman Card Application',
+  'education.initiative.seva-kendra.service6': 'Arivu and Scholarships',
+  'education.initiative.seva-kendra.service7': 'Gruha Jyothi Application',
+  'education.initiative.seva-kendra.service8': 'Gruha Lakshmi Application',
+  'education.initiative.seva-kendra.service9': 'New Income / Caste Certificate Application',
 
   'youth.stat1': 'Active Youth Volunteers',
   'youth.stat2': 'Skill Workshops',
@@ -714,14 +734,34 @@ const kn: Record<string, string> = {
   "education.story1": "ಹಣವಿಲ್ಲದ ಕಾರಣ ಮಗು ಶಾಲೆ ಬಿಡಬಾರದು.",
   "education.story2": "ಪ್ರತಿ ವರ್ಷ PUC, ಡಿಗ್ರಿ, ಎಂಜಿನಿಯರಿಂಗ್, ನರ್ಸಿಂಗ್, ವೈದ್ಯಕೀಯಕ್ಕೆ ಸಹಾಯ.",
   "education.story3": "ವಾರಾಂತ್ಯ ಕಂಪ್ಯೂಟರ್ ತರಗತಿ ಮತ್ತು ಯುವ ಶಿಬಿರ.",
+  "education.story4":
+    "ನಮ್ಮ ಹೊಸ ಸೇವಾ ಕೇಂದ್ರದಲ್ಲಿ ಕುಟುಂಬಗಳಿಗೆ ವೋಟರ್ ID, PAN, ಆಧಾರ್ ಅಪ್‌ಡೇಟ್, ಕಲ್ಯಾಣ ಕಾರ್ಡ್‌ಗಳು, ರಾಜ್ಯ ಯೋಜನೆಗಳು ಮತ್ತು ವಿದ್ಯಾರ್ಥಿವೇತನ ಅರ್ಜಿಗಳಲ್ಲಿ ಮಾರ್ಗದರ್ಶನ ಸಿಗುತ್ತದೆ.",
   "education.feat1": "ಬಡ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಕಾಲೇಜು ವಿದ್ಯಾರ್ಥಿವೇತನ.",
   "education.feat2": "ವರ್ಷಕ್ಕೆ 500+ ಮಕ್ಕಳಿಗೆ ಚೀಲ ಮತ್ತು ಪುಸ್ತಕ.",
   "education.feat3": "ಉಚಿತ ಕಂಪ್ಯೂಟರ್ ಮತ್ತು ಕೋಡಿಂಗ್ ತರಗತಿ.",
   "education.feat4": "ರಜೆಯಲ್ಲಿ ಮಾತನಾಡುವ ಮತ್ತು ವ್ಯಕ್ತಿತ್ವ ಶಿಬಿರ.",
   "education.feat5": "10ನೇ ಮತ್ತು 12ನೇ ತರಗತಿಗೆ ವೃತ್ತಿ ಮಾರ್ಗದರ್ಶನ.",
+  "education.feat6":
+    "ಸೇವಾ ಕೇಂದ್ರ: ಸರ್ಕಾರಿ ದಾಖಲೆಗಳು, ಕಲ್ಯಾಣ ಯೋಜನೆಗಳು ಮತ್ತು ವಿದ್ಯಾರ್ಥಿವೇತನ ಅರ್ಜಿಗಳಿಗೆ ಉಚಿತ ಸಹಾಯ.",
   "education.imp1": "ಬಡ ಪ್ರದೇಶದಿಂದ ಎಂಜಿನಿಯರ್, ಶಿಕ್ಷಕ, ನರ್ಸ್, ಅಕೌಂಟೆಂಟ್.",
   "education.imp2": "ಗುರಿ ಪ್ರದೇಶಗಳಲ್ಲಿ ಶಾಲೆ ಬಿಡುವುದು ಬಹುತೇಕ ನಿಂತಿದೆ.",
   "education.imp3": "ವಿದ್ಯಾರ್ಥಿವೇತನದ 60%ಕ್ಕೂ ಹೆಚ್ಚು ಹುಡುಗಿಯರಿಗೆ.",
+
+  "education.initiative.seva-kendra.title": "HIF ಸೇವಾ ಕೇಂದ್ರ",
+  "education.initiative.seva-kendra.subtitle":
+    "ದಾಖಲೆಗಳು, ಕಲ್ಯಾಣ ಯೋಜನೆಗಳು ಮತ್ತು ವಿದ್ಯಾರ್ಥಿವೇತನಕ್ಕಾಗಿ ಒಂದೇ ಸ್ಥಳದ ನಾಗರಿಕ ಸೇವಾ ಕೇಂದ್ರ",
+  "education.initiative.seva-kendra.badge": "ಹೊಸ ಉಪಕ್ರಮ",
+  "education.initiative.seva-kendra.description":
+    "ಸೇವಾ ಕೇಂದ್ರವು HIF ಇಂಡಿಯಾದ ಹೊಸ ಸಮುದಾಯ ಸಹಾಯ ಕೇಂದ್ರ. ಕುಟುಂಬಗಳು ಅಗತ್ಯ ಸರ್ಕಾರಿ ದಾಖಲೆಗಳು ಮತ್ತು ಕಲ್ಯಾಣ ಯೋಜನೆಗಳಿಗೆ ಅರ್ಜಿ ಸಲ್ಲಿಸಲು ಮಧ್ಯವರ್ತಿಗಳಿಲ್ಲದೆ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯುತ್ತಾರೆ — ವೋಟರ್ ID, PAN, ಆಧಾರ್, ಹಿರಿಯ ನಾಗರಿಕ ಮತ್ತು ಆಯುಷ್ಮಾನ್ ಕಾರ್ಡ್, ರಾಜ್ಯ ಯೋಜನೆಗಳು ಹಾಗೂ ವಿದ್ಯಾರ್ಥಿವೇತನ ಕಾಗದಪತ್ರ.",
+  "education.initiative.seva-kendra.service1": "ವೋಟರ್ ID — ಹೊಸ ಅರ್ಜಿ / ತಿದ್ದುಪಡಿ",
+  "education.initiative.seva-kendra.service2": "PAN ಕಾರ್ಡ್ — ಹೊಸ ಅರ್ಜಿ / ತಿದ್ದುಪಡಿ",
+  "education.initiative.seva-kendra.service3": "ಆಧಾರ್ — ಅಪ್‌ಡೇಟ್ / ವಿಳಾಸ ಬದಲಾವಣೆ",
+  "education.initiative.seva-kendra.service4": "ಹಿರಿಯ ನಾಗರಿಕ ಕಾರ್ಡ್ ಅರ್ಜಿ",
+  "education.initiative.seva-kendra.service5": "ಆಯುಷ್ಮಾನ್ ಕಾರ್ಡ್ ಅರ್ಜಿ",
+  "education.initiative.seva-kendra.service6": "ಅರಿವು ಮತ್ತು ವಿದ್ಯಾರ್ಥಿವೇತನಗಳು",
+  "education.initiative.seva-kendra.service7": "ಗೃಹ ಜ್ಯೋತಿ ಅರ್ಜಿ",
+  "education.initiative.seva-kendra.service8": "ಗೃಹ ಲಕ್ಷ್ಮಿ ಅರ್ಜಿ",
+  "education.initiative.seva-kendra.service9": "ಹೊಸ ಆದಾಯ / ಜಾತಿ ಪ್ರಮಾಣಪತ್ರ ಅರ್ಜಿ",
   "youth.stat1": "ಯುವ ಸ್ವಯಂಸೇವಕರು",
   "youth.stat2": "ತರಬೇತಿ",
   "youth.stat3": "ಸಮುದಾಯ ಕಾರ್ಯ",
@@ -1485,14 +1525,34 @@ const hi: Record<string, string> = {
   'education.story2':
     'हर साल PUC, डिग्री, इंजीनियरिंग, नर्सिंग, मेडिकल के लिए मदद।',
   'education.story3': 'सप्ताहांत कंप्यूटर क्लास और युवा शिविर।',
+  'education.story4':
+    'हमारे नए सेवा केंद्र में परिवारों को वोटर ID, PAN, आधार अपडेट, कल्याण कार्ड, राज्य योजनाएँ और छात्रवृत्ति कागज़ों में मार्गदर्शन मिलता है।',
   'education.feat1': 'गरीब छात्रों के लिए कॉलेज छात्रवृत्ति।',
   'education.feat2': 'हर साल 500+ बच्चों को बैग और किताबें।',
   'education.feat3': 'मुफ्त कंप्यूटर और कोडिंग क्लास।',
   'education.feat4': 'छुट्टियों में बोलना और व्यक्तित्व शिविर।',
   'education.feat5': '10वीं और 12वीं के लिए करियर गाइड।',
+  'education.feat6':
+    'सेवा केंद्र: सरकारी दस्तावेज़, कल्याण योजनाएँ और छात्रवृत्ति आवेदनों में मुफ्त मदद।',
   'education.imp1': 'गरीब इलाकों से इंजीनियर, शिक्षक, नर्स, अकाउंटेंट।',
   'education.imp2': 'लक्ष्य इलाकों में स्कूल छोड़ना लगभग बंद।',
   'education.imp3': 'छात्रवृत्ति का 60% से अधिक लड़कियों को।',
+
+  'education.initiative.seva-kendra.title': 'HIF सेवा केंद्र',
+  'education.initiative.seva-kendra.subtitle':
+    'दस्तावेज़, कल्याण योजनाएँ और छात्रवृत्ति के लिए एक ही जगह नागरिक सेवा डेस्क',
+  'education.initiative.seva-kendra.badge': 'नई पहल',
+  'education.initiative.seva-kendra.description':
+    'सेवा केंद्र HIF इंडिया का नया सामुदायिक सहायता केंद्र है। परिवार ज़रूरी सरकारी दस्तावेज़ और कल्याण लाभ के लिए बिना बिचौलियों के मार्गदर्शन पाते हैं — वोटर ID, PAN, आधार, वरिष्ठ नागरिक व आयुष्मान कार्ड, राज्य योजनाएँ और छात्रवृत्ति कागज़ात।',
+  'education.initiative.seva-kendra.service1': 'वोटर ID — नया आवेदन / सुधार',
+  'education.initiative.seva-kendra.service2': 'PAN कार्ड — नया आवेदन / सुधार',
+  'education.initiative.seva-kendra.service3': 'आधार — अपडेट / पता बदलाव',
+  'education.initiative.seva-kendra.service4': 'वरिष्ठ नागरिक कार्ड आवेदन',
+  'education.initiative.seva-kendra.service5': 'आयुष्मान कार्ड आवेदन',
+  'education.initiative.seva-kendra.service6': 'अरिवु और छात्रवृत्तियाँ',
+  'education.initiative.seva-kendra.service7': 'गृह ज्योति आवेदन',
+  'education.initiative.seva-kendra.service8': 'गृह लक्ष्मी आवेदन',
+  'education.initiative.seva-kendra.service9': 'नया आय / जाति प्रमाणपत्र आवेदन',
 
   'youth.stat1': 'युवा स्वयंसेवक',
   'youth.stat2': 'ट्रेनिंग',

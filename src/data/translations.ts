@@ -243,6 +243,7 @@ export interface TranslationDictionary {
     wingsBadge: string
     wingsTitle: string
     featuresTitle: string
+    servicesTitle: string
     impactTitle: string
     medical: {
       title: string
@@ -843,6 +844,7 @@ export const translations: Record<Language, any> = {
       wingsBadge: 'Our Wings',
       wingsTitle: 'Continuous community intervention across health, education, and youth.',
       featuresTitle: 'What We Do',
+      servicesTitle: 'Our Services',
       impactTitle: 'Impact So Far',
       medical: {
         title: 'HIF Medical Cell & MEDIBANK',
@@ -859,7 +861,7 @@ export const translations: Record<Language, any> = {
         subtitle: 'Nurturing Academic Excellence, Digital Skills & Value Education',
         badge: 'Academic Empowerment',
         overview:
-          'Empowering underprivileged students with merit scholarships, free school bags, textbook distribution, computer education, and summer personality camps.',
+          'Empowering underprivileged students with merit scholarships, free school bags, textbook distribution, computer education, summer personality camps — and Seva Kendra citizen-service support.',
         statStudents: '2,500+ Students Assisted',
         statScholarships: '₹40L+ Scholarships Awarded',
         statCamps: '45+ Batches Conducted'
@@ -1490,6 +1492,7 @@ export const translations: Record<Language, any> = {
       wingsBadge: 'ನಮ್ಮ ವಿಭಾಗಗಳು',
       wingsTitle: 'ಆರೋಗ್ಯ, ಶಿಕ್ಷಣ ಮತ್ತು ಯುವಜನತೆಯಲ್ಲಿ ನಿರಂತರ ಸಮುದಾಯ ಸೇವೆ.',
       featuresTitle: 'ನಾವು ಮಾಡುವುದು',
+      servicesTitle: 'ನಮ್ಮ ಸೇವೆಗಳು',
       impactTitle: 'ಇಲ್ಲಿಯವರೆಗಿನ ಸಹಾಯ',
       medical: {
         title: 'HIF ವೈದ್ಯಕೀಯ ವಿಭಾಗ & ಮೆಡಿಬ್ಯಾಂಕ್',
@@ -1506,7 +1509,7 @@ export const translations: Record<Language, any> = {
         subtitle: 'ಶೈಕ್ಷಣಿಕ ಉತ್ಕೃಷ್ಟತೆ, ಡಿಜಿಟಲ್ ಕೌಶಲ್ಯ ಮತ್ತು ಮೌಲ್ಯಾಧಾರಿತ ಶಿಕ್ಷಣ',
         badge: 'ಶೈಕ್ಷಣಿಕ ಬಲಪಡಿಸುವುದು',
         overview:
-          'ಪ್ರತಿಭಾವಂತ ಬಡ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ವಿದ್ಯಾರ್ಥಿವೇತನ, ಉಚಿತ ಬ್ಯಾಗ್ ಮತ್ತು ಪುಸ್ತಕ ವಿತರಣೆ, ಕಂಪ್ಯೂಟರ್ ಶಿಕ್ಷಣ ಹಾಗೂ ಬೇಸಿಗೆ ನಾಯಕತ್ವ ಶಿಬಿರಗಳನ್ನು ನಡೆಸುವುದು.',
+          'ಪ್ರತಿಭಾವಂತ ಬಡ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ವಿದ್ಯಾರ್ಥಿವೇತನ, ಉಚಿತ ಬ್ಯಾಗ್ ಮತ್ತು ಪುಸ್ತಕ ವಿತರಣೆ, ಕಂಪ್ಯೂಟರ್ ಶಿಕ್ಷಣ, ಬೇಸಿಗೆ ನಾಯಕತ್ವ ಶಿಬಿರಗಳು — ಹಾಗೂ ಸೇವಾ ಕೇಂದ್ರ ನಾಗರಿಕ ಸೇವಾ ಸಹಾಯ.',
         statStudents: '2,500+ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ನೆರವು',
         statScholarships: '₹40L+ ವಿದ್ಯಾರ್ಥಿವೇತನ ವಿತರಣೆ',
         statCamps: '45+ ಶಿಬಿರಗಳು'
@@ -2137,6 +2140,7 @@ export const translations: Record<Language, any> = {
       wingsBadge: 'हमारे विंग्स',
       wingsTitle: 'स्वास्थ्य, शिक्षा और युवाओं को मजबूत बनाने में निरंतर सेवाएं।',
       featuresTitle: 'हम क्या करते हैं',
+      servicesTitle: 'हमारी सेवाएँ',
       impactTitle: 'अब तक की मदद',
       medical: {
         title: 'HIF मेडिकल सेल और मेडीबैंक',
@@ -2153,7 +2157,7 @@ export const translations: Record<Language, any> = {
         subtitle: 'शैक्षणिक उत्कृष्टता, डिजिटल कौशल और मूल्यपरक शिक्षा',
         badge: 'शैक्षणिक मजबूत बनाना',
         overview:
-          'जरूरतमंद मेधावी छात्रों को छात्रवृत्ति, मुफ्त स्कूल बैग व किताबें, कंप्यूटर शिक्षा और ग्रीष्मकालीन व्यक्तित्व विकास शिविर आयोजित करना।',
+          'जरूरतमंद मेधावी छात्रों को छात्रवृत्ति, मुफ्त स्कूल बैग व किताबें, कंप्यूटर शिक्षा, ग्रीष्मकालीन व्यक्तित्व विकास शिविर — और सेवा केंद्र नागरिक सेवा सहायता।',
         statStudents: '2,500+ छात्रों को सहायता',
         statScholarships: '₹40L+ छात्रवृत्ति वितरित',
         statCamps: '45+ शिविर आयोजित'

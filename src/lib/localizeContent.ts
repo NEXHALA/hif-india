@@ -70,7 +70,20 @@ export function localizeActivity(activity: ActivityData, t: TFn, language: Langu
     })),
     fullStory: activity.fullStory.map((para, i) => tx(language, `${key}.story${i + 1}`, para)),
     features: activity.features.map((f, i) => tx(language, `${key}.feat${i + 1}`, f)),
-    impactPoints: activity.impactPoints.map((p, i) => tx(language, `${key}.imp${i + 1}`, p))
+    impactPoints: activity.impactPoints.map((p, i) => tx(language, `${key}.imp${i + 1}`, p)),
+    initiatives: activity.initiatives?.map((initiative) => {
+      const iKey = `${key}.initiative.${initiative.id}`
+      return {
+        ...initiative,
+        title: tx(language, `${iKey}.title`, initiative.title),
+        subtitle: tx(language, `${iKey}.subtitle`, initiative.subtitle),
+        badge: tx(language, `${iKey}.badge`, initiative.badge),
+        description: tx(language, `${iKey}.description`, initiative.description),
+        services: initiative.services.map((service, i) =>
+          tx(language, `${iKey}.service${i + 1}`, service)
+        )
+      }
+    })
   }
 }
 

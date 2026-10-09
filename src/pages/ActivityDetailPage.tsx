@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Navigate, useLocation, useParams } from 'react-router-dom'
-import { CheckCircle2, Sparkles, Heart } from 'lucide-react'
+import { CheckCircle2, Sparkles, Heart, Phone, Globe } from 'lucide-react'
 import { HIF_ACTIVITIES } from '../data/hifData'
 import { useDonate } from '../context/DonateContext'
 import { useLanguage } from '../context/LanguageContext'
@@ -41,6 +41,11 @@ export const ActivityDetailPage: React.FC = () => {
 
   const activity = localizeActivity(rawActivity, t, language)
   const canonicalSlug = ACTIVITY_SLUGS[rawActivity.id] ?? rawActivity.id
+  // Gallery + initiative photos share one lightbox so each thumbnail can open fullscreen.
+  const lightboxImages = [
+    ...activity.images,
+    ...(activity.initiatives?.flatMap((initiative) => initiative.images) ?? [])
+  ]
 
   return (
     <>
@@ -132,6 +137,102 @@ export const ActivityDetailPage: React.FC = () => {
                 ))}
               </ul>
             </div>
+
+            {activity.initiatives?.map((initiative, initiativeIndex) => {
+              // Offset into lightboxImages: after main gallery + any earlier initiatives.
+              const lightboxBase =
+                activity.images.length +
+                (activity.initiatives
+                  ?.slice(0, initiativeIndex)
+                  .reduce((sum, prior) => sum + prior.images.length, 0) ?? 0)
+
+              return (
+              <div
+                key={initiative.id}
+                id={initiative.id}
+                className="rounded-2xl border border-border bg-bg-alt p-6 sm:p-8 space-y-6"
+              >
+                <div>
+                  <span className="inline-flex items-center rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 px-3 py-1 text-xs font-semibold tracking-wide">
+                    {initiative.badge}
+                  </span>
+                  <h2 className="font-display mt-3 text-2xl font-semibold text-text-main">
+                    {initiative.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-primary-deep font-medium">
+                    {initiative.subtitle}
+                  </p>
+                  <p className="mt-3 text-text-muted leading-relaxed text-sm">
+                    {initiative.description}
+                  </p>
+                </div>
+
+                {initiative.images.length > 0 && (
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {initiative.images.map((img, i) => (
+                      <button
+                        key={img}
+                        type="button"
+                        onClick={() => setLightboxIndex(lightboxBase + i)}
+                        className="aspect-[4/3] rounded-xl overflow-hidden border border-border group"
+                      >
+                        <img
+                          src={img}
+                          alt={`${initiative.title} — photo ${i + 1}`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-text-main">
+                    {t('activities.servicesTitle', 'Our Services')}
+                  </h3>
+                  <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {initiative.services.map((service, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2.5 text-sm text-text-muted"
+                      >
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-[11px] font-bold">
+                          {i + 1}
+                        </span>
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {(initiative.contactPhone || initiative.contactWebsite) && (
+                  <div className="flex flex-wrap gap-4 pt-1 text-sm">
+                    {initiative.contactPhone && (
+                      <a
+                        href={`tel:${initiative.contactPhone.replace(/\s/g, '')}`}
+                        className="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-deep"
+                      >
+                        <Phone className="w-4 h-4" />
+                        {initiative.contactPhone}
+                      </a>
+                    )}
+                    {initiative.contactWebsite && (
+                      <a
+                        href={initiative.contactWebsite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-deep"
+                      >
+                        <Globe className="w-4 h-4" />
+                        {initiative.contactWebsite.replace(/^https?:\/\//, '')}
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+              )
+            })}
           </div>
 
           <aside className="space-y-4">
@@ -164,7 +265,7 @@ export const ActivityDetailPage: React.FC = () => {
       </section>
 
       <ImageLightbox
-        images={activity.images}
+        images={lightboxImages}
         index={lightboxIndex}
         alt={activity.title}
         onClose={() => setLightboxIndex(null)}

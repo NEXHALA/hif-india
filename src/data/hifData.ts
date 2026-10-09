@@ -35,6 +35,19 @@ export interface ProjectData {
   donateUrl?: string
 }
 
+/** Nested initiative shown as its own section on an activity page (e.g. Seva Kendra under Education Wing). */
+export interface ActivityInitiative {
+  id: string
+  title: string
+  subtitle: string
+  badge: string
+  description: string
+  services: string[]
+  images: string[]
+  contactPhone?: string
+  contactWebsite?: string
+}
+
 export interface ActivityData {
   id: string
   title: string
@@ -53,6 +66,8 @@ export interface ActivityData {
   image: string
   images: string[]
   color: string
+  /** Optional sub-initiatives rendered as separate sections on the detail page. */
+  initiatives?: ActivityInitiative[]
 }
 
 export interface GalleryItem {
@@ -750,23 +765,53 @@ export const HIF_ACTIVITIES: ActivityData[] = [
       { label: 'Scholarships Awarded', value: '₹40L+' },
       { label: 'Camps Conducted', value: '45+ Batches' }
     ],
-    overview: 'Empowering underprivileged students with merit scholarships, free school bags, textbook distribution, computer education, and summer personality camps.',
+    overview: 'Empowering underprivileged students with merit scholarships, free school bags, textbook distribution, computer education, summer personality camps — and Seva Kendra citizen-service support.',
     fullStory: [
       'Education is the ultimate equalizer. The HIF Education Wing ensures that financial hardship never forces a talented student to drop out of school or college.',
       'Every academic year, HIF screens hundreds of applicants to award need-cum-merit educational aid for PUC, degree, engineering, nursing, and medical studies.',
-      'In addition, weekend computer literacy workshops and youth personality development camps build leadership, ethical grounding, and communication skills.'
+      'In addition, weekend computer literacy workshops and youth personality development camps build leadership, ethical grounding, and communication skills.',
+      'Through our new Seva Kendra desk, families also receive guided help applying for voter ID, PAN, Aadhaar updates, welfare cards, state schemes, and scholarship paperwork.'
     ],
     features: [
       'Higher Education Merit Scholarships for deserving low-income students in professional degrees',
       'Annual Book Fair & Free School Kit Drive (bags, notebooks, geometry sets for 500+ kids annually)',
       'Free Computer Literacy & Coding Foundations workshops in community centers',
       'Personality Development & Public Speaking Bootcamps during school vacations',
-      'Career Guidance & Competitive Exam counseling for 10th and 12th standard graduates'
+      'Career Guidance & Competitive Exam counseling for 10th and 12th standard graduates',
+      'Seva Kendra: free facilitation for government documents, welfare schemes & scholarship applications'
     ],
     impactPoints: [
       'Produced first-generation engineers, teachers, nurses, and accountants from slum settlements',
       'Reduced school dropout rates in targeted coastal neighborhoods to near zero',
       'Encouraged female education with 60%+ scholarship recipients being young women'
+    ],
+    initiatives: [
+      {
+        id: 'seva-kendra',
+        title: 'HIF Seva Kendra',
+        subtitle: 'One-stop citizen services desk for documents, welfare schemes & scholarships',
+        badge: 'New Initiative',
+        description:
+          'Seva Kendra is HIF India’s new community facilitation centre that helps families apply for essential government documents and welfare benefits — free of confusion and middlemen. Walk in for guided support with voter ID, PAN, Aadhaar, senior citizen and Ayushman cards, state schemes, and scholarship paperwork.',
+        services: [
+          'Voter ID — New Application / Correction',
+          'PAN Card — New Application / Correction',
+          'Aadhaar — Update / Address Change',
+          'Senior Citizen Card Application',
+          'Ayushman Card Application',
+          'Arivu and Scholarships',
+          'Gruha Jyothi Application',
+          'Gruha Lakshmi Application',
+          'New Income / Caste Certificate Application'
+        ],
+        images: [
+          '/images/projects/seva-kendra/entrance.jpg',
+          '/images/projects/seva-kendra/office.jpg',
+          '/images/projects/seva-kendra/services-poster.png'
+        ],
+        contactPhone: '+91 98450 81312',
+        contactWebsite: 'https://www.hif.org.in'
+      }
     ]
   },
   {
