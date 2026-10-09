@@ -696,7 +696,7 @@ export const HIF_ACTIVITIES: ActivityData[] = [
     badge: 'Healthcare & Relief',
     category: 'Healthcare',
     icon: 'Stethoscope',
-    image: '/images/projects/hif1.jpg',
+    image: '/images/projects/hif8.jpg',
     images: [
       '/images/projects/hif1.jpg',
       '/images/projects/hif2.jpg',
@@ -806,11 +806,9 @@ export const HIF_ACTIVITIES: ActivityData[] = [
         ],
         images: [
           '/images/projects/seva-kendra/entrance.jpg',
-          '/images/projects/seva-kendra/office.jpg',
-          '/images/projects/seva-kendra/services-poster.png'
+          '/images/projects/seva-kendra/office.jpg'
         ],
-        contactPhone: '+91 98450 81312',
-        contactWebsite: 'https://www.hif.org.in'
+        contactPhone: '+91 98450 81312'
       }
     ]
   },
