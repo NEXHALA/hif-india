@@ -36,5 +36,29 @@ export const HIF_REELS: HifReel[] = [
     videoUrl: '/videos/reels/reel-4.mp4',
     posterUrl: '/images/reels/reel-4.jpg',
     caption: 'HIF Youth Wing — a reflection exercise from a mentoring session.'
+  },
+  {
+    id: 'reel-5',
+    videoUrl: '/videos/reels/reel-5.mp4',
+    posterUrl: '/images/reels/reel-5.jpg',
+    caption: 'Ummi — an evening honouring mothers, with jannah beneath her feet.'
+  },
+  {
+    id: 'reel-6',
+    videoUrl: '/videos/reels/reel-6.mp4',
+    posterUrl: '/images/reels/reel-6.jpg',
+    caption: 'Youth volunteers packing meals — hands-on service from the HIF team.'
+  },
+  {
+    id: 'reel-7',
+    videoUrl: '/videos/reels/reel-7.mp4',
+    posterUrl: '/images/reels/reel-7.jpg',
+    caption: 'HIF Youth presents Transform Your Tomorrow — Mangaluru auditorium setup.'
+  },
+  {
+    id: 'reel-8',
+    videoUrl: '/videos/reels/reel-8.mp4',
+    posterUrl: '/images/reels/reel-8.jpg',
+    caption: 'A full house for a youth talk — learning, faith, and community together.'
   }
 ]
