@@ -495,8 +495,10 @@ export const HIF_PROJECTS: ProjectData[] = [
     badge: 'Water Security',
     category: 'Water',
     icon: 'Droplet',
-    image: '/images/gallery/boondh-water-unit-masjid-ul-ehsaan.jpg',
+    image: '/images/gallery/boondh-al-furqan-juma-masjid-ullal.jpg',
     images: [
+      '/images/gallery/boondh-al-furqan-juma-masjid-ullal.jpg',
+      '/images/gallery/boondh-project-h2o-water-unit.jpg',
       '/images/gallery/boondh-water-unit-masjid-ul-ehsaan.jpg',
       '/images/gallery/boondh-water-flow-community-test.jpg',
       '/images/gallery/water-purification-shepherds-academy.jpg',
@@ -515,7 +517,7 @@ export const HIF_PROJECTS: ProjectData[] = [
     color: 'emerald',
     donateUrl: PROJECT_DONATE.boondh.general,
     stats: [
-      { label: 'Water Projects Completed', value: '18' },
+      { label: 'Water Projects Completed', value: '21' },
       { label: 'Focus Area', value: 'Underserved Villages' },
       { label: 'Access Provided', value: 'Safe Drinking Water' }
     ],
@@ -523,10 +525,10 @@ export const HIF_PROJECTS: ProjectData[] = [
     fullStory: [
       'In many rural and low-income settlements across coastal Karnataka, access to clean drinking water remains a daily struggle, especially during summer months when wells and open sources run dry.',
       'Project Boondh addresses this directly — funding borewells, water storage and filtration setups, and emergency tanker deliveries so that no family is forced to drink unsafe water.',
-      'Since inception, 18 water projects have been successfully completed, with more in the pipeline as HIF continues to identify water-stressed pockets across the region.'
+      'Since inception, 21 water projects have been successfully completed, with more in the pipeline as HIF continues to identify water-stressed pockets across the region.'
     ],
     achievements: [
-      '18 water projects successfully completed for underserved communities',
+      '21 water projects successfully completed for underserved communities',
       'Emergency free water tanker deliveries to households facing acute summer scarcity',
       'Borewell and filtration infrastructure built to provide lasting, not one-time, access to safe water'
     ],
@@ -1410,6 +1412,24 @@ export const HIF_GALLERY: GalleryItem[] = [
     location: 'Karnataka',
     description: 'A finished Ashiyana home with white and blue banding, timber windows, and a brick-accent porch.',
     year: '2025'
+  },
+  {
+    id: 'gal-120',
+    title: 'Project Boondh at Al-Furqan Juma Masjid',
+    category: 'Community',
+    imageUrl: '/images/gallery/boondh-al-furqan-juma-masjid-ullal.jpg',
+    location: 'Al-Furqan Juma Masjid, Al-Zarka Ullal',
+    description: 'Public drinking water station inaugurated under Project Boondh at Al-Furqan Juma Masjid, Al-Zarka Ullal, with community members.',
+    year: '2026'
+  },
+  {
+    id: 'gal-121',
+    title: 'Project H2O Water Unit Inauguration',
+    category: 'Community',
+    imageUrl: '/images/gallery/boondh-project-h2o-water-unit.jpg',
+    location: 'Karnataka',
+    description: 'Community inauguration of a stainless steel purified drinking water dispenser under HIF Project H2O / Project Boondh, marked with a ceremonial flower garland.',
+    year: '2026'
   },
   {
     id: 'gal-61',
