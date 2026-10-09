@@ -474,6 +474,8 @@ export interface TranslationDictionary {
     addressFull: string
     slogan: string
     developedBy: string
+    shareWebsite: string
+    shareMessage: string
   }
   legal: {
     lastUpdated: string
@@ -1085,7 +1087,10 @@ export const translations: Record<Language, any> = {
       allRightsReserved: 'HIF. All rights reserved.',
       addressFull: 'Masjid Ehsaan Complex, Kankanady, Mangalore – 575002',
       slogan: 'Empowering Communities, Transforming Lives with Compassion & Dignity',
-      developedBy: 'Developed by'
+      developedBy: 'Developed by',
+      shareWebsite: 'Share website',
+      shareMessage:
+        "Check out HIF India's new website — a philanthropic trust focused on education, healthcare, and community welfare across India.\n\nVisit: https://www.hif.org.in"
     },
     legal: {
       lastUpdated: 'Last updated: {date}',
@@ -1729,7 +1734,10 @@ export const translations: Record<Language, any> = {
       allRightsReserved: 'HIF. ಸರ್ವ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.',
       addressFull: 'ಮಸೀದಿ ಎಹ್ಸಾನ್ ಕಾಂಪ್ಲೆಕ್ಸ್, ಕಂಕನಾಡಿ, ಮಂಗಳೂರು – 575002',
       slogan: 'ಕರುಣೆ ಮತ್ತು ಗೌರವದಿಂದ ಜನರನ್ನು ಬಲಪಡಿಸಿ, ಜೀವನ ಬದಲಿಸಿ',
-      developedBy: 'ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ್ದು'
+      developedBy: 'ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ್ದು',
+      shareWebsite: 'ವೆಬ್‌ಸೈಟ್ ಹಂಚಿ',
+      shareMessage:
+        'HIF India ನ ಹೊಸ ವೆಬ್‌ಸೈಟ್ ನೋಡಿ — ಭಾರತದಾದ್ಯಂತ ಶಿಕ್ಷಣ, ಆರೋಗ್ಯ ಮತ್ತು ಸಮುದಾಯ ಕಲ್ಯಾಣಕ್ಕೆ ಗಮನ ನೀಡುವ ದಾನ ಸಂಸ್ಥೆ.\n\nಭೇಟಿ: https://www.hif.org.in'
     },
     legal: {
       lastUpdated: 'ಕೊನೆಯ ಬದಲಾವಣೆ: {date}',
@@ -2373,7 +2381,10 @@ export const translations: Record<Language, any> = {
       allRightsReserved: 'HIF। सर्वाधिकार सुरक्षित।',
       addressFull: 'मस्जिद एहसान कॉम्प्लेक्स, कंकनाडी, मंगलुरु – 575002',
       slogan: 'सहानुभूति और गरिमा के साथ समुदायों को मजबूत बनाना, जीवन में बदलाव',
-      developedBy: 'द्वारा विकसित'
+      developedBy: 'द्वारा विकसित',
+      shareWebsite: 'वेबसाइट साझा करें',
+      shareMessage:
+        'HIF India की नई वेबसाइट देखें — शिक्षा, स्वास्थ्य और सामुदायिक कल्याण पर केंद्रित एक परोपकारी ट्रस्ट।\n\nदेखें: https://www.hif.org.in'
     },
     legal: {
       lastUpdated: 'अंतिम अद्यतन: {date}',

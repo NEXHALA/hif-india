@@ -1,10 +1,11 @@
 import React from 'react'
 import { Heart, ShieldCheck } from 'lucide-react'
-import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa6'
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa6'
 import { HIF_ORGANIZATION } from '../../data/hifData'
 import { useDonate } from '../../context/DonateContext'
 import { useLanguage } from '../../context/LanguageContext'
 import { handleExternalAnchorClick } from '../../lib/openExternal'
+import { buildWhatsAppUrl } from '../../lib/submitForm'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { LocalizedLink } from './LocalizedLink'
 
@@ -17,6 +18,15 @@ const socialLinks = [
 export const Footer: React.FC = () => {
   const { openDonate } = useDonate()
   const { t } = useLanguage()
+
+  // Empty phone opens WhatsApp's share picker so the user chooses a contact.
+  const shareWhatsAppHref = buildWhatsAppUrl(
+    '',
+    t(
+      'footer.shareMessage',
+      "Check out HIF India's new website — a philanthropic trust focused on education, healthcare, and community welfare across India.\n\nVisit: https://www.hif.org.in"
+    )
+  )
 
   return (
     <footer className="surface-dark border-t border-white/5 pt-14 pb-8 px-4 sm:px-6 lg:px-8">
@@ -39,7 +49,7 @@ export const Footer: React.FC = () => {
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
               {t('footer.zeroCommission', '100% direct, zero-commission grassroots disbursement')}
             </div>
-            <div className="flex items-center justify-center lg:justify-start gap-3 pt-1">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
               {socialLinks.map(({ href, label, Icon }) => (
                 <a
                   key={label}
@@ -53,6 +63,17 @@ export const Footer: React.FC = () => {
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
+              <a
+                href={shareWhatsAppHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleExternalAnchorClick}
+                aria-label={t('footer.shareWebsite', 'Share website')}
+                className="inline-flex h-10 items-center gap-2 rounded-lg bg-white/5 px-3 text-xs font-semibold text-emerald-200 hover:bg-[#25D366]/15 hover:text-white transition-colors"
+              >
+                <FaWhatsapp className="w-4 h-4 shrink-0" aria-hidden />
+                {t('footer.shareWebsite', 'Share website')}
+              </a>
             </div>
 
             {/* Language Switcher in Footer */}
