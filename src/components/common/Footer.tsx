@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
   const { openDonate } = useDonate()
   const { t } = useLanguage()
 
-  // Empty phone opens WhatsApp's share picker so the user chooses a contact.
+  // No phone → WhatsApp share flow (pick a contact / chat), with message prefilled.
   const shareWhatsAppHref = buildWhatsAppUrl(
     '',
     t(
