@@ -248,7 +248,7 @@ export const ActivityDetailPage: React.FC = () => {
                 ))}
               </ul>
               <button
-                onClick={() => openDonate(activity.title)}
+                onClick={() => openDonate(activity.title, undefined, activity.donateUrl)}
                 className="mt-5 w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white text-sm font-semibold transition-colors"
               >
                 <Heart className="w-4 h-4" /> {t('common.donateNow', 'Support This Wing')}

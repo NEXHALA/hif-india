@@ -67,6 +67,12 @@ export const PROJECT_DONATE = {
     solarOrToilet: erpProjectDonateUrl(39),
     homeShare: erpProjectDonateUrl(3),
   },
+  /** Activity / wing “Support This Wing” buttons (open amount). */
+  activities: {
+    medicalCell: erpProjectDonateUrl(40),
+    educationWing: erpProjectDonateUrl(41),
+    youthWing: erpProjectDonateUrl(42),
+  },
 } as const
 
 /** Map Impact Calculator amount → ERP donate URL. */

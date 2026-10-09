@@ -66,6 +66,8 @@ export interface ActivityData {
   image: string
   images: string[]
   color: string
+  /** ERP donate URL for “Support This Wing” (open-amount wing project). */
+  donateUrl?: string
   /** Optional sub-initiatives rendered as separate sections on the detail page. */
   initiatives?: ActivityInitiative[]
 }
@@ -696,6 +698,7 @@ export const HIF_ACTIVITIES: ActivityData[] = [
     badge: 'Healthcare & Relief',
     category: 'Healthcare',
     icon: 'Stethoscope',
+    donateUrl: PROJECT_DONATE.activities.medicalCell,
     image: '/images/projects/hif8.jpg',
     images: [
       '/images/projects/hif1.jpg',
@@ -748,6 +751,7 @@ export const HIF_ACTIVITIES: ActivityData[] = [
     badge: 'Academic Empowerment',
     category: 'Education',
     icon: 'BookOpen',
+    donateUrl: PROJECT_DONATE.activities.educationWing,
     image: '/images/projects/youth2.jpg',
     images: [
       '/images/gallery/sslc-awards-celebrating-excellence-2025.jpg',
@@ -819,6 +823,7 @@ export const HIF_ACTIVITIES: ActivityData[] = [
     badge: 'Youth Leadership',
     category: 'Youth',
     icon: 'Users',
+    donateUrl: PROJECT_DONATE.activities.youthWing,
     image: '/images/projects/youth1.jpg',
     images: [
       '/images/projects/youth1.jpg',
